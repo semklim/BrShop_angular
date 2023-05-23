@@ -11,4 +11,5 @@ module.exports = {
   bracketSpacing: true,
   arrowParens: 'avoid',
   bracketSameLine: true,
+  endOfLine: 'auto', //fix this error -> [eslint] Delete `CR` [prettier/prettier]
 };

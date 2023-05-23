@@ -25,12 +25,19 @@
         "import/prefer-default-export": "off",
         "class-methods-use-this": "off",
         "lines-between-class-members": "off",
-        "@typescript-eslint/unbound-method": [
+        //fix this error -> [eslint] Delete `CR` [prettier/prettier]
+        "prettier/prettier": [
           "error",
           {
-            "ignoreStatic": true
+            "endOfLine": "auto"
           }
         ]
+        // "@typescript-eslint/unbound-method": [
+        //   "error",
+        //   {
+        //     "ignoreStatic": true
+        //   }
+        // ]
       }
     },
     {
