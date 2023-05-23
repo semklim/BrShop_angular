@@ -1,19 +1,48 @@
 {
   "root": true,
-  "ignorePatterns": [
-    "projects/**/*"
-  ],
+  "ignorePatterns": ["projects/**/*", "setup.jest.ts"],
   "overrides": [
     {
-      "plugins": [
-        "jest"
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": [
+          "tsconfig.*?.json"
+          // "e2e/tsconfig.json"
+        ],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        // Стайл гайд AirBnB
+        "airbnb-typescript/base",
+        // Настройки для Prettier
+        "plugin:prettier/recommended",
+        "plugin:import/recommended",
+        "plugin:import/typescript"
       ],
+      "rules": {
+        "import/no-unresolved": "off",
+        "import/prefer-default-export": "off",
+        "class-methods-use-this": "off",
+        "lines-between-class-members": "off",
+        "@typescript-eslint/unbound-method": [
+          "error",
+          {
+            "ignoreStatic": true
+          }
+        ]
+      }
+    },
+    {
+      "plugins": ["jest"],
       "env": {
         "jest/globals": true
       },
-      "files": [
-        "*.ts"
-      ],
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.*?.json"],
+        "createDefaultProgram": true
+      },
       "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
@@ -21,6 +50,15 @@
         "plugin:@angular-eslint/template/process-inline-templates",
         "plugin:jest/recommended"
       ],
+      "settings": {
+        "jest": {
+          "globalAliases": {
+            "describe": ["context"],
+            "fdescribe": ["fcontext"],
+            "xdescribe": ["xcontext"]
+          }
+        }
+      },
       "rules": {
         //Jest
         "jest/no-disabled-tests": "warn",
@@ -48,22 +86,11 @@
       }
     },
     {
-      "files": [
-        "*.html"
-      ],
-      "extends": [
-        "plugin:@angular-eslint/template/recommended"
-      ],
-      "rules": {}
-    }
-  ],
-  "settings": {
-    "jest": {
-      "globalAliases": {
-        "describe": ["context"],
-        "fdescribe": ["fcontext"],
-        "xdescribe": ["xcontext"]
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {
+        // "max-len": ["error", { "code": 140 }]
       }
     }
-  }
+  ]
 }
