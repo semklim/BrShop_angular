@@ -1,6 +1,6 @@
 {
   "root": true,
-  "ignorePatterns": ["projects/**/*", "setup.jest.ts"],
+  "ignorePatterns": ["projects/**/*", "src/setup.jest.ts"],
   "overrides": [
     {
       "files": ["*.ts"],
