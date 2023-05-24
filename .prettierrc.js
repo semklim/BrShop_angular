@@ -9,7 +9,7 @@ module.exports = {
   singleQuote: true,
   printWidth: 120,
   bracketSpacing: true,
-  arrowParens: 'avoid',
+  arrowParens: 'always',
   bracketSameLine: true,
   endOfLine: 'auto', //fix this error -> [eslint] Delete `CR` [prettier/prettier]
 };

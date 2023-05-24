@@ -1,7 +1,6 @@
 # Ignore artifacts:
 build
 coverage
-*.html
 
 # Compiled output
 /dist

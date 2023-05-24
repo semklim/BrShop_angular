@@ -11,6 +11,7 @@
         ],
         "createDefaultProgram": true
       },
+      "plugins": ["prettier"],
       "extends": [
         "plugin:@angular-eslint/recommended",
         // Стайл гайд AirBnB
@@ -29,15 +30,12 @@
         "prettier/prettier": [
           "error",
           {
-            "endOfLine": "auto"
+            "endOfLine": "auto",
+            "arrowParens": "always"
           }
         ]
-        // "@typescript-eslint/unbound-method": [
-        //   "error",
-        //   {
-        //     "ignoreStatic": true
-        //   }
-        // ]
+        // "arrow-body-style": "off",
+        // "prefer-arrow-callback": "off"
       }
     },
     {
