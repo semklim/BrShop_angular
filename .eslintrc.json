@@ -33,8 +33,14 @@
             "endOfLine": "auto",
             "arrowParens": "always"
           }
+        ],
+        "arrow-body-style": [
+          "error",
+          "as-needed",
+          {
+            "requireReturnForObjectLiteral": true
+          }
         ]
-        // "arrow-body-style": "off",
         // "prefer-arrow-callback": "off"
       }
     },
