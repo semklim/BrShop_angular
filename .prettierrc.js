@@ -11,5 +11,19 @@ module.exports = {
   bracketSpacing: true,
   arrowParens: 'always',
   bracketSameLine: true,
-  endOfLine: 'auto', //fix this error -> [eslint] Delete `CR` [prettier/prettier]
+  endOfLine: 'auto', //fix this error -> [eslint] Delete `CR` [prettier/prettier],
+  // overrides: [
+  //   {
+  //     files: '*.html',
+  //     options: {
+  //       parser: 'html'
+  //     }
+  //   },
+  //   {
+  //     files: '*.component.html',
+  //     options: {
+  //       parser: 'angular'
+  //     }
+  //   }
+  // ]
 };
