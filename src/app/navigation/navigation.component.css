@@ -1,0 +1,48 @@
+nav {
+  --bs-border-color: rgb(245, 245, 245);
+}
+@media (min-width: 992px) {
+  .navbar-nav > li {
+    padding: 0 20px;
+  }
+
+  /* .navbar-expand-lg .navbar-collapse {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+  } */
+}
+
+#adminEyes {
+  transform: matrix(1, 0, 0, 1, 0, 0.01);
+  animation: clipping 5s ease-in infinite;
+}
+
+@keyframes clipping {
+  19% {
+    transform: matrix(1, 0, 0, 1, 0, 0.01);
+  }
+  20% {
+    transform: matrix(1, 0, 0, 0.01, 0, 15);
+  }
+
+  25% {
+    transform: matrix(1, 0, 0, 1, 0, 0.01);
+  }
+
+  39% {
+    transform: matrix(1, 0, 0, 1, 0, 0.01);
+  }
+
+  55% {
+    transform: matrix(0.9, 0, 0, 1, 0, 0.01);
+  }
+
+  85% {
+    transform: matrix(1.1, 0, 0, 1, 0, 0.01);
+  }
+
+  100% {
+    transform: matrix(1, 0, 0, 1, 0, 0.01);
+  }
+}
