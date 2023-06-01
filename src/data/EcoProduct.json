@@ -1,0 +1,449 @@
+[
+  {
+    "product_id": "P123456789",
+    "product_name": "EcoBottle Plant Based 650 ml",
+    "category": "Eco-Friendly Lifestyle",
+    "description": "Eco-friendly, lightweight water bottle by EcoBottle. This bottle is made from 98% sugar cane bio mass waste. The screw cap is made from natural Portuguese cork. Designed and produced in Sweden using mainly carbon negative renewable energy. This product is environmentally and climate friendly as well as being very stylish due to its basic design. This is the perfect bottle for a striking and ecologically responsible promotion. Ideal for the office, in the gym or on the go.",
+    "price": 10,
+    "currency": "USD",
+    "stock_quantity": 50,
+    "image_url": [
+      "https://www.leoprinting.dk/files/photos/Waterflessen%20bedrukken/ecobottle-2_900x600.jpg",
+      "https://www.leoprinting.dk/files/photos/Waterflessen/ecobottlelback_900x600.jpg",
+      "https://www.leoprinting.dk/files/photos/Waterflessen/ecobottolelabel_900x600.jpg",
+      "https://www.leoprinting.dk/files/photos/Waterflessen%20bedrukken/ecobottle-1_900x600.jpg"
+    ],
+    "rating": 4.5,
+    "reviews": [
+      {
+        "review_id": "R987654321",
+        "user_name": "Jane Doe",
+        "rating": 5,
+        "review_text": "I love my EcoBottle! It keeps my water cool all day, and I feel great knowing that I'm reducing plastic waste."
+      },
+      {
+        "review_id": "R123456789",
+        "user_name": "John Smith",
+        "rating": 4,
+        "review_text": "The EcoBottle is a great alternative to disposable bottles. It's durable and easy to clean. Highly recommended!"
+      }
+    ],
+    "features": [
+      "Made with Renewable Energy In Sweden",
+      "Lightweight only 75 grams",
+      "BPA-free and non-toxic materials",
+      "Leak-proof lid for on-the-go use",
+      "Wide mouth for easy filling and cleaning",
+      "Carbon Negative Footprint"
+    ],
+    "specifications": {
+      "material": "HDPE Bioplastics, 98% sugar cane bio mass waste",
+      "capacity": "650ml",
+      "color": ["Green", "Black", "White"],
+      "dimensions": "20cm (height) x 7cm (diameter)",
+      "weight": "200 grams"
+    }
+  },
+  {
+    "product_id": "P987654321",
+    "product_name": "Organic Cotton Tote Bag",
+    "category": "Eco-Friendly Fashion",
+    "description": "The Organic Cotton Tote Bag is a versatile and sustainable accessory for everyday use. It is made from organic cotton, free from harmful chemicals, and features a spacious interior with sturdy handles.",
+    "price": 14.99,
+    "currency": "USD",
+    "stock_quantity": 100,
+    "image_url": [
+      "https://i.etsystatic.com/29997025/r/il/11cf2a/3546481140/il_1140xN.3546481140_f892.jpg",
+      "https://i.etsystatic.com/29997025/r/il/304138/3594156359/il_1140xN.3594156359_xkwn.jpg",
+      "https://i.etsystatic.com/29997025/r/il/62998f/3594125389/il_1140xN.3594125389_ttnw.jpg"
+    ],
+    "rating": 4.2,
+    "reviews": [
+      {
+        "review_id": "R567890123",
+        "user_name": "Sarah Brown",
+        "rating": 4,
+        "review_text": "I use this tote bag for grocery shopping, and it's perfect. It's sturdy and can hold a lot of items. Plus, it's eco-friendly!"
+      },
+      {
+        "review_id": "R012345678",
+        "user_name": "David Wilson",
+        "rating": 5,
+        "review_text": "The quality of this cotton tote bag is excellent. It feels durable, and the design is simple yet stylish."
+      }
+    ],
+    "features": [
+      "Made from organic cotton",
+      "Chemical-free and eco-friendly",
+      "Spacious interior for carrying essentials",
+      "Sturdy handles for comfortable carrying",
+      "Versatile and reusable"
+    ],
+    "specifications": {
+      "material": "Organic cotton",
+      "color": ["Natural"],
+      "dimensions": "35cm (width) x 40cm (height) x 10cm (depth)",
+      "weight": "150 grams"
+    }
+  },
+  {
+    "product_id": "P246813579",
+    "product_name": "Bamboo Toothbrush Set with Travel Case",
+    "category": "Personal Care",
+    "description": "The Bamboo Toothbrush Set includes four eco-friendly toothbrushes made from sustainably sourced bamboo. They have soft bristles that are gentle on the gums and come with a compostable packaging.",
+    "price": 15.99,
+    "currency": "USD",
+    "stock_quantity": 75,
+    "image_url": [
+      "https://images.squarespace-cdn.com/content/v1/5e5cd082c50ea102c52e5bb0/1590948648456-94U6KIYMB844NYKQ536O/bamboo-toothbrush-1.jpg",
+      "https://images.squarespace-cdn.com/content/v1/5e5cd082c50ea102c52e5bb0/1590948653457-1YCY479VNK20JJDB1SDB/bamboo-toothbrush-6.jpg",
+      "https://images.squarespace-cdn.com/content/v1/5e5cd082c50ea102c52e5bb0/1590948652323-4COEOWCUI57YHJKOVHWU/bamboo-toothbrush-4.jpg",
+      "https://images.squarespace-cdn.com/content/v1/5e5cd082c50ea102c52e5bb0/1590948650533-QF1Z6V45MVJZXWOLCKMB/bamboo-toothbrush-3.jpg",
+      "https://images.squarespace-cdn.com/content/v1/5e5cd082c50ea102c52e5bb0/1590948648954-KU2PGJM49S1LSEV6X9SD/bamboo-toothbrush-2.jpg"
+    ],
+    "rating": 4.8,
+    "reviews": [
+      {
+        "review_id": "R234567890",
+        "user_name": "Emily Johnson",
+        "rating": 5,
+        "review_text": "I switched to these bamboo toothbrushes, and I'm impressed. They feel great, and I love the fact that they are environmentally friendly."
+      },
+      {
+        "review_id": "R789012345",
+        "user_name": "Michael Smith",
+        "rating": 4,
+        "review_text": "These toothbrushes are a sustainable alternative to plastic ones. They work well and are reasonably priced."
+      }
+    ],
+    "features": [
+      "Made from sustainably sourced bamboo",
+      "Soft bristles for gentle cleaning",
+      "Compostable packaging",
+      "Durable and long-lasting",
+      "BPA-free and non-toxic"
+    ],
+    "specifications": {
+      "material": "Bamboo",
+      "bristle_type": "Soft, charcoal Infused",
+      "color": ["Natural"],
+      "dimensions": "18cm (length)",
+      "weight": "15 grams"
+    }
+  },
+  {
+    "product_id": "P135792468",
+    "product_name": "Solar-Powered Portable Charger Sandberg 20000 mAh 20W",
+    "category": "Technology",
+    "description": "The Solar-Powered Portable Charger is a compact and eco-friendly device that harnesses solar energy to charge your electronic devices on the go. It features multiple USB ports and a built-in battery for convenient and sustainable charging.",
+    "price": 29.99,
+    "currency": "USD",
+    "stock_quantity": 30,
+    "image_url": [
+      "https://content1.rozetka.com.ua/goods/images/big/302168523.jpg",
+      "https://content2.rozetka.com.ua/goods/images/big/302168524.jpg",
+      "https://content1.rozetka.com.ua/goods/images/big/302168525.jpg",
+      "https://content2.rozetka.com.ua/goods/images/big/302168526.jpg",
+      "https://content1.rozetka.com.ua/goods/images/big/302168527.jpg"
+    ],
+    "rating": 4.3,
+    "reviews": [
+      {
+        "review_id": "R567890123",
+        "user_name": "Alexis Miller",
+        "rating": 4,
+        "review_text": "I love using this solar charger when I go hiking. It charges my phone well, and the fact that it's solar-powered is amazing."
+      },
+      {
+        "review_id": "R012345678",
+        "user_name": "Daniel Wilson",
+        "rating": 5,
+        "review_text": "This portable charger is a game-changer. It's compact, charges quickly, and being solar-powered makes it perfect for outdoor adventures."
+      }
+    ],
+    "features": [
+      "Solar-powered charging",
+      "Multiple USB ports for simultaneous charging",
+      "Built-in battery for storing solar energy",
+      "Compact and portable design",
+      "Compatible with various electronic devices"
+    ],
+    "specifications": {
+      "solar_panel_type": "Monocrystalline",
+      "battery_capacity": "20,000mAh",
+      "input_ports": "USB-C, Micro-USB",
+      "output_ports": "USB-A, USB-C",
+      "color": ["Black"],
+      "dimensions": "88cm (length) x 15.8cm (width) x 4.6cm (height)",
+      "weight": "660 grams"
+    }
+  },
+  {
+    "product_id": "P314159265",
+    "product_name": "Eco-Friendly Bamboo Cutlery Set",
+    "category": "Kitchen & Dining",
+    "description": "The Eco-Friendly Bamboo Cutlery Set is a sustainable alternative to single-use plastic cutlery. It includes a fork, knife, spoon, and a carrying pouch, all made from natural bamboo.",
+    "price": 12.99,
+    "currency": "USD",
+    "stock_quantity": 40,
+    "image_url": [
+      "https://cdn.shopify.com/s/files/1/1100/4024/products/Ever-Eco-Bamboo-Cutlery-Set_2048x.jpg",
+      "https://cdn.shopify.com/s/files/1/1100/4024/products/Ever-Eco-Bamboo-Cutlery-Set-_2_2048x.jpg",
+      "https://cdn.shopify.com/s/files/1/1100/4024/products/Ever-Eco-Plastic-Free-Zero-Waste-Cutlery-_3_2048x.jpg"
+    ],
+    "rating": 4.6,
+    "reviews": [
+      {
+        "review_id": "R234567890",
+        "user_name": "Sophia Anderson",
+        "rating": 5,
+        "review_text": "This bamboo cutlery set is fantastic. It's lightweight, durable, and perfect for on-the-go use. Stash this bamboo cutlery set in it's simple organic cotton storage pouch and you can easily avoid single use plastic cutlery that is so damaging to our environment. We use coconut oil to keep them looking as new after gentle hand washing."
+      },
+      {
+        "review_id": "R789012345",
+        "user_name": "Oliver Brown",
+        "rating": 4,
+        "review_text": "I'm impressed with the quality of this bamboo cutlery set. It's a great addition to my eco-friendly lifestyle."
+      }
+    ],
+    "features": [
+      "Made from natural bamboo",
+      "Reusable and eco-friendly",
+      "Lightweight and portable",
+      "Includes a carrying pouch",
+      "Dishwasher safe"
+    ],
+    "specifications": {
+      "material": "Bamboo",
+      "set_includes": ["Fork", "Knife", "Spoon", "Carrying pouch"],
+      "color": ["Natural"],
+      "dimensions": "20cm (length)",
+      "weight": "30 grams"
+    }
+  },
+  {
+    "product_id": "P271828182",
+    "product_name": "Organic Cotton Yoga Mat",
+    "category": "Fitness & Wellness",
+    "description": "The Organic Cotton Yoga Mat is a natural and eco-friendly mat for yoga and exercise routines. It is made from organic cotton and provides a comfortable and non-slip surface for your practice.",
+    "price": 39.99,
+    "currency": "USD",
+    "stock_quantity": 20,
+    "image_url": [
+      "https://cdn.shopify.com/s/files/1/0046/6760/5038/products/254e2525a12c29b9267057777937f9af.jpg",
+      "https://cdn.shopify.com/s/files/1/0046/6760/5038/products/cb4b789e57f743228f54f87c3431bf1b.jpg",
+      "https://cdn.shopify.com/s/files/1/0046/6760/5038/products/0918ac9b32d3f15d0f2e1036bcdd2ca4.jpg"
+    ],
+    "rating": 4.7,
+    "reviews": [
+      {
+        "review_id": "R345678901",
+        "user_name": "Emma Davis",
+        "rating": 5,
+        "review_text": "This organic cotton yoga mat is excellent. It's soft, non-slip, and feels great during my yoga sessions. Plus, it's better for the environment."
+      },
+      {
+        "review_id": "R890123456",
+        "user_name": "William Miller",
+        "rating": 4,
+        "review_text": "I'm happy with this yoga mat. The quality is good, and it provides the right amount of cushioning for my workouts."
+      }
+    ],
+    "features": [
+      "Made from organic cotton",
+      "Non-slip surface for stability",
+      "Soft and comfortable",
+      "Free from harmful chemicals",
+      "Durable and long-lasting"
+    ],
+    "specifications": {
+      "material": "Wild Hemp/Organic Cotton (55:45%)",
+      "color": ["Natural"],
+      "dimensions": "183cm (length) x 66cm (width) x 8mm (thickness)",
+      "weight": "1.8 kg"
+    }
+  },
+  {
+    "product_id": "P777777777",
+    "product_name": "Reusable Beeswax Wraps",
+    "category": "Kitchen & Dining",
+    "description": "Reusable Beeswax Wraps are a sustainable alternative to plastic wraps for storing food. Made from organic cotton and coated with beeswax, they keep your food fresh while reducing plastic waste.",
+    "price": 14.99,
+    "currency": "USD",
+    "stock_quantity": 60,
+    "image_url": [
+      "https://cdn.shopify.com/s/files/1/0004/8673/5908/products/HoneybeesBeeswaxWrapsSetof3_700x.png",
+      "https://cdn.shopify.com/s/files/1/0004/8673/5908/products/Goldilocksbeeswaxwrapshoneybeeprintcoveringbowl_700x.jpg",
+      "https://cdn.shopify.com/s/files/1/0004/8673/5908/products/goldilocksoctober20-0606_700x.jpg",
+      "https://cdn.shopify.com/s/files/1/0004/8673/5908/products/GoldilocksBeeswaxwrapshoneybeesmallwithlemon_700x.jpg",
+      "https://cdn.shopify.com/s/files/1/0004/8673/5908/products/Goldilocksbeeswaxwraps-Honeybeessetof3flatlay_700x.jpg"
+    ],
+    "rating": 4.4,
+    "reviews": [
+      {
+        "review_id": "R012345678",
+        "user_name": "Sophie Johnson",
+        "rating": 4,
+        "review_text": "These beeswax wraps are great for keeping food fresh. They're easy to clean and reusable, which I love."
+      },
+      {
+        "review_id": "R345678901",
+        "user_name": "Oliver Smith",
+        "rating": 5,
+        "review_text": "I switched to these reusable beeswax wraps, and they work perfectly. They're a sustainable choice for my kitchen."
+      }
+    ],
+    "features": [
+      "Made from organic cotton",
+      "Coated with natural beeswax",
+      "Reusable and washable",
+      "Keeps food fresh",
+      "Biodegradable and eco-friendly"
+    ],
+    "specifications": {
+      "material": "Organic cotton, Canadian Beeswax, Tree Rosin, Jojoba Oil",
+      "set_includes": ["Small wrap (20cm x 20cm)", "Medium wrap (25cm x 25cm)", "Large wrap (30cm x 35cm)"],
+      "color": ["Assorted"],
+      "weight": "50 grams"
+    }
+  },
+  {
+    "product_id": "P888888888",
+    "product_name": "Solar-Powered Outdoor LED Lights",
+    "category": "Outdoor Living",
+    "description": "Solar-Powered Outdoor LED Lights are energy-efficient and eco-friendly lights for illuminating outdoor spaces. They are powered by solar energy, automatically turn on at dusk, and provide a warm and inviting glow.",
+    "price": 29.99,
+    "currency": "USD",
+    "stock_quantity": 35,
+    "image_url": [
+      "https://cdn.shopify.com/s/files/1/0002/9170/0755/products/img1_grande.jpg",
+      "https://cdn.shopify.com/s/files/1/0002/9170/0755/products/img2_dea6918f-0383-4264-a517-5248f5888c6d_grande.jpg",
+      "https://cdn.shopify.com/s/files/1/0002/9170/0755/products/cover_a540902d-f86d-45d1-94a8-46cce3b9fb01_grande.jpg",
+      "https://cdn.shopify.com/s/files/1/0002/9170/0755/products/Untitled_design-19_grande.jpg",
+      "https://cdn.shopify.com/s/files/1/0002/9170/0755/products/next-deal-shop-solar-powered-outdoor-light-strips-11_grande.jpg"
+    ],
+    "rating": 4.6,
+    "reviews": [
+      {
+        "review_id": "R234567890",
+        "user_name": "Liam Brown",
+        "rating": 5,
+        "review_text": "I installed these solar-powered lights in my garden, and they look amazing. They're easy to set up and add a beautiful ambiance to the surroundings."
+      },
+      {
+        "review_id": "R789012345",
+        "user_name": "Emily Wilson",
+        "rating": 4,
+        "review_text": "These outdoor lights are a great addition to my patio. They're bright, energy-efficient, and I love that they are solar-powered."
+      }
+    ],
+    "features": [
+      "Solar-powered lighting",
+      "Automatic dusk to dawn operation",
+      "Energy-efficient LED bulbs",
+      "Weather-resistant for outdoor use",
+      "Easy installation"
+    ],
+    "specifications": {
+      "power_source": "Solar",
+      "light_type": "LED",
+      "color": ["Warm white"],
+      "dimensions": "12cm (height) x 8cm (diameter), 10m (length of Led)",
+      "weight": "235 grams"
+    }
+  },
+  {
+    "product_id": "P222222222",
+    "product_name": "Reusable Silicone Food Storage Bags 12 Pack",
+    "category": "Kitchen & Dining",
+    "description": "Reusable Silicone Food Storage Bags are a sustainable alternative to disposable plastic bags. They are made from food-grade silicone, leak-proof, and perfect for storing snacks, leftovers, and more. It's premium kitchen organization solutions. If you are looking to maximize space and keep your home clean and tidy, we have a product for you.",
+    "price": 17.99,
+    "currency": "USD",
+    "stock_quantity": 55,
+    "image_url": [
+      "https://i.ebayimg.com/images/g/tT4AAOSwNFFkPufT/s-l1600.jpg",
+      "https://i.ebayimg.com/images/g/MGMAAOSwBXRkPufT/s-l1600.jpg",
+      "https://i.ebayimg.com/images/g/jDAAAOSwKp1kPufT/s-l1600.jpg",
+      "https://i.ebayimg.com/images/g/r5AAAOSwDGFkPufT/s-l1600.jpg",
+      "https://i.ebayimg.com/images/g/z9kAAOSw8sNkPufT/s-l1600.jpg",
+      "https://d3d71ba2asa5oz.cloudfront.net/23000296/images/cuisinart-2-food-storage-bags-main-image.jpg",
+      "https://i.ebayimg.com/images/g/j6AAAOSwNcdkPufS/s-l1600.jpg"
+    ],
+    "rating": 4.5,
+    "reviews": [
+      {
+        "review_id": "R012345678",
+        "user_name": "Sophia Miller",
+        "rating": 4,
+        "review_text": "These silicone food storage bags are excellent. They're durable, easy to clean, and help reduce plastic waste in my kitchen."
+      },
+      {
+        "review_id": "R345678901",
+        "user_name": "Oliver Davis",
+        "rating": 5,
+        "review_text": "I'm impressed with the quality of these silicone bags. They seal tightly, keep food fresh, and are better for the environment."
+      }
+    ],
+    "features": [
+      "Made from food-grade silicone",
+      "Reusable and leak-proof",
+      "Easy to clean and dishwasher safe",
+      "Reduces plastic waste",
+      "Freezer and microwave safe"
+    ],
+    "specifications": {
+      "material": "Food-grade silicone",
+      "set_includes": ["Small bag (500ml)", "Medium bag (1000ml)", "Large bag (1500ml)"],
+      "color": ["Assorted"],
+      "weight": "100 grams"
+    }
+  },
+  {
+    "product_id": "P111111111",
+    "product_name": "Bamboo lyocell fabric Bed Sheets",
+    "category": "Home & Decor",
+    "description": "Bamboo lyocell fabric Bed Sheets are soft, breathable, and eco-friendly bedding essentials. They are made from bamboo lyocell fabric and provide a comfortable and luxurious sleeping experience.",
+    "price": 300,
+    "currency": "USD",
+    "stock_quantity": 15,
+    "image_url": [
+      "https://res.cloudinary.com/prodport-production/image/upload/f_auto,q_auto/4b512d90-b8f2-4d63-88a5-6a30728cf747.png",
+      "https://res.cloudinary.com/prodport-production/image/upload/f_auto,q_auto/b328bf38-4535-4a4c-9d83-827a079546b1.jpg",
+      "https://res.cloudinary.com/prodport-production/image/upload/f_auto,q_auto/87f3c376-ffc4-4a8f-8f7b-0e8f5a0cc5e1.png",
+      "https://res.cloudinary.com/prodport-production/image/upload/f_auto,q_auto/ff647920-88a9-4833-b362-ac44730f7029.jpg",
+      "https://res.cloudinary.com/prodport-production/image/upload/f_auto,q_auto/97fc5990-3e28-4563-80e7-08cd5645c0f1.jpg",
+      "https://res.cloudinary.com/prodport-production/image/upload/f_auto,q_auto/81826f1f-1352-4046-aa75-cc1a626c2ccf.jpg",
+      "https://res.cloudinary.com/prodport-production/image/upload/f_auto,q_auto/14f38a9d-16af-40cc-88f7-cf9019a3d492.jpg"
+    ],
+    "rating": 4.8,
+    "reviews": [
+      {
+        "review_id": "R234567890",
+        "user_name": "Sophie Johnson",
+        "rating": 5,
+        "review_text": "These bamboo lyocell fabric bed sheets are amazing. They're silky soft, breathable, and eco-friendly. I sleep like a dream!"
+      },
+      {
+        "review_id": "R789012345",
+        "user_name": "Oliver Brown",
+        "rating": 4,
+        "review_text": "I'm impressed with the quality of these bed sheets. They're comfortable, durable, and being eco-friendly is a bonus."
+      }
+    ],
+    "features": [
+      "Made from 100% bamboo lyocell",
+      "Feels smooth like silk, comparable to cotton 1,000 thread count",
+      "Hypoallergenic and gentle on the skin",
+      "Moisture-wicking and temperature-regulating",
+      "Durable and long-lasting",
+      "STANDARD 100 by OEKO-TEX®"
+    ],
+    "specifications": {
+      "material": "Bamboo lyocell",
+      "set_includes": ["1 fitted sheet", "1 flat sheet", "2 pillowcases"],
+      "color": ["White"],
+      "available_sizes": ["Twin", "Full", "Queen", "King"],
+      "weight": "2 kg"
+    }
+  }
+]
