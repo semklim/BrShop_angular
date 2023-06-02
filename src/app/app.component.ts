@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from './types/products';
 import { GetProductsService } from './GlobalServices/getProducts.service';
 
@@ -7,12 +7,14 @@ import { GetProductsService } from './GlobalServices/getProducts.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   prod?: Product[];
 
-  constructor(public productsServ: GetProductsService) {
-    productsServ.getJSON().subscribe((data) => {
-      this.prod = data;
+  constructor(public productsServ: GetProductsService) {}
+
+  ngOnInit(): void {
+    this.productsServ.getJSON().subscribe((data) => {
+      this.prod = Object.values(data);
     });
   }
 }
