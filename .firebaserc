@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "shop-step": {
+      "hosting": {
+        "WebShop": [
+          "shop-step"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "shop-step"
+  }
+}

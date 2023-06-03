@@ -7,7 +7,7 @@ import { Product } from '../types/products';
   providedIn: 'root',
 })
 export class GetProductsService {
-  private _jsonURL = 'https://web-shop-step-default-rtdb.europe-west1.firebasedatabase.app/ecoproducts.json';
+  private _jsonURL = 'data/EcoProduct.json';
 
   constructor(private http: HttpClient) {}
 

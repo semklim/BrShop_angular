@@ -2,6 +2,7 @@ import { Review } from './review';
 import { ProdSpecific } from './specific';
 
 export interface Product {
+  fireId?: string;
   category: string;
   currency: string;
   description: string;
