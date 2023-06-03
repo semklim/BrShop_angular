@@ -1,9 +1,9 @@
 <app-navigation></app-navigation>
 <router-outlet></router-outlet>
 <ul>
-  <li *ngFor="let product of prod">
+  <li *ngFor="let product of prod" style="max-width: 280px">
     {{ product.product_name }}
-    <img [src]="product.image_url[0]" width="500" alt="" />
+    <img [src]="product.image_url[0]" style="max-width: 280px" alt="" />
     <span></span>
   </li>
 </ul>
