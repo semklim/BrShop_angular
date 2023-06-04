@@ -15,6 +15,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AdminMainComponent } from './admin-main/admin-main.component';
+import { MainPageModule } from './mainPage/main-page.module';
 @NgModule({
   declarations: [AppComponent, NavigationComponent, AdminMainComponent],
   imports: [
@@ -29,6 +30,7 @@ import { AdminMainComponent } from './admin-main/admin-main.component';
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
+    MainPageModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
