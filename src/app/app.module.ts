@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -18,6 +17,7 @@ import { AdminMainComponent } from './admin-main/admin-main.component';
 import { CartComponent } from './cart/cart.component';
 import { ShippingAddressComponent } from './cart/shipping-address/shipping-address.component';
 import { CartItemsComponent } from './cart/cart-items/cart-items.component';
+import { MainPageModule } from './mainPage/main-page.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +39,7 @@ import { CartItemsComponent } from './cart/cart-items/cart-items.component';
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
+    MainPageModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
