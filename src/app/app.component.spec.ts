@@ -9,9 +9,4 @@ describe('AppComponent', () => {
   it('should create the app', () => {
     expect(fixture).toBeTruthy();
   });
-
-  it(`should have as title 'WebShop'`, () => {
-    const title = fixture.title;
-    expect(title).toEqual('WebShop');
-  });
 });

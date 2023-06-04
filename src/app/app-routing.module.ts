@@ -6,7 +6,7 @@ import { CartComponent } from './cart/cart.component';
 import { MainPageComponent } from './mainPage/main-page.component';
 
 const routes: Routes = [
-  { path: '', component: MainPageComponent, canActivate: [AdminGuard] },
+  { path: '', component: MainPageComponent },
   { path: 'admin', component: AdminMainComponent, canActivate: [AdminGuard] },
   { path: 'cart', component: CartComponent },
 ];
