@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, filter, lastValueFrom } from 'rxjs';
+import { Observable, lastValueFrom } from 'rxjs';
 import { Product } from '../types/products';
 
 @Injectable({
@@ -13,9 +13,11 @@ export class LocalDataService {
 
   public async getProduct(product: Product) {
     return (async () => {
-      const id = product.id;
       const source$ = this.getAll().pipe((res) => res);
-      return lastValueFrom(source$);
+      const prodRes = await lastValueFrom(source$);
+      const result = prodRes.filter((el) => el.id === product.id);
+      if (!result[0]) return null;
+      return result[0];
     })();
   }
 

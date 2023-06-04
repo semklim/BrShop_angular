@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../types/products';
-import { Firestore, collection, addDoc, getDocs, collectionData, doc, getDoc } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, collectionData, doc, getDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -30,6 +30,7 @@ export class FBaseService {
     try {
       await addDoc(this.dbInstance, data);
       console.log('Data send');
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       console.log(err.massage);
     }
