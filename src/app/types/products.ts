@@ -9,8 +9,8 @@ export interface Product {
   features: Array<string>;
   image_url: Array<string>;
   price: number;
-  product_id: string;
-  product_name: string;
+  id: string;
+  name: string;
   rating: number;
   reviews: Array<Review>;
   specifications: ProdSpecific;

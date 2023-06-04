@@ -1,7 +1,7 @@
 [
   {
-    "product_id": "P123456789",
-    "product_name": "EcoBottle Plant Based 650 ml",
+    "id": "P123456789",
+    "name": "EcoBottle Plant Based 650 ml",
     "category": "Eco-Friendly Lifestyle",
     "description": "Eco-friendly, lightweight water bottle by EcoBottle. This bottle is made from 98% sugar cane bio mass waste. The screw cap is made from natural Portuguese cork. Designed and produced in Sweden using mainly carbon negative renewable energy. This product is environmentally and climate friendly as well as being very stylish due to its basic design. This is the perfect bottle for a striking and ecologically responsible promotion. Ideal for the office, in the gym or on the go.",
     "price": 10,
@@ -45,8 +45,8 @@
     }
   },
   {
-    "product_id": "P987654321",
-    "product_name": "Organic Cotton Tote Bag",
+    "id": "P987654321",
+    "name": "Organic Cotton Tote Bag",
     "category": "Eco-Friendly Fashion",
     "description": "The Organic Cotton Tote Bag is a versatile and sustainable accessory for everyday use. It is made from organic cotton, free from harmful chemicals, and features a spacious interior with sturdy handles.",
     "price": 14.99,
@@ -87,8 +87,8 @@
     }
   },
   {
-    "product_id": "P246813579",
-    "product_name": "Bamboo Toothbrush Set with Travel Case",
+    "id": "P246813579",
+    "name": "Bamboo Toothbrush Set with Travel Case",
     "category": "Personal Care",
     "description": "The Bamboo Toothbrush Set includes four eco-friendly toothbrushes made from sustainably sourced bamboo. They have soft bristles that are gentle on the gums and come with a compostable packaging.",
     "price": 15.99,
@@ -132,8 +132,8 @@
     }
   },
   {
-    "product_id": "P135792468",
-    "product_name": "Solar-Powered Portable Charger Sandberg 20000 mAh 20W",
+    "id": "P135792468",
+    "name": "Solar-Powered Portable Charger Sandberg 20000 mAh 20W",
     "category": "Technology",
     "description": "The Solar-Powered Portable Charger is a compact and eco-friendly device that harnesses solar energy to charge your electronic devices on the go. It features multiple USB ports and a built-in battery for convenient and sustainable charging.",
     "price": 29.99,
@@ -179,8 +179,8 @@
     }
   },
   {
-    "product_id": "P314159265",
-    "product_name": "Eco-Friendly Bamboo Cutlery Set",
+    "id": "P314159265",
+    "name": "Eco-Friendly Bamboo Cutlery Set",
     "category": "Kitchen & Dining",
     "description": "The Eco-Friendly Bamboo Cutlery Set is a sustainable alternative to single-use plastic cutlery. It includes a fork, knife, spoon, and a carrying pouch, all made from natural bamboo.",
     "price": 12.99,
@@ -222,8 +222,8 @@
     }
   },
   {
-    "product_id": "P271828182",
-    "product_name": "Organic Cotton Yoga Mat",
+    "id": "P271828182",
+    "name": "Organic Cotton Yoga Mat",
     "category": "Fitness & Wellness",
     "description": "The Organic Cotton Yoga Mat is a natural and eco-friendly mat for yoga and exercise routines. It is made from organic cotton and provides a comfortable and non-slip surface for your practice.",
     "price": 39.99,
@@ -264,8 +264,8 @@
     }
   },
   {
-    "product_id": "P777777777",
-    "product_name": "Reusable Beeswax Wraps",
+    "id": "P777777777",
+    "name": "Reusable Beeswax Wraps",
     "category": "Kitchen & Dining",
     "description": "Reusable Beeswax Wraps are a sustainable alternative to plastic wraps for storing food. Made from organic cotton and coated with beeswax, they keep your food fresh while reducing plastic waste.",
     "price": 14.99,
@@ -308,8 +308,8 @@
     }
   },
   {
-    "product_id": "P888888888",
-    "product_name": "Solar-Powered Outdoor LED Lights",
+    "id": "P888888888",
+    "name": "Solar-Powered Outdoor LED Lights",
     "category": "Outdoor Living",
     "description": "Solar-Powered Outdoor LED Lights are energy-efficient and eco-friendly lights for illuminating outdoor spaces. They are powered by solar energy, automatically turn on at dusk, and provide a warm and inviting glow.",
     "price": 29.99,
@@ -353,8 +353,8 @@
     }
   },
   {
-    "product_id": "P222222222",
-    "product_name": "Reusable Silicone Food Storage Bags 12 Pack",
+    "id": "P222222222",
+    "name": "Reusable Silicone Food Storage Bags 12 Pack",
     "category": "Kitchen & Dining",
     "description": "Reusable Silicone Food Storage Bags are a sustainable alternative to disposable plastic bags. They are made from food-grade silicone, leak-proof, and perfect for storing snacks, leftovers, and more. It's premium kitchen organization solutions. If you are looking to maximize space and keep your home clean and tidy, we have a product for you.",
     "price": 17.99,
@@ -399,8 +399,8 @@
     }
   },
   {
-    "product_id": "P111111111",
-    "product_name": "Bamboo lyocell fabric Bed Sheets",
+    "id": "P111111111",
+    "name": "Bamboo lyocell fabric Bed Sheets",
     "category": "Home & Decor",
     "description": "Bamboo lyocell fabric Bed Sheets are soft, breathable, and eco-friendly bedding essentials. They are made from bamboo lyocell fabric and provide a comfortable and luxurious sleeping experience.",
     "price": 300,

@@ -1,11 +1,7 @@
 <section>
   <div class="container px-4 px-lg-5 mt-5">
     <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
-      <div
-        class="col-lg-4 col-md-12 mb-4"
-        *ngFor="let product of prod"
-        role="button"
-        [routerLink]="'/' + product.product_id">
+      <div class="col-lg-4 col-md-12 mb-4" *ngFor="let product of prod" role="button">
         <div class="card">
           <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
             <img [src]="product.image_url[0]" class="w-100" />
@@ -22,10 +18,11 @@
           </div>
           <div class="card-body">
             <a href="" class="text-reset">
-              <h5 class="card-title mb-3">{{ product.product_name }}</h5>
+              <h5 class="card-title mb-3">{{ product.name }}</h5>
             </a>
             <h6 class="mb-3">{{ product.price | currency : product.currency }}</h6>
           </div>
+          <button (click)="getData(product)">Get Product</button>
         </div>
       </div>
     </div>
