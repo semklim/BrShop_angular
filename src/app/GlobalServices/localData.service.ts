@@ -22,12 +22,10 @@ export class LocalDataService {
   }
 
   public async getProduct(product: Product) {
-    return (async () => {
-      const prodRes = await lastValueFrom(this.getAllProducts());
-      const result = prodRes.filter((el) => el.id === product.id);
-      if (!result[0]) return null;
-      return result[0];
-    })();
+    const prodRes = await lastValueFrom(this.getAllProducts());
+    const result = prodRes.filter((el) => el.id === product.id);
+    if (!result[0]) return null;
+    return result[0];
   }
 
   public getAllProducts(): Observable<Product[]> {
@@ -35,6 +33,6 @@ export class LocalDataService {
   }
 
   public async addData(data: Product) {
-    await (async () => this.http.post(this._jsonURL, data))();
+    this.http.post(this._jsonURL, data);
   }
 }
