@@ -2,13 +2,12 @@ import { Injectable } from '@angular/core';
 import { Product } from '../types/products';
 import { Firestore, collection, addDoc, collectionData, doc, getDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-
 /**
 
  * This is an Angular service that provides functionality for interacting with Firebase Firestore. It encapsulates methods related to retrieving, adding, and retrieving all products from the Firestore database.
- * @method getAll()
- * @method getProduct()
- * @method addData()
+ * @Observable @method getAllProducts()
+ * @async @method getProduct()
+ * @async @method addData()
  */
 @Injectable({
   providedIn: 'root',
@@ -16,7 +15,20 @@ import { Observable } from 'rxjs';
 export class FBaseService {
   private dbInstance = collection(this.firestore, 'ecoProducts');
 
-  constructor(private firestore: Firestore) {}
+  prodacts$: Observable<Product[]>;
+
+  constructor(private firestore: Firestore) {
+    this.prodacts$ = this.getAll();
+  }
+
+  /**
+
+  Retrieves all products from Firestore.
+  @returns {Observable<Product[]>} An Observable that emits an array of product objects.
+  */
+  getAllProducts(): Observable<Product[]> {
+    return this.prodacts$;
+  }
 
   /**
 
@@ -65,7 +77,7 @@ export class FBaseService {
   Retrieves all products from Firestore.
   @returns {Observable<Product[]>} An Observable that emits an array of product objects.
   */
-  getAll(): Observable<Product[]> {
+  private getAll(): Observable<Product[]> {
     return collectionData(this.dbInstance, { idField: 'id' }) as Observable<Product[]>;
   }
 }

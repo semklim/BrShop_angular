@@ -21,7 +21,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
   }
 
   getAllProducts(): Subscription {
-    return this.prodService.getAll().subscribe((products) => {
+    return this.prodService.getAllProducts().subscribe((products) => {
       this.prod = products;
     });
   }
