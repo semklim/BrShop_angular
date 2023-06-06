@@ -1,3 +1,9 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+  rel="stylesheet" />
+
 <nav class="navbar sticky-top bg-white border">
   <div class="container-fluid flex-wrap">
     <a class="navbar-brand" routerLink="/">
@@ -112,18 +118,26 @@
       </button>
       <div class="overlay" *ngIf="showAutoBox" (click)="hideAutoBox()"></div>
       <div class="auto-box" [hidden]="!showAutoBox">
+        <h2>Admin</h2>
         <form #auto="ngForm">
           <div class="input-box">
-            <label>Name</label>
-            <input ngModel name="name" placeholder="Name" required />
+            <input ngModel name="name" placeholder="Name" required autocomplete="off" />
+            <label for="name">Name</label>
           </div>
           <div class="input-box">
-            <label>Password</label>
-            <input ngModel name="password" placeholder="Password" required />
+            <input ngModel type="password" name="password" placeholder="Password" required autocomplete="off" />
+            <label for="password">Password</label>
           </div>
-          <div class="button-box">
+          <!-- <div class="button-box">
             <button [disabled]="auto.invalid" (click)="submit(auto)">Enter</button>
-          </div>
+          </div> -->
+          <button class="buttonEnter" (click)="submit(auto)">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <p class="EnterBtnText">Enter</p>
+          </button>
         </form>
       </div>
       <a routerLink="/cart" class="cartBtn" title="Shopping cart">
