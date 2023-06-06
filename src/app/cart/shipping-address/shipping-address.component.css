@@ -1,0 +1,48 @@
+.country-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.country-toggle {
+  display: none;
+}
+
+.selected-country {
+  background-color: #f2f2f2;
+  padding: 10px;
+  cursor: pointer;
+  width: 200px;
+  text-align: center;
+}
+
+.selected-country::after {
+  content: '\25BE';
+  float: right;
+  margin-top: 3px;
+}
+
+.country-list {
+  position: absolute;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  z-index: 1;
+  width: 200px;
+}
+
+.country-list li {
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.country-list li:hover {
+  background-color: #f2f2f2;
+}
+
+.country-toggle:checked + .selected-country + .country-list {
+  display: block;
+}
