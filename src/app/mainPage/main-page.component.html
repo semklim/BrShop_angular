@@ -22,7 +22,7 @@
             </a>
             <h6 class="mb-3">{{ product.price | currency : product.currency }}</h6>
           </div>
-          <button (click)="getData(product)">Get Product</button>
+          <button (click)="getData(this.product)">Get Product</button>
         </div>
       </div>
     </div>

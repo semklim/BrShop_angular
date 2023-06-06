@@ -37,6 +37,7 @@ export class NavigationComponent {
       if (this.authService.checkAuthentication()) {
         this.router.navigateByUrl('/admin');
         this.hideAutoBox();
+        f.reset();
       }
       // this.router.navigateByUrl('/admin');
       // this.hideAutoBox()
