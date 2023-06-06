@@ -32,7 +32,7 @@
 <section>
   <div class="container px-4 px-lg-5 mt-5">
     <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
-      <div class="col-lg-4 col-md-12 mb-4" *ngFor="let product of prod" role="button">
+      <div class="col-lg-4 col-md-12 mb-4" *ngFor="let product of prod$ | async" role="button">
         <div class="card h-100">
           <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
             <img [src]="product.image_url[0]" class="w-100" />
