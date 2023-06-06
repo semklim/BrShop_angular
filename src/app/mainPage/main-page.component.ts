@@ -1,33 +1,19 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from '../types/products';
 import { FBaseService } from '../GlobalServices/fbase.service';
-import { Subscription } from 'rxjs';
-import { LocalDataService } from '../GlobalServices/localData.service';
-
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.css'],
 })
-export class MainPageComponent implements OnInit, OnDestroy {
-  prod?: Product[];
+export class MainPageComponent implements OnInit {
+  prod$?: Observable<Product[]>;
 
-  allProdSub: Subscription | null = null;
-
-  constructor(private prodService: FBaseService, private local: LocalDataService) {}
+  constructor(private prodService: FBaseService) {}
 
   ngOnInit(): void {
-    this.allProdSub = this.getAllProducts();
-  }
-
-  getAllProducts(): Subscription {
-    return this.prodService.getAllProducts().subscribe((products) => {
-      this.prod = products;
-    });
-  }
-
-  ngOnDestroy() {
-    this.allProdSub?.unsubscribe();
+    this.prod$ = this.prodService.getAllProducts();
   }
 
   getData(product: Product) {
