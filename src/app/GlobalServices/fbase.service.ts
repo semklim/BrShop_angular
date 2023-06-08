@@ -59,12 +59,12 @@ export class FBaseService {
   @param {Product} data - The product data to be added to Firestore.
   @returns {Promise<void>} A Promise that resolves when the data is successfully added to Firestore.
   */
-  async addData(data: Product): Promise<void> {
+  async addData(data: Product, path = 'ecoProduct'): Promise<void> {
     // Generate a new ID for the product by Firebase
     data.id = doc(collection(this.firestore, 'id')).id;
-
+    const dbInstance = collection(this.firestore, path);
     try {
-      await addDoc(this.dbInstance, data);
+      await addDoc(dbInstance, data);
       console.log('Data send');
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
