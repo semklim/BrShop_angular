@@ -1,0 +1,41 @@
+.cartItemsContainer {
+  display: inline-block;
+  margin-left: 3vw;
+  position: fixed;
+  top: 1;
+}
+
+.prices {
+  margin-top: 3vh;
+  border-top: 1px solid rgb(240, 239, 239);
+  border-bottom: 1px solid rgb(240, 239, 239);
+  width: 23vw;
+}
+
+.subtotal {
+  font-size: 13px;
+}
+
+.shipping {
+  margin-top: 1.2vh;
+  font-size: 13px;
+}
+
+.total {
+  margin-top: 1.2vh;
+  font-size: 14px;
+}
+
+.shippingSpan {
+  position: fixed;
+  right: 230px;
+  top: 1;
+  display: inline-block;
+}
+
+.subtotalSpan {
+  font-size: 13px;
+  position: fixed;
+  right: 230px;
+  display: inline-block;
+}
