@@ -1,16 +1,87 @@
 .admin-container {
   display: flex;
-  height: 100vh; /* Растягиваем контейнер на всю высоту экрана */
+  height: 100%;
+  position: relative;
 }
 
 .admin-sidebar {
-  background-color: #2570bb; /* Цвет фона панели админа */
-  width: 200px; /* Ширина панели админа */
-  overflow-y: auto; /* Добавляем вертикальную прокрутку при необходимости */
+  position: fixed;
+  top: 51%;
+  left: 0;
+  transform: translateY(-50%);
+  background-image: linear-gradient(135deg, #ffffff 0%, #7c7c8a 100%);
+  width: 200px;
+  height: 80%;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.decorAdminTextTop {
+  position: fixed;
+  top: 4%;
+  left: 20px;
+  transform: translateY(-50%);
+  font-family: 'Dancing Script', cursive;
+  z-index: -1;
+}
+
+.decorAdminTextBottom {
+  position: fixed;
+  bottom: 0%;
+  left: 20px;
+  transform: translateY(-50%);
+  font-family: 'Dancing Script', cursive;
 }
 
 .admin-content {
-  flex-grow: 1; /* Растягиваем контент, чтобы занять все доступное пространство */
-  padding: 20px; /* Отступ контента внутри правой области */
-  overflow-y: auto; /* Добавляем вертикальную прокрутку при необходимости */
+  margin-left: 200px;
+  height: 200vh;
+}
+
+/* CSS */
+.buttonsAdmin {
+  appearance: none;
+  background-color: #000000;
+  border: 2px solid #1a1a1a;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 60px;
+  min-width: 0;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+  will-change: transform;
+  margin-bottom: 20px;
+}
+
+.buttonsAdmin:disabled {
+  pointer-events: none;
+}
+
+.buttonsAdmin:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.buttonsAdmin:active {
+  box-shadow: none;
+  transform: translateY(0);
 }

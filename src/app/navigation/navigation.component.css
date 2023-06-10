@@ -100,6 +100,9 @@ input {
   font-family: 'Dancing Script', cursive;
   font-size: 32px;
   font-weight: 900;
+  /* border: 1px solid; */
+  border-radius: 5px;
+  padding: 5px 10px;
 }
 
 /* //// */
@@ -289,4 +292,9 @@ button {
   100% {
     bottom: 100%;
   }
+}
+
+.menuBtn {
+  display: flex;
+  align-items: center;
 }
