@@ -18,8 +18,8 @@ import { CartComponent } from './cart/cart.component';
 import { ShippingAddressComponent } from './cart/shipping-address/shipping-address.component';
 import { CartItemsComponent } from './cart/cart-items/cart-items.component';
 import { MainPageModule } from './mainPage/main-page.module';
-import { FBaseService } from './GlobalServices/fbase.service';
-import { LocalDataService } from './GlobalServices/localData.service';
+import { FBaseService } from './services/fbase.service';
+import { LocalDataService } from './services/localData.service';
 @NgModule({
   declarations: [
     AppComponent,

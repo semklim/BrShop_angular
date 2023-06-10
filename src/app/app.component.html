@@ -1,2 +1,20 @@
 <app-navigation></app-navigation>
+
+<div class="test" style="display: flex; gap: 20px; justify-content: space-evenly">
+  <div class="first" style="border: 1px solid salmon">
+    <h2>localUrl (assets/air-jordan-xxxvii-prm-4.png)</h2>
+    <button (click)="uploadImgByLocalUrl()">push</button>
+  </div>
+  <div class="second" style="border: 1px solid salmon">
+    <h2>By URL</h2>
+    <input #input type="url" />
+    <button (click)="uploadImgByUrl(input)">push</button>
+  </div>
+  <div class="three" style="border: 1px solid salmon">
+    <h2>By file</h2>
+    <input #file type="file" />
+    <button (click)="uploadImgByFile(file)">push</button>
+  </div>
+</div>
+
 <router-outlet></router-outlet>

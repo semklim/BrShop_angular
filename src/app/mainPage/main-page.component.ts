@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../types/products';
-import { FBaseService } from '../GlobalServices/fbase.service';
+import { FBaseService } from '../services/fbase.service';
 import { Observable } from 'rxjs';
 @Component({
   selector: 'app-main-page',
