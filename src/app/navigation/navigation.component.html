@@ -11,6 +11,7 @@
     </a>
 
     <div class="menuBtn d-flex gap-1">
+      <!--  -->
       <button class="logout-button" *ngIf="authService.checkAuthentication()" (click)="authService.logout()">
         Logout
       </button>
@@ -140,6 +141,7 @@
           </button>
         </form>
       </div>
+      <!--  -->
       <a routerLink="/cart" class="cartBtn" title="Shopping cart">
         <svg
           xmlns="http://www.w3.org/2000/svg"

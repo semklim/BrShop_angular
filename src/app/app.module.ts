@@ -13,22 +13,15 @@ import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-import { AdminMainComponent } from './admin-main/admin-main.component';
 import { CartComponent } from './cart/cart.component';
 import { ShippingAddressComponent } from './cart/shipping-address/shipping-address.component';
 import { CartItemsComponent } from './cart/cart-items/cart-items.component';
 import { MainPageModule } from './mainPage/main-page.module';
 import { FBaseService } from './services/fbase.service';
 import { LocalDataService } from './services/localData.service';
+import { AdminMainModule } from './admin-main/admin-main.module';
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavigationComponent,
-    AdminMainComponent,
-    CartComponent,
-    ShippingAddressComponent,
-    CartItemsComponent,
-  ],
+  declarations: [AppComponent, NavigationComponent, CartComponent, ShippingAddressComponent, CartItemsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -39,9 +32,9 @@ import { LocalDataService } from './services/localData.service';
     AngularFireDatabaseModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
     MainPageModule,
+    AdminMainModule,
   ],
   providers: [{ provide: FBaseService, useClass: environment.production ? FBaseService : LocalDataService }],
   bootstrap: [AppComponent],
