@@ -15,10 +15,4 @@ export class MainPageComponent implements OnInit {
   ngOnInit(): void {
     this.prod$ = this.prodService.getAllProducts();
   }
-
-  getData(product: Product) {
-    this.prodService.getProduct(product).then((data) => {
-      console.log(data);
-    });
-  }
 }
