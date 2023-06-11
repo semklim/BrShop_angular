@@ -1,3 +1,18 @@
+:host() {
+  overflow: hidden;
+}
+
+section {
+  overflow-y: auto;
+  height: 100%;
+}
+
+.form-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
 .row-cols {
   display: flex;
   flex-wrap: wrap;

@@ -1,3 +1,7 @@
+:host() {
+  overflow: hidden;
+}
+
 .admin-container {
   display: flex;
   height: 100%;
@@ -5,13 +9,11 @@
 }
 
 .admin-sidebar {
-  position: fixed;
-  top: 51%;
+  position: sticky;
+  top: 0;
   left: 0;
-  transform: translateY(-50%);
   background-image: linear-gradient(135deg, #ffffff 0%, #7c7c8a 100%);
   width: 200px;
-  height: 80%;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   padding: 20px;
@@ -37,8 +39,8 @@
 }
 
 .admin-content {
-  margin-left: 200px;
-  height: 100%;
+  overflow-y: auto;
+  flex-grow: 1;
 }
 
 /* CSS */
