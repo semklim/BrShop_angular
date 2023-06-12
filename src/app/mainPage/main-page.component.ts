@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Product } from '../types/products';
 import { FBaseService } from '../services/fbase.service';
 import { Observable, map } from 'rxjs';
@@ -6,15 +6,12 @@ import { Observable, map } from 'rxjs';
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainPageComponent implements OnInit {
   private productsOrigin?: Observable<Product[]>;
 
   prod$?: Observable<Product[]>;
-
-  searchValue!: string;
-
-  timeoutId?: ReturnType<typeof setTimeout>;
 
   constructor(private prodService: FBaseService) {}
 
@@ -22,12 +19,8 @@ export class MainPageComponent implements OnInit {
     this.productsOrigin = this.prod$ = this.prodService.getAllProducts();
   }
 
-  submit() {
-    clearTimeout(this.timeoutId);
-
-    this.timeoutId = setTimeout(() => {
-      this.prod$ = this.filterProductsByTitles(this.searchValue);
-    }, 300);
+  submit(value: string) {
+    this.prod$ = this.filterProductsByTitles(value);
   }
 
   filterProductsByTitles(productName: string): Observable<Product[]> | undefined {
