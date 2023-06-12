@@ -15,7 +15,11 @@
       <button class="logout-button" *ngIf="authService.checkAuthentication()" (click)="authService.logout()">
         Logout
       </button>
-      <button class="admin-button" *ngIf="!authService.checkAuthentication()" (click)="toggleAutoBox()">
+      <button
+        class="admin-button"
+        title="Admin page"
+        *ngIf="!authService.checkAuthentication()"
+        (click)="toggleAutoBox()">
         <svg xmlns="http://www.w3.org/2000/svg" width="50" viewBox="0 0 50 50">
           <defs>
             <clipPath id="__lottie_element_2">
@@ -66,7 +70,7 @@
           </g>
         </svg>
       </button>
-      <button class="admin-button" *ngIf="authService.checkAuthentication()" [routerLink]="'/admin'">
+      <button class="admin-button" title="Admin page" *ngIf="authService.checkAuthentication()" [routerLink]="'/admin'">
         <svg xmlns="http://www.w3.org/2000/svg" width="50" viewBox="0 0 50 50">
           <defs>
             <clipPath id="__lottie_element_2">
