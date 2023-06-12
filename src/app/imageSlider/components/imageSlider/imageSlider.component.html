@@ -1,7 +1,15 @@
 <div class="slider">
   <div class="sliderControles" *ngIf="slides.length > 1">
-    <div (click)="goToPrevious()" class="leftArrow">❰</div>
-    <div (click)="goToNext()" class="rightArrow">❱</div>
+    <div (click)="goToPrevious()" class="icon right">
+      <div class="arrow">
+        <div class="right-arrow"></div>
+      </div>
+    </div>
+    <div class="icon left" (click)="goToNext()">
+      <div class="arrow">
+        <div class="left-arrow"></div>
+      </div>
+    </div>
   </div>
   <div class="slide" [ngStyle]="{ 'background-image': getCurrentSlideUrl() }"></div>
   <div class="dotsContainer" *ngIf="showDots()">
