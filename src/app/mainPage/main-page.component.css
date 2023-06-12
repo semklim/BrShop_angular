@@ -2,6 +2,12 @@
   overflow: hidden;
 }
 
+@media (max-width: 400px) {
+  .dopMargin {
+    margin: 0px;
+  }
+}
+
 section {
   overflow-y: auto;
   height: 100%;
