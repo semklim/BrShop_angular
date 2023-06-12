@@ -8,7 +8,13 @@ import { Component, Input } from '@angular/core';
 export class ImageSliderComponent {
   @Input() slides: string[] = [];
 
+  @Input() isShowDot = true;
+
   currentIndex = 0;
+
+  showDots(): boolean {
+    return this.isShowDot && this.slides.length > 1;
+  }
 
   currentSlideForDot(slideIndex: number): string {
     if (slideIndex === this.currentIndex) {

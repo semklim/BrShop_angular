@@ -4,7 +4,7 @@
     <div (click)="goToNext()" class="rightArrow">❱</div>
   </div>
   <div class="slide" [ngStyle]="{ 'background-image': getCurrentSlideUrl() }"></div>
-  <div class="dotsContainer" *ngIf="slides.length > 1">
+  <div class="dotsContainer" *ngIf="showDots()">
     <div
       *ngFor="let slide of slides; let slideIndex = index"
       class="dot"
