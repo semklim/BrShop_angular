@@ -1,4 +1,4 @@
-:host() {
+:host {
   user-select: none;
 }
 
@@ -80,11 +80,11 @@
   transform: rotate(135deg);
 }
 
-:host():hover .left-arrow,
-:host():hover .right-arrow {
+:host:hover .left-arrow,
+:host:hover .right-arrow {
   border-color: white;
 }
-:host():hover .icon {
+:host:hover .icon {
   background-color: hsl(0deg 0% 0% / 40%);
 }
 

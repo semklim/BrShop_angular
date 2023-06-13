@@ -1,4 +1,4 @@
-:host() {
+:host {
   text-rendering: optimizeLegibility;
   font-feature-settings: 'kern';
   -webkit-text-size-adjust: 100%;

@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Product } from '../types/products';
 import { FBaseService } from '../services/fbase.service';
-import { Observable, map } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
