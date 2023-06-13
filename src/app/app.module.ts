@@ -16,7 +16,6 @@ import { CartItemsComponent } from './cart/cart-items/cart-items.component';
 import { MainPageModule } from './mainPage/main-page.module';
 import { FBaseService } from './services/fbase.service';
 import { LocalDataService } from './services/localData.service';
-import { AdminMainModule } from './admin-main/admin-main.module';
 @NgModule({
   declarations: [AppComponent, NavigationComponent, CartComponent, ShippingAddressComponent, CartItemsComponent],
   imports: [
@@ -29,7 +28,6 @@ import { AdminMainModule } from './admin-main/admin-main.module';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     MainPageModule,
-    AdminMainModule,
   ],
   providers: [{ provide: FBaseService, useClass: environment.production ? FBaseService : LocalDataService }],
   bootstrap: [AppComponent],
