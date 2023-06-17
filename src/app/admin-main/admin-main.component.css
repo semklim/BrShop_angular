@@ -220,3 +220,22 @@
   width: 100%;
   flex-wrap: wrap;
 }
+
+.priceSitting {
+  display: flex;
+  gap: 2%;
+}
+
+.colorSetting {
+  display: flex;
+  gap: 2%;
+}
+
+/* input {
+  border: none;
+  border-bottom: 1px solid;
+} */
+
+/* input[type="checkbox"] {
+    border: 1px solid;
+  } */
