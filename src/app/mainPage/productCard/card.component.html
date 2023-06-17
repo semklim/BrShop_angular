@@ -1,6 +1,9 @@
 <div class="d-flex flex-column h-100" role="button">
-  <div style="display: flex; min-height: 350px">
-    <app-image-slider [isShowDot]="false" [slides]="product!.image_url" style="flex: 1 1 350px"></app-image-slider>
+  <div [style]="'display: flex; min-height: ' + cardMinHeight + 'px'">
+    <app-image-slider
+      [isShowDot]="false"
+      [slides]="product!.image_url"
+      [style]="'flex: 1 1 ' + cardMinHeight + 'px'"></app-image-slider>
   </div>
   <div class="mt-2 d-flex flex-column flex-grow-1 justify-content-between">
     <div class="d-flex flex-grow-1 flex-column justify-content-between text-uppercase">

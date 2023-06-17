@@ -8,4 +8,6 @@ import { Product } from 'src/app/types/products';
 })
 export class CardComponent {
   @Input() product?: Product;
+
+  @Input() cardMinHeight = 350;
 }
