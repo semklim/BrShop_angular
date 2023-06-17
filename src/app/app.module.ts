@@ -14,8 +14,8 @@ import { CartComponent } from './cart/cart.component';
 import { ShippingAddressComponent } from './cart/shipping-address/shipping-address.component';
 import { CartItemsComponent } from './cart/cart-items/cart-items.component';
 import { MainPageModule } from './mainPage/main-page.module';
-import { FBaseService } from './services/fbase.service';
-import { LocalDataService } from './services/localData.service';
+import { FBaseService } from './services/fireStore/fbase.service';
+import { LocalDataService } from './services/localDataBase/localData.service';
 @NgModule({
   declarations: [AppComponent, NavigationComponent, CartComponent, ShippingAddressComponent, CartItemsComponent],
   imports: [

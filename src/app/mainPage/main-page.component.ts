@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Product } from '../types/products';
-import { FBaseService } from '../services/fbase.service';
+import { FBaseService } from '../services/fireStore/fbase.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 @Component({

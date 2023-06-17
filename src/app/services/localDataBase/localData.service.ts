@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, lastValueFrom } from 'rxjs';
-import { Product } from '../types/products';
+import { Product } from '../../types/products';
 /**
 
  * This is a service that mock FBaseService and provides same functionality for interacting with local database. It encapsulates methods related to retrieving, adding, and retrieving all products from the local database.
