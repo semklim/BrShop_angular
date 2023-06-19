@@ -10,6 +10,8 @@ export class ImageSliderComponent {
 
   @Input() isShowDot = true;
 
+  @Input() linkToProduct: string | null = null;
+
   currentIndex = 0;
 
   showDots(): boolean {

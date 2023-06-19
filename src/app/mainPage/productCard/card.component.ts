@@ -14,8 +14,4 @@ export class CardComponent {
   @Input() cardMinHeight = 350;
 
   @Output() deleteProductChange = new EventEmitter();
-
-  deleteProduct(product: Product): void {
-    this.deleteProductChange.emit(product);
-  }
 }
