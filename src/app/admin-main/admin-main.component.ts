@@ -7,9 +7,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./admin-main.component.css'],
 })
 export class AdminMainComponent {
-  imageUrls: string[] = [];
-
-  imageInputs: string[] = [];
+  selectedFiles: File[] = [];
 
   size8 = false;
 
@@ -27,12 +25,14 @@ export class AdminMainComponent {
 
   size15 = false;
 
-  addImageUrl() {
-    this.imageUrls.push('');
-  }
-
-  onImageUrlChange(newValue: string, index: number) {
-    this.imageUrls[index] = newValue;
+  onFileInputChange(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    const fileList = inputElement.files;
+    if (fileList) {
+      this.selectedFiles = Array.from(fileList);
+      // Извлекаем названия файлов и сохраняем их в imagesUrls
+      this.formData.imagesUrls = this.selectedFiles.map((file) => file.name);
+    }
   }
 
   formData = {
@@ -45,18 +45,13 @@ export class AdminMainComponent {
     imageMain: '',
     imagesUrls: [] as string[],
     color: {
-      type: '',
       name: '',
       hex: '',
     },
-    colors: [] as { type: string; name: string; hex: string }[],
-    rating: 0,
   };
 
   onSubmit(form: NgForm) {
     if (form.valid) {
-      this.formData.imagesUrls = [...this.imageUrls, ...this.imageInputs];
-
       const object = {
         category: this.formData.category,
         title: this.formData.title,
@@ -77,12 +72,9 @@ export class AdminMainComponent {
         imageMain: this.formData.imageMain,
         imagesUrls: this.formData.imagesUrls,
         color: {
-          type: this.formData.color.type,
           name: this.formData.color.name,
           hex: this.formData.color.hex,
         },
-        colors: this.formData.colors,
-        rating: Number(this.formData.rating),
       };
       console.log(object); // Вывод объекта в консоль
     }
