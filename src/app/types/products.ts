@@ -9,6 +9,7 @@ export interface Product {
   features: Array<string>;
   image_url: Array<string>;
   price: number;
+  docId?: string;
   id: string;
   name: string;
   rating: number;

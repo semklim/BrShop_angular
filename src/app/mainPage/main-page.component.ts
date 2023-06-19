@@ -12,6 +12,8 @@ import { map } from 'rxjs/operators';
 export class MainPageComponent implements OnInit {
   private productsOrigin?: Observable<Product[]>;
 
+  isDisableDelete = false;
+
   prod$?: Observable<Product[]>;
 
   constructor(private prodService: FBaseService) {}
@@ -30,5 +32,15 @@ export class MainPageComponent implements OnInit {
     return this.productsOrigin?.pipe(
       map((products: Product[]) => products.filter((product) => reg.test(product.name))),
     );
+  }
+
+  deleteProduct(product: Product): void {
+    this.isDisableDelete = true;
+    this.prodService
+      .deleteData(product)
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => (this.isDisableDelete = false));
   }
 }

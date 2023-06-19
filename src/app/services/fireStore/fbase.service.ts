@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../../types/products';
-import { Firestore, collection, addDoc, collectionData, doc, getDoc } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, collectionData, doc, getDoc, deleteDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 /**
 
@@ -72,12 +72,23 @@ export class FBaseService {
     }
   }
 
+  async deleteData(product: Product): Promise<void> {
+    const docRef = doc(this.firestore, 'ecoProducts', product.docId!);
+    console.log(
+      `you are delete product ${product.name} 
+    ${product.id}
+    ${product.docId}`,
+    );
+
+    return deleteDoc(docRef);
+  }
+
   /**
 
   Retrieves all products from Firestore.
   @returns {Observable<Product[]>} An Observable that emits an array of product objects.
   */
   private getAll(): Observable<Product[]> {
-    return collectionData(this.dbInstance, { idField: 'id' }) as Observable<Product[]>;
+    return collectionData(this.dbInstance, { idField: 'docId' }) as Observable<Product[]>;
   }
 }
