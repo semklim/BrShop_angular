@@ -1,4 +1,4 @@
-<div class="d-flex flex-column h-100" role="button">
+<div class="d-flex flex-column h-100" role="button" [routerLink]="'/product/' + product!.docId">
   <div [style]="'display: flex; min-height: ' + cardMinHeight + 'px'">
     <app-image-slider
       [isShowDot]="false"

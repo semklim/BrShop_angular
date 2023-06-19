@@ -13,7 +13,7 @@ const routes: Routes = [
   },
   { path: 'cart', component: CartComponent },
   {
-    path: 'product',
+    path: 'product/:id',
     loadChildren: () => import('./ProductPage/product.module').then((m) => m.ProductModule),
   },
 ];
