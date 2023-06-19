@@ -12,6 +12,10 @@ const routes: Routes = [
     canActivate: [AdminGuard],
   },
   { path: 'cart', component: CartComponent },
+  {
+    path: 'product',
+    loadChildren: () => import('./ProductPage/product.module').then((m) => m.ProductModule),
+  },
 ];
 
 @NgModule({
