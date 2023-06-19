@@ -37,9 +37,9 @@ export class FBaseService {
   @returns {Promise<Product | null>} A Promise that resolves to the retrieved product object if it exists,
   or null if the product does not exist.
   */
-  async getProduct(product: Product): Promise<Product | null> {
+  async getProduct(product: Product, path = 'ecoProducts'): Promise<Product | null> {
     // Create a Firestore document reference using the product ID
-    const docRef = doc(this.firestore, 'ecoProducts', product.id);
+    const docRef = doc(this.firestore, path, product.docId!);
 
     // Retrieve the document snapshot from Firestore
     const docSnap = await getDoc(docRef);

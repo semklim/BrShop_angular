@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   firebase: {
     projectId: 'shop-step',
     appId: '1:889183251634:web:c559036b083b0b7076adab',
