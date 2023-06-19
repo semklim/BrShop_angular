@@ -15,6 +15,17 @@ nav {
   }
 }
 
+@media (max-width: 310px) {
+  .navMaxHeigth {
+    height: 125px;
+  }
+}
+@media (min-width: 311px) {
+  .navMaxHeigth {
+    height: 75.6px;
+  }
+}
+
 #adminEyes {
   transform: matrix(1, 0, 0, 1, 0, 0.01);
   animation: clipping 5s ease-in infinite;
