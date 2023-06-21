@@ -6,8 +6,19 @@
 
 .form-sticky {
   position: sticky;
-  top: 0;
+  /* top: 0; */
   z-index: 2;
+}
+
+@media (max-width: 310px) {
+  .form-sticky {
+    top: 125px;
+  }
+}
+@media (min-width: 311px) {
+  .form-sticky {
+    top: 75.6px;
+  }
 }
 
 .row-cols {
