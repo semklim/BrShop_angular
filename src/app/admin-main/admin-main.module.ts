@@ -3,6 +3,7 @@ import { AdminMainComponent } from './admin-main.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FBaseService } from '../services/fireStore/fbase.service';
 
 @NgModule({
   declarations: [AdminMainComponent],
@@ -12,5 +13,6 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     ReactiveFormsModule,
   ],
+  providers: [FBaseService],
 })
 export class AdminMainModule {}

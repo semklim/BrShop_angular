@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { FBaseServiceNew } from '../services/fireStore/fbase.serviceNew';
+import { ProductShoes } from '../types/productShoes';
 
 @Component({
   selector: 'app-admin-main',
@@ -7,6 +9,12 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./admin-main.component.css'],
 })
 export class AdminMainComponent {
+  constructor(private fBaseService: FBaseServiceNew) {
+    // this.fBaseService.getAllProducts().subscribe((products: ProductShoes[]) => {
+    //   console.log(products);
+    // });
+  }
+
   selectedFiles: File[] = [];
 
   size8 = false;
@@ -35,7 +43,9 @@ export class AdminMainComponent {
     }
   }
 
-  formData = {
+  formData: ProductShoes = {
+    id: '',
+    docId: '',
     category: '',
     title: '',
     subtitle: '',
@@ -45,20 +55,26 @@ export class AdminMainComponent {
     imageMain: '',
     imagesUrls: [] as string[],
     color: {
+      type: '',
       name: '',
       hex: '',
     },
+    colors: [],
+    rating: '',
+    reviews: [],
+    description: '',
   };
 
-  onSubmit(form: NgForm) {
+  async onSubmit(form: NgForm) {
     if (form.valid) {
-      const object = {
+      const object: ProductShoes = {
+        id: this.formData.id,
+        docId: this.formData.docId,
         category: this.formData.category,
         title: this.formData.title,
         subtitle: this.formData.subtitle,
         currency: this.formData.currency,
         price: Number(this.formData.price),
-        // sizes: this.formData.sizes.map((size: string) => parseInt(size)),
         sizes: [
           this.size8 ? 8 : null,
           this.size9 ? 9 : null,
@@ -72,44 +88,23 @@ export class AdminMainComponent {
         imageMain: this.formData.imageMain,
         imagesUrls: this.formData.imagesUrls,
         color: {
+          type: this.formData.color.type,
           name: this.formData.color.name,
           hex: this.formData.color.hex,
         },
+        colors: this.formData.colors,
+        rating: this.formData.rating,
+        reviews: this.formData.reviews,
+        description: this.formData.description,
       };
-      console.log(object); // Вывод объекта в консоль
+      try {
+        // Добавление данных и ожидание завершения операции
+        await this.fBaseService.addData(object);
+        console.log('Object added to Firestore');
+      } catch (error) {
+        console.log('Error adding object to Firestore:', error);
+      }
+      console.log(object);
     }
   }
 }
-
-// submitForm() {
-//   const object = {
-//     category: this.formData.category,
-//     title: this.formData.title,
-//     subtitle: this.formData.subtitle,
-//     currency: this.formData.currency,
-//     price: Number(this.formData.price),
-//     sizes: this.formData.sizes.map((size) => parseInt(size)),
-//     imageMain: this.formData.imageMain,
-//     imagesUrls: this.formData.imagesUrls.split(',').map(url => url.trim()),
-//     color: {
-//       type: this.formData.color.type,
-//       name: this.formData.color.name,
-//       hex: this.formData.color.hex
-//     },
-//     colors: this.formData.colors.split(',').map((colorData) => {
-//       const [type, name, hex] = colorData.split('|').map((value) => value.trim());
-//       return { type, name, hex };
-//     }),
-//     rating: Number(this.formData.rating),
-//     reviews: [
-//       {
-//         username: this.formData.username,
-//         rating: parseFloat(this.formData.reviewRating),
-//         comment: this.formData.reviewComment,
-//       },
-//     ],
-//     description: this.formData.description,
-//   };
-
-//   // console.log(object);
-// }
