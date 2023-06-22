@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FBaseService } from '../services/fireStore/fbase.service';
 import { Product } from '../types/products';
+import { ImgurService } from '../services/Imgur/imgur.service';
 
 @Component({
   selector: 'app-admin-main',
@@ -9,11 +10,7 @@ import { Product } from '../types/products';
   styleUrls: ['./admin-main.component.css'],
 })
 export class AdminMainComponent {
-  constructor(private fBaseService: FBaseService) {
-    this.fBaseService.getAllProducts().subscribe((products: Product[]) => {
-      console.log(products);
-    });
-  }
+  constructor(private fBaseService: FBaseService, private inmgur: ImgurService) {}
 
   selectedFiles: File[] = [];
 
@@ -67,6 +64,18 @@ export class AdminMainComponent {
     description: '',
   };
 
+  async changeFilesToLinks(files: File[]): Promise<string[]> {
+    const links: string[] = [];
+    for (let i = 0; i < files.length; i += 1) {
+      const el = files[i];
+      const result = await this.inmgur.uploadImg(el);
+      if (typeof result.data.link !== 'undefined') {
+        links.push(result.data.link as string);
+      }
+    }
+    return links;
+  }
+
   async onSubmit(form: NgForm) {
     if (form.valid) {
       const object: Product = {
@@ -90,7 +99,10 @@ export class AdminMainComponent {
         /* -------------------------------------------------------------------------- */
         /*                   // imageMain: this.formData.imageMain,                   */
         /* -------------------------------------------------------------------------- */
-        imagesUrls: this.formData.imagesUrls,
+        /* -------------------------------------------------------------------------- */
+        /*                    imagesUrls: this.formData.imagesUrls,                   */
+        /* -------------------------------------------------------------------------- */
+        imagesUrls: await this.changeFilesToLinks(this.selectedFiles),
         color: {
           type: this.formData.color.type,
           name: this.formData.color.name,
@@ -103,12 +115,12 @@ export class AdminMainComponent {
       };
       try {
         // Добавление данных и ожидание завершения операции
+
         await this.fBaseService.addData(object);
-        console.log('Object added to Firestore');
+        console.log('Object added to Firestore', object);
       } catch (error) {
         console.log('Error adding object to Firestore:', error);
       }
-      console.log(object);
     }
   }
 }
