@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { FBaseServiceNew } from '../services/fireStore/fbase.serviceNew';
-import { ProductShoes } from '../types/productShoes';
+import { FBaseService } from '../services/fireStore/fbase.service';
+import { Product } from '../types/products';
 
 @Component({
   selector: 'app-admin-main',
@@ -9,10 +9,10 @@ import { ProductShoes } from '../types/productShoes';
   styleUrls: ['./admin-main.component.css'],
 })
 export class AdminMainComponent {
-  constructor(private fBaseService: FBaseServiceNew) {
-    // this.fBaseService.getAllProducts().subscribe((products: ProductShoes[]) => {
-    //   console.log(products);
-    // });
+  constructor(private fBaseService: FBaseService) {
+    this.fBaseService.getAllProducts().subscribe((products: Product[]) => {
+      console.log(products);
+    });
   }
 
   selectedFiles: File[] = [];
@@ -43,7 +43,7 @@ export class AdminMainComponent {
     }
   }
 
-  formData: ProductShoes = {
+  formData: Product = {
     id: '',
     docId: '',
     category: '',
@@ -52,7 +52,9 @@ export class AdminMainComponent {
     currency: '',
     price: 0,
     sizes: [],
-    imageMain: '',
+    /* -------------------------------------------------------------------------- */
+    /*                              // imageMain: '',                             */
+    /* -------------------------------------------------------------------------- */
     imagesUrls: [] as string[],
     color: {
       type: '',
@@ -60,14 +62,14 @@ export class AdminMainComponent {
       hex: '',
     },
     colors: [],
-    rating: '',
+    rating: 0,
     reviews: [],
     description: '',
   };
 
   async onSubmit(form: NgForm) {
     if (form.valid) {
-      const object: ProductShoes = {
+      const object: Product = {
         id: this.formData.id,
         docId: this.formData.docId,
         category: this.formData.category,
@@ -85,7 +87,9 @@ export class AdminMainComponent {
           this.size14 ? 14 : null,
           this.size15 ? 15 : null,
         ].filter((size) => size !== null),
-        imageMain: this.formData.imageMain,
+        /* -------------------------------------------------------------------------- */
+        /*                   // imageMain: this.formData.imageMain,                   */
+        /* -------------------------------------------------------------------------- */
         imagesUrls: this.formData.imagesUrls,
         color: {
           type: this.formData.color.type,

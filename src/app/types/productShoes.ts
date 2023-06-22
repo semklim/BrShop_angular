@@ -1,5 +1,5 @@
 export interface ProductShoes {
-  docId: string;
+  docId?: string;
   id: string | number;
   category: string;
   title: string;

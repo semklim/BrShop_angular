@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Product } from '../../types/products';
 import { Firestore, collection, addDoc, collectionData, doc, getDoc, deleteDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 /**
 
  * This is an Angular service that provides functionality for interacting with Firebase Firestore. It encapsulates methods related to retrieving, adding, and retrieving all products from the Firestore database.
@@ -13,11 +14,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class FBaseService {
-  private dbInstance = collection(this.firestore, 'ecoProducts');
+  private dbInstance = collection(this.firestore, 'shoesProducts');
 
   prodacts$: Observable<Product[]>;
 
-  constructor(private firestore: Firestore) {
+  constructor(private firestore: Firestore, private http: HttpClient) {
     this.prodacts$ = this.getAll();
   }
 
@@ -37,7 +38,7 @@ export class FBaseService {
   @returns {Promise<Product | null>} A Promise that resolves to the retrieved product object if it exists,
   or null if the product does not exist.
   */
-  async getProduct(product: Product, path = 'ecoProducts'): Promise<Product | null> {
+  async getProduct(product: Product, path = 'shoesProducts'): Promise<Product | null> {
     // Create a Firestore document reference using the product ID
     const docRef = doc(this.firestore, path, product.docId!);
 
@@ -59,7 +60,7 @@ export class FBaseService {
   @param {Product} data - The product data to be added to Firestore.
   @returns {Promise<void>} A Promise that resolves when the data is successfully added to Firestore.
   */
-  async addData(data: Product, path = 'ecoProduct'): Promise<void> {
+  async addData(data: Product, path = 'shoesProducts'): Promise<void> {
     // Generate a new ID for the product by Firebase
     data.id = doc(collection(this.firestore, 'id')).id;
     const dbInstance = collection(this.firestore, path);
@@ -73,9 +74,9 @@ export class FBaseService {
   }
 
   async deleteData(product: Product): Promise<void> {
-    const docRef = doc(this.firestore, 'ecoProducts', product.docId!);
+    const docRef = doc(this.firestore, 'shoesProducts', product.docId!);
     console.log(
-      `you are delete product ${product.name} 
+      `you are delete product ${product.title} 
     ${product.id}
     ${product.docId}`,
     );
