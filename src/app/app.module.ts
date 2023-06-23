@@ -10,14 +10,12 @@ import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
-import { CartComponent } from './cart/cart.component';
-import { ShippingAddressComponent } from './cart/shipping-address/shipping-address.component';
-import { CartItemsComponent } from './cart/cart-items/cart-items.component';
+import { CartModule } from './cart/cart.module';
 import { MainPageModule } from './mainPage/main-page.module';
 import { FBaseService } from './services/fireStore/fbase.service';
 import { LocalDataService } from './services/localDataBase/localData.service';
 @NgModule({
-  declarations: [AppComponent, NavigationComponent, CartComponent, ShippingAddressComponent, CartItemsComponent],
+  declarations: [AppComponent, NavigationComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -28,6 +26,7 @@ import { LocalDataService } from './services/localDataBase/localData.service';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     MainPageModule,
+    CartModule,
   ],
   providers: [{ provide: FBaseService, useClass: environment.production ? FBaseService : LocalDataService }],
   bootstrap: [AppComponent],
