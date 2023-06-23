@@ -69,7 +69,7 @@ export class AdminMainComponent {
     for (let i = 0; i < files.length; i += 1) {
       const el = files[i];
       const result = await this.inmgur.uploadImg(el);
-      if (typeof result.data.link !== 'undefined') {
+      if (typeof result !== 'undefined') {
         links.push(result.data.link as string);
       }
     }
@@ -102,7 +102,7 @@ export class AdminMainComponent {
         /* -------------------------------------------------------------------------- */
         /*                    imagesUrls: this.formData.imagesUrls,                   */
         /* -------------------------------------------------------------------------- */
-        imagesUrls: await this.changeFilesToLinks(this.selectedFiles),
+        imagesUrls: [''],
         color: {
           type: this.formData.color.type,
           name: this.formData.color.name,
@@ -115,7 +115,7 @@ export class AdminMainComponent {
       };
       try {
         // Добавление данных и ожидание завершения операции
-
+        object.imagesUrls = await this.changeFilesToLinks(this.selectedFiles);
         await this.fBaseService.addData(object);
         console.log('Object added to Firestore', object);
       } catch (error) {

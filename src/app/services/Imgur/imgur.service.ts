@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ImgurRoot } from 'src/app/types/imgur/response';
 
 @Injectable({
   providedIn: 'root',
@@ -6,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class ImgurService {
   private clientId = 'a65a56b9dc179e4';
 
-  async uploadImg(image: string | File) {
+  async uploadImg(image: string | File): Promise<ImgurRoot | undefined> {
     const url = 'https://api.imgur.com/3/upload';
     const header = new Headers();
     const formData = new FormData();
@@ -28,6 +29,21 @@ export class ImgurService {
       referrer: '',
     };
 
-    return fetch(url, requestOptions).then((res) => res.json());
+    try {
+      const response = await fetch(url, requestOptions);
+
+      if (!response.ok) {
+        const {
+          data: { error },
+          status,
+        } = await response.json();
+
+        throw new Error(`--> Status:${status}. ${error} <--`);
+      }
+      return await response.json();
+    } catch (err) {
+      console.error((err as Error).message);
+      return undefined;
+    }
   }
 }
