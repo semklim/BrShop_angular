@@ -3,6 +3,7 @@ import { Product } from '../types/products';
 import { FBaseService } from '../services/fireStore/fbase.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
@@ -12,11 +13,9 @@ import { map } from 'rxjs/operators';
 export class MainPageComponent implements OnInit {
   private productsOrigin?: Observable<Product[]>;
 
-  isDisableDelete = false;
-
   prod$?: Observable<Product[]>;
 
-  constructor(private prodService: FBaseService) {}
+  constructor(private prodService: FBaseService, private router: Router) {}
 
   ngOnInit(): void {
     this.productsOrigin = this.prod$ = this.prodService.getAllProducts();
@@ -34,13 +33,7 @@ export class MainPageComponent implements OnInit {
     );
   }
 
-  deleteProduct(product: Product): void {
-    this.isDisableDelete = true;
-    this.prodService
-      .deleteData(product)
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => (this.isDisableDelete = false));
+  redirectToProductPage(product: Product) {
+    this.router.navigate(['/product', product.docId]);
   }
 }

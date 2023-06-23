@@ -8,8 +8,7 @@
         style="flex: 0 1 350px"
         *ngFor="let productRef of prod$ | async"
         [product]="productRef"
-        [isDisableDelete]="isDisableDelete"
-        (deleteProductChange)="deleteProduct($event)"></app-card>
+        (clickToProduct)="redirectToProductPage(productRef)"></app-card>
     </div>
   </div>
 </section>
