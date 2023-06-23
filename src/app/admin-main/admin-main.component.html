@@ -1,55 +1,57 @@
 <div class="admin-container h-100">
   <div class="admin-sidebar h-100">
-    <button class="buttonsAdmin">Главна</button>
-    <button class="buttonsAdmin">Добавить</button>
-    <button class="buttonsAdmin">Удалить</button>
+    <button class="buttonsAdmin">Add</button>
+    <button class="buttonsAdmin">Delete</button>
   </div>
   <div class="admin-content">
     <!-- <router-outlet></router-outlet> -->
-    <form class="d-flex flex-column align-items-center" #formAdd="ngForm" (ngSubmit)="onSubmit(formAdd)">
-      <div class="address">
+    <form class="d-flex flex-column align-items-center active" #formAdd="ngForm" (ngSubmit)="onSubmit(formAdd)">
+      <div class="p-4">
         <div class="mb-3 d-flex align-items-center">
-          <label for="categoryAdmForm">Категория:</label>
+          <label for="categoryAdmForm">Category:</label>
           <input
             [(ngModel)]="formData.category"
             type="text"
-            placeholder="Категория: Jordan*"
+            placeholder="Jordan*"
             class="form-control ms-2"
             id="category"
-            name="categoryAdmForm" />
+            name="categoryAdmForm"
+            required />
         </div>
         <div class="mb-3 d-flex align-items-center">
-          <label for="titleAdmForm">Название:</label>
+          <label for="titleAdmForm">Product name:</label>
           <input
             [(ngModel)]="formData.title"
             type="text"
-            placeholder="Название Товара"
+            placeholder="AIR JORDAN 1 MID*"
             class="form-control ms-2"
             name="title"
-            id="titleAdmForm" />
+            id="titleAdmForm"
+            required />
         </div>
         <div class="mb-3 d-flex align-items-center">
-          <label for="subtitleAdmForm">Описание:</label>
+          <label for="descriptionAdmForm">Description:</label>
           <input
-            [(ngModel)]="formData.subtitle"
+            [(ngModel)]="formData.description"
             type="text"
-            placeholder="Краткое Описание - Тег"
+            placeholder="The Air Jordan 1 Mid brings full-court style...*"
             class="form-control ms-2"
-            name="subtitle"
-            id="subtitleAdmForm" />
+            name="description"
+            id="descriptionAdmForm"
+            required />
         </div>
 
         <div class="priceSitting">
           <div class="mb-3">
-            <select [(ngModel)]="formData.currency" id="currencyAdmForm" class="form-control" name="currency">
-              <option value="" disabled selected>Выберите валюту</option>
+            <select [(ngModel)]="formData.currency" id="currencyAdmForm" class="form-control" name="currency" required>
+              <option value="" disabled selected>Select currency</option>
               <option value="USD">USD</option>
               <option value="EUR">EUR</option>
               <option value="UAH">UAH</option>
             </select>
           </div>
           <div class="mb-3 d-flex align-items-center">
-            <label for="priceAdmForm">Цена:</label>
+            <label for="priceAdmForm">Price:</label>
             <input
               [(ngModel)]="formData.price"
               type="number"
@@ -57,16 +59,17 @@
               class="form-control ms-3"
               name="price"
               pattern="\d+(\.\d{1,2})?"
-              id="priceAdmForm" />
+              id="priceAdmForm"
+              required />
           </div>
         </div>
         <div class="colorSetting">
           <div class="mb-3 d-flex align-items-center">
-            <label for="colorNameAdmForm">Имя:</label>
+            <label for="colorNameAdmForm">Name Color:</label>
             <input
               [(ngModel)]="formData.color.name"
               type="text"
-              placeholder="Color Name"
+              placeholder="White*"
               class="form-control ms-3"
               id="colorNameAdmForm"
               name="colorName" />
@@ -76,14 +79,16 @@
             <input
               [(ngModel)]="formData.color.hex"
               type="text"
-              placeholder="111111*"
+              placeholder="#FFFFFF*"
               class="form-control ms-3"
               name="colorHex"
-              id="hexNameAdmForm" />
+              id="hexNameAdmForm"
+              pattern="#[0-9A-Fa-f]{6}"
+              required />
           </div>
         </div>
         <div class="mb-3 sizeBox">
-          <h5 class="">Размеры</h5>
+          <h5 class="mb-0">Sizes:</h5>
           <div class="form-check">
             <input [(ngModel)]="size8" class="form-check-input" type="checkbox" value="8" name="size[]" />
             <label class="form-check-label">8</label>
@@ -118,17 +123,24 @@
           </div>
         </div>
         <div class="imgNewBox mb-4 d-flex align-items-center">
-          <p>Добавте картинки:</p>
+          <p>Add pictures:</p>
           <div class="mb-3 ms-3">
-            <label for="fileInput" class="btn-input">Выбрать файлы</label>
-            <input class="file-input" id="fileInput" type="file" multiple (change)="onFileInputChange($event)" />
-            <span class="ms-3" *ngIf="selectedFiles.length > 0">{{ selectedFiles.length }} файл(ов) выбрано</span>
+            <label for="fileInput" class="btn-input">Select files</label>
+            <input
+              class="file-input"
+              id="fileInput"
+              type="file"
+              multiple
+              (change)="onFileInputChange($event)"
+              required />
+            <span class="ms-3" *ngIf="selectedFiles.length > 0">{{ selectedFiles.length }} file(s) selected</span>
           </div>
         </div>
       </div>
       <div class="actions">
-        <button type="submit" class="btn btn-primary">Добавить</button>
+        <button type="submit" class="btn btn-primary btnAdd">Add</button>
       </div>
     </form>
+    <section class="d-flex"></section>
   </div>
 </div>
