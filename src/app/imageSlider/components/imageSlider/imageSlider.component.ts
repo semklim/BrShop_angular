@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-image-slider',
@@ -10,7 +10,7 @@ export class ImageSliderComponent {
 
   @Input() isShowDot = true;
 
-  @Input() linkToProduct: string | null = null;
+  @Output() clickOnImage: EventEmitter<void> = new EventEmitter();
 
   currentIndex = 0;
 
@@ -45,5 +45,9 @@ export class ImageSliderComponent {
 
   getCurrentSlideUrl() {
     return `url('${this.slides[this.currentIndex]}')`;
+  }
+
+  onClickToImage() {
+    this.clickOnImage.emit();
   }
 }

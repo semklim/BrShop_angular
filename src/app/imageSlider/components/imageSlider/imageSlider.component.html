@@ -11,7 +11,7 @@
       </div>
     </div>
   </div>
-  <div class="slide" [ngStyle]="{ 'background-image': getCurrentSlideUrl() }" [routerLink]="linkToProduct"></div>
+  <div class="slide" [ngStyle]="{ 'background-image': getCurrentSlideUrl() }" (click)="onClickToImage()"></div>
   <div class="dotsContainer" *ngIf="showDots()">
     <div
       *ngFor="let slide of slides; let slideIndex = index"
