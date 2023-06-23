@@ -46,7 +46,7 @@ export class AdminMainComponent {
     category: '',
     title: '',
     subtitle: '',
-    currency: '',
+    currency: 'USD',
     price: 0,
     sizes: [],
     /* -------------------------------------------------------------------------- */

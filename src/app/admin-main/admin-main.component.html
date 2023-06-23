@@ -42,10 +42,16 @@
         </div>
 
         <div class="priceSitting">
-          <div class="mb-3">
-            <select [(ngModel)]="formData.currency" id="currencyAdmForm" class="form-control" name="currency" required>
-              <option value="" disabled selected>Select currency</option>
-              <option value="USD">USD</option>
+          <div class="mb-3 d-flex align-items-center">
+            <label for="currencyAdmForm">Currency:</label>
+            <select
+              [(ngModel)]="formData.currency"
+              id="currencyAdmForm"
+              class="form-control ms-3"
+              name="currency"
+              required>
+              <!-- <option value="" disabled selected>Select currency</option> -->
+              <option value="USD" selected>USD</option>
               <option value="EUR">EUR</option>
               <option value="UAH">UAH</option>
             </select>
@@ -54,8 +60,8 @@
             <label for="priceAdmForm">Price:</label>
             <input
               [(ngModel)]="formData.price"
-              type="number"
-              placeholder="Цена: 7.42*"
+              type="text"
+              placeholder="7.42*"
               class="form-control ms-3"
               name="price"
               pattern="\d+(\.\d{1,2})?"
