@@ -171,4 +171,15 @@ export class AdminMainComponent implements OnInit {
       map((products: Product[]) => products.filter((product) => reg.test(product.title))),
     );
   }
+
+  deleteProduct(product: Product) {
+    this.fBaseService
+      .deleteData(product)
+      .then(() => {
+        console.log('Product deleted successfully');
+      })
+      .catch((error) => {
+        console.log('Error deleting product:', error);
+      });
+  }
 }

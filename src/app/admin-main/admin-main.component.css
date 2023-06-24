@@ -321,3 +321,53 @@ input[type='search'] {
 :host ::ng-deep .seaerchProd form input {
   width: 50%;
 }
+
+@media (min-width: 576px) {
+  .productItem {
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+  }
+}
+
+@media (min-width: 768px) {
+  .productItem {
+    max-width: 75%;
+  }
+}
+
+@media (min-width: 992px) {
+  .productItem {
+    max-width: 32%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .productItem {
+    max-width: 30%;
+  }
+}
+
+.discr {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.boxProduct {
+  position: relative;
+}
+
+.notFoundProText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+.productItem {
+  min-width: 200px;
+}
+
+/* @media (min-width: 1400px) { ... } */

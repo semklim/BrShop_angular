@@ -1,12 +1,18 @@
 <div class="admin-container h-100">
   <div class="admin-sidebar h-100">
-    <!-- <button class="buttonsAdmin" (click)="setActiveBlock('add')" [class.active]="activeBlock === 'add'">Add</button>
-    <button class="buttonsAdmin"(click)="setActiveBlock('delete')" [class.active]="activeBlock === 'delete'">Delete</button> -->
-    <button class="buttonsAdmin">Add</button>
-    <button class="buttonsAdmin">Delete</button>
+    <button class="buttonsAdmin" (click)="setActiveBlock('add')" [class.active]="activeBlock === 'add'">Add</button>
+    <button class="buttonsAdmin" (click)="setActiveBlock('delete')" [class.active]="activeBlock === 'delete'">
+      Delete
+    </button>
+    <!-- <button class="buttonsAdmin">Add</button>
+    <button class="buttonsAdmin">Delete</button> -->
   </div>
   <div class="admin-content">
-    <!-- <form class="d-flex flex-column align-items-center active" #formAdd="ngForm" (ngSubmit)="onSubmit(formAdd)" *ngIf="showForm && activeBlock === 'add'">
+    <form
+      class="d-flex flex-column align-items-center active"
+      #formAdd="ngForm"
+      (ngSubmit)="onSubmit(formAdd)"
+      *ngIf="showForm && activeBlock === 'add'">
       <div class="p-4">
         <div class="mb-3 d-flex align-items-center">
           <label for="categoryAdmForm">Category:</label>
@@ -147,27 +153,48 @@
       <div class="actions">
         <button type="submit" class="btn btn-primary btnAdd">Add</button>
       </div>
-    </form> -->
+    </form>
 
-    <!-- <section class="d-flex w-100" *ngIf="!showForm && activeBlock === 'delete'"> -->
-    <section class="d-flex w-100 deleteMainBox flex-column">
+    <section class="d-flex w-100 deleteMainBox p-3 flex-column" *ngIf="!showForm && activeBlock === 'delete'">
+      <!-- <section class="d-flex w-100 deleteMainBox p-3 flex-column"> -->
       <div class="searcBox w-100 d-flex flex-column align-items-center text-center">
         <h5 class="mb-4">What product do you want to delete?</h5>
         <app-search class="seaerchProd w-100" (searchChange)="submitSearch($event)"></app-search>
       </div>
-      <div class="boxProduct d-flex" *ngIf="searchValue.trim() !== ''">
-        <div class="d-flex">
+      <div class="boxProduct d-flex flex-wrap w-100" *ngIf="searchValue.trim() !== ''">
+        <div class="d-flex d-flex flex-wrap">
           <ng-container *ngIf="prod$ | async as products">
             <div
               *ngFor="let productRef of products"
-              class="productItem"
+              class="productItem ms-3 p-1"
               [hidden]="!productRef.title.toLowerCase().includes(searchValue.toLowerCase())">
-              <p>{{ productRef.title }}</p>
+              <img width="200" [src]="productRef.imagesUrls[0]" alt="img" />
+              <h4>{{ productRef.title }}</h4>
+              <ul>
+                <li class="border-bottom">
+                  <p class="mb-1"><b>Color:</b> {{ productRef.color.name }}, <b>HEX:</b> {{ productRef.color.hex }}</p>
+                </li>
+                <li class="border-bottom">
+                  <p class="mb-1"><b>Currency:</b> {{ productRef.currency }},<b>Price:</b> {{ productRef.price }}</p>
+                </li>
+                <li class="border-bottom">
+                  <p class="mb-1"><b>Sizes:</b> {{ productRef.sizes }}</p>
+                </li>
+                <li class="border-bottom">
+                  <p class="mb-1"><b>Id</b>: {{ productRef.id }}</p>
+                </li>
+                <li class="border-bottom">
+                  <p class="mb-1"><b>Description:</b> {{ productRef.description | slice : 0 : 15 }}...</p>
+                </li>
+              </ul>
+              <button class="btn btn-primary" (click)="deleteProduct(productRef)">Удалить</button>
             </div>
-            <p *ngIf="products.length === 0">No matching products found.</p>
+            <p class="notFoundProText" *ngIf="products.length === 0">No matching products found.</p>
           </ng-container>
         </div>
       </div>
+
+      <div></div>
     </section>
   </div>
 </div>
