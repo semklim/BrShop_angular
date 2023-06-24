@@ -1,11 +1,12 @@
 <div class="admin-container h-100">
   <div class="admin-sidebar h-100">
+    <!-- <button class="buttonsAdmin" (click)="setActiveBlock('add')" [class.active]="activeBlock === 'add'">Add</button>
+    <button class="buttonsAdmin"(click)="setActiveBlock('delete')" [class.active]="activeBlock === 'delete'">Delete</button> -->
     <button class="buttonsAdmin">Add</button>
     <button class="buttonsAdmin">Delete</button>
   </div>
   <div class="admin-content">
-    <!-- <router-outlet></router-outlet> -->
-    <form class="d-flex flex-column align-items-center active" #formAdd="ngForm" (ngSubmit)="onSubmit(formAdd)">
+    <!-- <form class="d-flex flex-column align-items-center active" #formAdd="ngForm" (ngSubmit)="onSubmit(formAdd)" *ngIf="showForm && activeBlock === 'add'">
       <div class="p-4">
         <div class="mb-3 d-flex align-items-center">
           <label for="categoryAdmForm">Category:</label>
@@ -50,7 +51,6 @@
               class="form-control ms-3"
               name="currency"
               required>
-              <!-- <option value="" disabled selected>Select currency</option> -->
               <option value="USD" selected>USD</option>
               <option value="EUR">EUR</option>
               <option value="UAH">UAH</option>
@@ -147,7 +147,27 @@
       <div class="actions">
         <button type="submit" class="btn btn-primary btnAdd">Add</button>
       </div>
-    </form>
-    <section class="d-flex"></section>
+    </form> -->
+
+    <!-- <section class="d-flex w-100" *ngIf="!showForm && activeBlock === 'delete'"> -->
+    <section class="d-flex w-100 deleteMainBox flex-column">
+      <div class="searcBox w-100 d-flex flex-column align-items-center text-center">
+        <h5 class="mb-4">What product do you want to delete?</h5>
+        <app-search class="seaerchProd w-100" (searchChange)="submitSearch($event)"></app-search>
+      </div>
+      <div class="boxProduct d-flex" *ngIf="searchValue.trim() !== ''">
+        <div class="d-flex">
+          <ng-container *ngIf="prod$ | async as products">
+            <div
+              *ngFor="let productRef of products"
+              class="productItem"
+              [hidden]="!productRef.title.toLowerCase().includes(searchValue.toLowerCase())">
+              <p>{{ productRef.title }}</p>
+            </div>
+            <p *ngIf="products.length === 0">No matching products found.</p>
+          </ng-container>
+        </div>
+      </div>
+    </section>
   </div>
 </div>

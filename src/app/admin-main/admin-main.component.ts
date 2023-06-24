@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FBaseService } from '../services/fireStore/fbase.service';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Product } from '../types/products';
 import { ImgurService } from '../services/Imgur/imgur.service';
 
@@ -9,8 +11,28 @@ import { ImgurService } from '../services/Imgur/imgur.service';
   templateUrl: './admin-main.component.html',
   styleUrls: ['./admin-main.component.css'],
 })
-export class AdminMainComponent {
-  constructor(private fBaseService: FBaseService, private inmgur: ImgurService) {}
+export class AdminMainComponent implements OnInit {
+  constructor(private fBaseService: FBaseService, private inmgur: ImgurService) {
+    this.activeBlock = 'add';
+  }
+
+  /////////////проверка блока///////
+  setActiveBlock(blockName: string) {
+    if (blockName === 'add') {
+      this.showForm = true;
+    } else if (blockName === 'delete') {
+      this.showForm = false;
+    }
+    this.activeBlock = blockName;
+  }
+
+  activeBlock = '';
+
+  showForm = true;
+
+  showSection = false;
+
+  /////////////////////////////форма//////////////////////////
 
   selectedFiles: File[] = [];
 
@@ -122,5 +144,31 @@ export class AdminMainComponent {
         console.log('Error adding object to Firestore:', error);
       }
     }
+  }
+
+  //////////////////delete///////////////////
+
+  private productsOrigin?: Observable<Product[]>;
+
+  prod$?: Observable<Product[]>;
+
+  searchValue = '';
+
+  ngOnInit(): void {
+    this.productsOrigin = this.prod$ = this.fBaseService.getAllProducts();
+  }
+
+  submitSearch(value: string) {
+    // this.prod$ = this.filterProductsByTitles(value);
+    this.searchValue = value;
+    this.prod$ = this.filterProductsByTitles(value);
+  }
+
+  filterProductsByTitles(productName: string): Observable<Product[]> | undefined {
+    const reg = new RegExp(`${productName}`, 'gi');
+
+    return this.productsOrigin?.pipe(
+      map((products: Product[]) => products.filter((product) => reg.test(product.title))),
+    );
   }
 }

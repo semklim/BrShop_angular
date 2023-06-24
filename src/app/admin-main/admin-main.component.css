@@ -306,3 +306,18 @@ h5 {
 /* input[type="checkbox"] {
     border: 1px solid;
   } */
+
+/* удаление */
+
+input[type='search'] {
+  width: 100%;
+}
+
+:host ::ng-deep .seaerchProd form {
+  justify-content: center;
+  width: 100%;
+}
+
+:host ::ng-deep .seaerchProd form input {
+  width: 50%;
+}
