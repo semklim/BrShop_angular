@@ -1,2 +1,4 @@
-<h1>ID of Product - {{ id }}</h1>
-<p>product works!</p>
+<div class="get" *ngIf="prod | async as prod">
+  <h1>ID of Product - {{ prod.title }}</h1>
+  <img [src]="prod.imagesUrls[0]" alt="" />
+</div>

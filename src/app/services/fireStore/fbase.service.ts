@@ -33,14 +33,14 @@ export class FBaseService {
 
   /**
 
-  Retrieves a product from Firestore based on the provided product ID.
-  @param {Product} product - The product object containing the ID of the product to retrieve.
+  Retrieves a product from Firestore based on the provided document ID.
+  @param {string} docId - The document ID of the product to retrieve.
   @returns {Promise<Product | null>} A Promise that resolves to the retrieved product object if it exists,
   or null if the product does not exist.
   */
-  async getProduct(product: Product, path = 'shoesProducts'): Promise<Product | null> {
+  async getProduct(docId: string, path = 'shoesProducts'): Promise<Product | null> {
     // Create a Firestore document reference using the product ID
-    const docRef = doc(this.firestore, path, product.docId!);
+    const docRef = doc(this.firestore, path, docId);
 
     // Retrieve the document snapshot from Firestore
     const docSnap = await getDoc(docRef);
