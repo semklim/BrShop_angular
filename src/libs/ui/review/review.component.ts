@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Product } from 'src/app/types/products';
 import { Review } from 'src/app/types/review';
 
@@ -24,15 +24,20 @@ export class ReviewComponent {
 
   constructor(private buildForm: FormBuilder) {
     this.reviewForm = buildForm.group({
-      username: buildForm.control('', [Validators.minLength(3), Validators.required]),
-      rating: buildForm.control('5', [Validators.minLength(3), Validators.required]),
-      comment: buildForm.control('', [Validators.minLength(6), Validators.required]),
+      username: ['', [Validators.minLength(2), Validators.required]],
+      rating: ['0', [Validators.minLength(2), Validators.required]],
+      comment: ['', [Validators.minLength(6), Validators.required]],
     });
+  }
+
+  isInvalid(context: AbstractControl<any, any>) {
+    return context && context.invalid && context.dirty;
   }
 
   submit() {
     console.log(this.reviewForm.value);
     this.reviewChange.emit(this.reviewForm.value);
     this.reviewForm.reset();
+    this.reviewForm.controls['rating'].reset();
   }
 }
