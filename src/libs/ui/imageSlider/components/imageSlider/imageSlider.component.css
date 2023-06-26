@@ -52,7 +52,7 @@
   align-items: center;
   height: 40px;
   width: 40px;
-  z-index: 3;
+  z-index: 1;
   cursor: pointer;
 }
 .icon.right {
