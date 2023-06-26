@@ -31,6 +31,10 @@ export class FBaseService {
     this.prodacts$ = this.getAll();
   }
 
+  genFireId(): string {
+    return doc(collection(this.firestore, 'id')).id;
+  }
+
   /**
 
   Retrieves all products from Firestore.

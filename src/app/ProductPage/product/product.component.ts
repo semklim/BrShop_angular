@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Product } from '../../types/products';
 import { FBaseService } from 'src/app/services/fireStore/fbase.service';
+import { Review } from 'src/app/types/review';
 
 @Component({
   selector: 'app-product',
@@ -12,7 +13,9 @@ import { FBaseService } from 'src/app/services/fireStore/fbase.service';
 export class ProductComponent implements OnInit, OnDestroy {
   private routeSubscription?: Subscription;
 
-  prod?: Promise<Product | null>;
+  prod?: Product | null;
+
+  docId?: string;
 
   selectedSize: null | HTMLElement | undefined = null;
 
@@ -20,9 +23,18 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.routeSubscription = this.route.params.subscribe((params) => {
-      const id = params['id'];
-      this.prod = this.prodService.getProduct(id);
+      this.docId = params['id'];
+      this.prodService.getProduct(this.docId!).then((data) => (this.prod = data));
     });
+  }
+
+  async refreshReviews(review: Review) {
+    const reviewId = this.prodService.genFireId();
+    review.review_id = reviewId;
+    if (this.prod) {
+      this.prod.reviews.push(review);
+      this.prodService.updateData(this.docId as string, this.prod as Partial<Product>);
+    }
   }
 
   ngOnDestroy(): void {

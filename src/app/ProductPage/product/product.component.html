@@ -7,10 +7,10 @@
 </button>
 <div class="conatiner">
   <div class="product">
-    <div class="get" *ngIf="prod | async as prod"><img class="prodImg" [src]="prod.imagesUrls[0]" alt="" /><img /></div>
+    <div class="get" *ngIf="prod"><img class="prodImg" [src]="prod.imagesUrls[0]" alt="" /><img /></div>
   </div>
   <div class="info">
-    <div class="prodName get" *ngIf="prod | async as prod">{{ prod.title }}</div>
+    <div class="prodName get" *ngIf="prod">{{ prod.title }}</div>
     <div class="price">€75,00</div>
     <div class="sizeContainer">
       <div class="size" (click)="selectSize($event.target)">S</div>
@@ -23,4 +23,4 @@
     <div class="button"><button class="addToCart">ADD TO BAG</button><button class="CHECKOUT">CHECKOUT</button></div>
   </div>
 </div>
-<app-review></app-review>
+<app-review *ngIf="prod" [reviewData]="prod.reviews" (reviewChange)="refreshReviews($event)"></app-review>
