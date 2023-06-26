@@ -21,6 +21,13 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute, private prodService: FBaseService) {}
 
+  private validationComments(comment: string) {
+    return comment
+      .replace(/(кокос|банан)/gi, '*****')
+      .replace(/@/gi, '*')
+      .replace(/плохой/gi, '******');
+  }
+
   ngOnInit(): void {
     this.routeSubscription = this.route.params.subscribe((params) => {
       this.docId = params['id'];
@@ -32,6 +39,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     const reviewId = this.prodService.genFireId();
     review.review_id = reviewId;
     if (this.prod) {
+      review.comment = this.validationComments(review.comment);
       this.prod.reviews.push(review);
       this.prodService.updateData(this.docId as string, this.prod as Partial<Product>);
     }
