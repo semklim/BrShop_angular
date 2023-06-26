@@ -14,6 +14,12 @@ export class ReviewComponent {
 
   reviewForm: FormGroup;
 
+  textAreaStyle = {
+    resize: 'none',
+    overflow: 'hidden',
+    height: '17px',
+  };
+
   constructor(private buildForm: FormBuilder) {
     this.reviewForm = buildForm.group({
       username: ['', [Validators.minLength(2), Validators.required]],
@@ -24,6 +30,12 @@ export class ReviewComponent {
 
   isInvalid(context: AbstractControl<unknown, unknown>) {
     return context && context.invalid && context.dirty;
+  }
+
+  autoGrow(element: HTMLTextAreaElement) {
+    if (element.value !== '') {
+      this.textAreaStyle.height = `${element.scrollHeight}px`;
+    }
   }
 
   submit() {

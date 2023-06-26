@@ -1,5 +1,23 @@
-hr {
-  margin-bottom: 0;
+.card {
+  border-radius: 0;
+  border: 1px solid black;
+  background-color: white;
+}
+
+.form-control {
+  border-radius: 0;
+  color: black;
+  border-left: 0 !important;
+  border-top: 0 !important;
+  border-right: 0 !important;
+  border-bottom-width: 1px !important;
+  border-bottom-style: solid !important;
+  border-color: #757575;
+  margin-bottom: 20px !important;
+}
+
+.form-control:focus {
+  box-shadow: 0 15px 10px -0.3rem rgba(13, 110, 253, 0.25);
 }
 
 .starRating {
@@ -17,6 +35,33 @@ star-rating-control {
   display: block;
 }
 
+.postBtnDefault {
+  border: #000000 solid 1px;
+  background-color: #ffffff;
+  border-radius: 0px;
+  font-size: 12px;
+  color: black;
+  font-weight: bold;
+}
+
+.postBtnValid {
+  border: #000000 solid 1px;
+  background-color: #000000;
+  border-radius: 0px;
+  font-size: 12px;
+  color: white;
+  font-weight: bold;
+}
+
+.postBtnInvalid {
+  border: var(--bs-danger) solid 1px;
+  background-color: #4e4b4b;
+  border-radius: 0px;
+  font-size: 12px;
+  color: white;
+  font-weight: bold;
+}
+
 .ng-invalid.ng-dirty:not(form) {
   border-color: #dc3545;
   padding-right: calc(1.5em + 0.75rem);
@@ -28,7 +73,7 @@ star-rating-control {
 
 .ng-invalid.ng-dirty:focus {
   border-color: #dc3545;
-  box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+  box-shadow: 0 15px 10px -0.3rem rgba(220, 53, 69, 0.25);
 }
 
 .ng-valid:not(form) {
@@ -42,5 +87,5 @@ star-rating-control {
 
 .ng-valid:focus {
   border-color: #198754;
-  box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+  box-shadow: 0px 15px 10px -0.3rem rgba(25, 135, 84, 0.25);
 }

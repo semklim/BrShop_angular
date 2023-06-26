@@ -3,7 +3,8 @@
     <div class="row d-flex justify-content-center">
       <div class="col-md-12 col-lg-10 col-xl-8">
         <div class="card">
-          <div class="card-body py-3 border-0" style="background-color: #f8f9fa">
+          <div class="card-body py-3 border-0">
+            <h3 class="text-center w-100">Write a comment</h3>
             <form (ngSubmit)="submit()" [formGroup]="reviewForm">
               <div class="d-flex flex-start w-100">
                 <img
@@ -15,15 +16,13 @@
                 <div class="form-outline w-100">
                   <div class="wraper w-100">
                     <div class="form-group">
-                      <label class="w-100"
-                        >Name *
-                        <input
-                          class="form-control"
-                          type="text"
-                          name="username"
-                          autocomplete="name"
-                          formControlName="username" />
-                      </label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="username"
+                        autocomplete="name"
+                        formControlName="username"
+                        placeholder="NAME" />
                       <div style="color: #dc3545" *ngIf="isInvalid(reviewForm.controls['username'])">
                         Please enter your name.
                       </div>
@@ -40,30 +39,33 @@
                       </div>
                     </div>
                   </div>
-                  <label class="form-label" for="textAreaExample">Message</label>
                   <textarea
                     class="form-control"
                     id="textAreaExample"
-                    rows="4"
                     style="background: #fff"
+                    [ngStyle]="textAreaStyle"
+                    #textArea
                     formControlName="comment"
                     [ngClass]="{
                       '': reviewForm.controls['comment'].untouched,
                       'is-invalid': isInvalid(reviewForm.controls['comment']),
                       'is-valid': reviewForm.controls['comment'].valid
-                    }"></textarea>
+                    }"
+                    placeholder="Comment"
+                    (input)="autoGrow(textArea)"></textarea>
                 </div>
               </div>
               <div class="float-end mt-2 pt-1">
                 <button
                   type="submit"
-                  class="btn btn-sm"
+                  class="postBtnDefault"
                   [ngClass]="{
-                    'btn-primary': reviewForm.untouched,
-                    'btn-success': reviewForm.valid,
-                    'btn-secondary': isInvalid(reviewForm)
+                    postBtnDefault: reviewForm.untouched,
+                    postBtnValid: reviewForm.valid,
+                    postBtnInvalid: isInvalid(reviewForm)
                   }"
-                  [disabled]="!reviewForm.valid">
+                  [disabled]="!reviewForm.valid"
+                  [title]="reviewForm.valid ? 'You can post' : 'You can`t post'">
                   Post comment
                 </button>
               </div>
