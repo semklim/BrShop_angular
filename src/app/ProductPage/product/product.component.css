@@ -5,7 +5,7 @@
 .backBtn {
   display: block;
   width: 100%;
-  height: 6vh;
+  height: 6.5vh;
   border: none;
   text-align: left;
   background-color: white;
@@ -15,6 +15,7 @@
   font-size: 13px;
   font-weight: 640;
   gap: 0.3125rem;
+  padding-left: 1.4vw;
 }
 
 .backBtn:hover .arrowSvg {
@@ -28,4 +29,101 @@
 .arrowSvg {
   fill: rgb(117 117 117 / var(--tw-text-opacity));
   transform: rotate(270deg);
+}
+
+.product {
+  text-align: right;
+  padding-left: 2vw;
+  display: inline-block;
+  width: 49.5%;
+}
+
+.info {
+  position: relative;
+  padding-left: 8vw;
+  display: inline-block;
+}
+
+.prodName {
+  font-size: 6vh;
+  font-weight: 700;
+  margin-top: 12vh;
+  width: 35vw;
+}
+
+.prodImg {
+  background-color: #f1f1f1;
+  height: 100vh;
+  width: 45.1vw;
+  image-rendering: crisp-edges;
+}
+
+.button {
+  position: fixed;
+  bottom: 5vh;
+  width: 40vw;
+  padding-left: 0vw;
+}
+
+.conatiner {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.price {
+  margin-top: 3vh;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.sizeContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 35vw;
+  border-bottom: #f1f1f1 1px solid;
+  height: 7vh;
+}
+
+.size {
+  margin-right: 2vw;
+  cursor: pointer;
+  font-size: 0.8vw;
+  font-weight: 700;
+}
+
+.size.selected {
+  text-decoration: underline;
+}
+
+.notification {
+  display: flex;
+  height: 7vh;
+  border-bottom: #f1f1f1 1px solid;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.addToCart {
+  width: 17vw;
+  height: 5.5vh;
+  border: #000000 solid 1px;
+  background-color: #000000;
+  border-radius: 0px;
+  font-size: 12px;
+  color: white;
+  margin-bottom: 2.7vh;
+  font-weight: bold;
+}
+
+.CHECKOUT {
+  margin-left: 2vw;
+  width: 17vw;
+  height: 5.5vh;
+  border: #000000 solid 1px;
+  background-color: #ffffff;
+  border-radius: 0px;
+  font-size: 12px;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
 }

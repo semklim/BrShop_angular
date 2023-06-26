@@ -14,6 +14,8 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   prod?: Promise<Product | null>;
 
+  selectedSize: null | HTMLElement | undefined = null;
+
   constructor(private route: ActivatedRoute, private prodService: FBaseService) {}
 
   ngOnInit(): void {
@@ -25,5 +27,19 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.routeSubscription?.unsubscribe();
+  }
+
+  selectSize(e: Event | EventTarget | null): void {
+    const element = e as HTMLElement;
+
+    if (element instanceof HTMLElement) {
+      if (this.selectedSize) {
+        this.selectedSize.classList.remove('selected');
+        this.selectedSize = null;
+      } else {
+        this.selectedSize = element;
+        this.selectedSize.classList.add('selected');
+      }
+    }
   }
 }

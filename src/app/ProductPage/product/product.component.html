@@ -1,17 +1,25 @@
-<div>
-  <button class="backBtn" [routerLink]="''">
-    <svg width="10px" height="10px" class="arrowSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.75 5.09">
-      <title>Caret</title>
-      <polygon points="3.88 0 7.75 4.43 7 5.09 3.88 1.52 .75 5.09 0 4.43 3.88 0"></polygon>
-    </svg>
-    BACK TO SHOES
-  </button>
-  <div></div>
-  <div>
-    <div class="get" *ngIf="prod | async as prod">
-      <h1>ID of Product - {{ prod.title }}</h1>
-      <img [src]="prod.imagesUrls[0]" alt="" />
+<button class="backBtn" [routerLink]="''">
+  <svg width="10px" height="10px" class="arrowSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.75 5.09">
+    <title>Caret</title>
+    <polygon points="3.88 0 7.75 4.43 7 5.09 3.88 1.52 .75 5.09 0 4.43 3.88 0"></polygon>
+  </svg>
+  BACK TO SHOES
+</button>
+<div class="conatiner">
+  <div class="product">
+    <div class="get" *ngIf="prod | async as prod"><img class="prodImg" [src]="prod.imagesUrls[0]" alt="" /><img /></div>
+  </div>
+  <div class="info">
+    <div class="prodName get" *ngIf="prod | async as prod">{{ prod.title }}</div>
+    <div class="price">€75,00</div>
+    <div class="sizeContainer">
+      <div class="size" (click)="selectSize($event.target)">S</div>
+      <div class="size" (click)="selectSize($event.target)">M</div>
+      <div class="size" (click)="selectSize($event.target)">L</div>
+      <div class="size" (click)="selectSize($event.target)">XL</div>
+      <div class="size" (click)="selectSize($event.target)">XXL</div>
     </div>
-    <div></div>
+    <div class="notification">Free shipping on orders over €100,00</div>
+    <div class="button"><button class="addToCart">ADD TO BAG</button><button class="CHECKOUT">CHECKOUT</button></div>
   </div>
 </div>
