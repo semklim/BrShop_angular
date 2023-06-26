@@ -15,8 +15,15 @@
                 <div class="form-outline w-100">
                   <div class="wraper w-100">
                     <div class="form-group">
-                      <label>Name *</label>
-                      <input type="text" class="form-control" formControlName="username" />
+                      <label class="w-100"
+                        >Name *
+                        <input
+                          class="form-control"
+                          type="text"
+                          name="username"
+                          autocomplete="name"
+                          formControlName="username" />
+                      </label>
                       <div style="color: #dc3545" *ngIf="isInvalid(reviewForm.controls['username'])">
                         Please enter your name.
                       </div>
