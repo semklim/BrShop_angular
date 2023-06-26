@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Product } from 'src/app/types/products';
 import { Review } from 'src/app/types/review';
 
 @Component({
@@ -13,13 +12,6 @@ export class ReviewComponent {
 
   @Output() reviewChange: EventEmitter<Review> = new EventEmitter();
 
-  review: Review = {
-    rating: 0,
-    review_id: '',
-    comment: '',
-    username: '',
-  };
-
   reviewForm: FormGroup;
 
   constructor(private buildForm: FormBuilder) {
@@ -30,7 +22,7 @@ export class ReviewComponent {
     });
   }
 
-  isInvalid(context: AbstractControl<any, any>) {
+  isInvalid(context: AbstractControl<unknown, unknown>) {
     return context && context.invalid && context.dirty;
   }
 
