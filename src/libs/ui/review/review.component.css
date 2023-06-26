@@ -1,0 +1,21 @@
+hr {
+  margin-bottom: 0;
+}
+
+.starRating {
+  margin: 10px 0;
+  position: relative;
+  width: 100%;
+}
+
+.starRating > * {
+  padding: 0;
+  margin: 0;
+}
+
+star-rating {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
