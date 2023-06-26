@@ -4,7 +4,7 @@ import { FBaseService } from '../services/fireStore/fbase.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Product } from '../types/products';
-import { ImgurService } from '../services/Imgur/imgur.service';
+import { CloudStoreService } from '../services/fireCloudStore/cloudStore.service';
 
 @Component({
   selector: 'app-admin-main',
@@ -12,7 +12,7 @@ import { ImgurService } from '../services/Imgur/imgur.service';
   styleUrls: ['./admin-main.component.css'],
 })
 export class AdminMainComponent implements OnInit {
-  constructor(private fBaseService: FBaseService, private inmgur: ImgurService) {
+  constructor(private fBaseService: FBaseService, private cloudService: CloudStoreService) {
     this.activeBlock = 'add';
   }
 
@@ -71,9 +71,6 @@ export class AdminMainComponent implements OnInit {
     currency: 'USD',
     price: 0,
     sizes: [],
-    /* -------------------------------------------------------------------------- */
-    /*                              // imageMain: '',                             */
-    /* -------------------------------------------------------------------------- */
     imagesUrls: [] as string[],
     color: {
       type: '',
@@ -85,18 +82,6 @@ export class AdminMainComponent implements OnInit {
     reviews: [],
     description: '',
   };
-
-  async changeFilesToLinks(files: File[]): Promise<string[]> {
-    const links: string[] = [];
-    for (let i = 0; i < files.length; i += 1) {
-      const el = files[i];
-      const result = await this.inmgur.uploadImg(el);
-      if (typeof result !== 'undefined') {
-        links.push(result.data.link as string);
-      }
-    }
-    return links;
-  }
 
   async onSubmit(form: NgForm) {
     if (form.valid) {
@@ -118,12 +103,6 @@ export class AdminMainComponent implements OnInit {
           this.size14 ? 14 : null,
           this.size15 ? 15 : null,
         ].filter((size) => size !== null),
-        /* -------------------------------------------------------------------------- */
-        /*                   // imageMain: this.formData.imageMain,                   */
-        /* -------------------------------------------------------------------------- */
-        /* -------------------------------------------------------------------------- */
-        /*                    imagesUrls: this.formData.imagesUrls,                   */
-        /* -------------------------------------------------------------------------- */
         imagesUrls: [''],
         color: {
           type: this.formData.color.type,
@@ -137,7 +116,8 @@ export class AdminMainComponent implements OnInit {
       };
       try {
         // Добавление данных и ожидание завершения операции
-        object.imagesUrls = await this.changeFilesToLinks(this.selectedFiles);
+        // object.imagesUrls = await this.changeFilesToLinks(this.selectedFiles);
+        object.imagesUrls = await this.cloudService.uploadFile(this.selectedFiles, object.title);
         await this.fBaseService.addData(object);
         console.log('Object added to Firestore', object);
       } catch (error) {
@@ -159,7 +139,6 @@ export class AdminMainComponent implements OnInit {
   }
 
   submitSearch(value: string) {
-    // this.prod$ = this.filterProductsByTitles(value);
     this.searchValue = value;
     this.prod$ = this.filterProductsByTitles(value);
   }
