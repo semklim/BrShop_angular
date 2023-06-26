@@ -1,6 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../../types/products';
-import { Firestore, collection, addDoc, collectionData, doc, getDoc, deleteDoc } from '@angular/fire/firestore';
+import {
+  Firestore,
+  collection,
+  addDoc,
+  collectionData,
+  doc,
+  getDoc,
+  deleteDoc,
+  updateDoc,
+} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 /**
@@ -82,6 +91,11 @@ export class FBaseService {
     );
 
     return deleteDoc(docRef);
+  }
+
+  async updateData(docId: string, dataForUpdate: Partial<Product>): Promise<void> {
+    const docRef = doc(this.firestore, 'shoesProducts', docId);
+    return updateDoc(docRef, dataForUpdate);
   }
 
   /**
