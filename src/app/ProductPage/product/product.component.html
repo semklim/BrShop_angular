@@ -1,32 +1,34 @@
-<button class="backBtn" [routerLink]="''">
-  <svg width="10px" height="10px" class="arrowSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.75 5.09">
-    <title>Caret</title>
-    <polygon points="3.88 0 7.75 4.43 7 5.09 3.88 1.52 .75 5.09 0 4.43 3.88 0"></polygon>
-  </svg>
-  BACK TO SHOES
-</button>
-<div class="conatiner">
-  <div class="product">
-    <div class="get" *ngIf="prod"><img class="prodImg" [src]="prod.imagesUrls[0]" alt="" /><img /></div>
-  </div>
-  <div class="info">
-    <div class="prodName get" *ngIf="prod">{{ prod.title }}</div>
-    <star-rating
-      [hoverEnabled]="true"
-      [showHalfStars]="true"
-      [starType]="'svg'"
-      [rating]="1"
-      formControlName="rating"></star-rating>
-    <div class="price">€75,00</div>
-    <div class="sizeContainer">
-      <div class="size" (click)="selectSize($event.target)">S</div>
-      <div class="size" (click)="selectSize($event.target)">M</div>
-      <div class="size" (click)="selectSize($event.target)">L</div>
-      <div class="size" (click)="selectSize($event.target)">XL</div>
-      <div class="size" (click)="selectSize($event.target)">XXL</div>
+<section class="productPage" *ngIf="prod; else productIsNull">
+  <button class="backBtn" [routerLink]="''">
+    <svg width="10px" height="10px" class="arrowSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.75 5.09">
+      <title>Caret</title>
+      <polygon points="3.88 0 7.75 4.43 7 5.09 3.88 1.52 .75 5.09 0 4.43 3.88 0"></polygon>
+    </svg>
+    BACK TO SHOES
+  </button>
+  <div class="conatiner">
+    <div class="product">
+      <div class="get"><img class="prodImg" [src]="prod.imagesUrls[0]" alt="" /><img /></div>
     </div>
-    <div class="notification">Free shipping on orders over €100,00</div>
-    <div class="button"><button class="addToCart">ADD TO BAG</button><button class="CHECKOUT">CHECKOUT</button></div>
+    <div class="info">
+      <div class="prodName get">{{ prod.title }}</div>
+      <star-rating [showHalfStars]="true" [starType]="'svg'" [rating]="prod.rating" [readOnly]="true"></star-rating>
+      <div class="price">€75,00</div>
+      <div class="sizeContainer">
+        <div class="size" (click)="selectSize($event.target)">S</div>
+        <div class="size" (click)="selectSize($event.target)">M</div>
+        <div class="size" (click)="selectSize($event.target)">L</div>
+        <div class="size" (click)="selectSize($event.target)">XL</div>
+        <div class="size" (click)="selectSize($event.target)">XXL</div>
+      </div>
+      <div class="notification">Free shipping on orders over €100,00</div>
+      <div class="button"><button class="addToCart">ADD TO BAG</button><button class="CHECKOUT">CHECKOUT</button></div>
+    </div>
   </div>
-</div>
-<app-review *ngIf="prod" [reviewData]="prod.reviews" (reviewChange)="refreshReviews($event)"></app-review>
+  <app-review [reviewData]="prod.reviews" (reviewChange)="refreshReviews($event)"></app-review>
+</section>
+
+<ng-template #productIsNull>
+  <h1>Sorry we don`t have this product.</h1>
+  <p>Please back to <a [routerLink]="''">main page</a></p>
+</ng-template>

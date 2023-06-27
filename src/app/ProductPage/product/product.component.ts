@@ -40,9 +40,27 @@ export class ProductComponent implements OnInit, OnDestroy {
     review.review_id = reviewId;
     if (this.prod) {
       review.comment = this.validationComments(review.comment);
+      //add new review
       this.prod.reviews.push(review);
+      //recalculate rating base on review ratings
+      this.prod.rating = this.recalculateRating(this.prod);
+      //update document on server fireBase
       this.prodService.updateData(this.docId as string, this.prod as Partial<Product>);
     }
+  }
+
+  recalculateRating(product: Product): number {
+    const amountReviews = product.reviews.length;
+    if (amountReviews && amountReviews >= 1) {
+      let sumOfRatings = 0;
+      for (let i = 0; i < amountReviews; i += 1) {
+        const el = product.reviews[i];
+        sumOfRatings += el.rating;
+      }
+
+      return sumOfRatings / amountReviews;
+    }
+    return 0;
   }
 
   ngOnDestroy(): void {
