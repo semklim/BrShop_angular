@@ -11,6 +11,13 @@
   </div>
   <div class="info">
     <div class="prodName get" *ngIf="prod">{{ prod.title }}</div>
+    <star-rating
+      staticColor="ok"
+      [hoverEnabled]="true"
+      [showHalfStars]="true"
+      [starType]="'svg'"
+      [rating]="1"
+      formControlName="rating"></star-rating>
     <div class="price">€75,00</div>
     <div class="sizeContainer">
       <div class="size" (click)="selectSize($event.target)">S</div>
