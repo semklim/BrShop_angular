@@ -84,7 +84,7 @@ nav {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 300px;
+  /* width: 300px; */
   border: 1px solid;
   background-color: white;
   z-index: 2;
@@ -137,7 +137,7 @@ button {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 30vw;
+  /* width: 30vw; */
   padding: 30px;
   transform: translate(-50%, -50%);
   background: rgba(0, 0, 0, 0.8);
@@ -314,4 +314,34 @@ button {
 .menuBtn {
   display: flex;
   align-items: center;
+}
+
+@media (min-width: 210px) {
+  .auto-box {
+    width: 75vw;
+  }
+}
+
+@media (min-width: 576px) {
+  .auto-box {
+    width: 70vw;
+  }
+}
+
+@media (min-width: 768px) {
+  .auto-box {
+    max-width: 30vw;
+  }
+}
+
+@media (min-width: 992px) {
+  .auto-box {
+    width: 30vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  .auto-box {
+    width: 30vw;
+  }
 }
