@@ -371,3 +371,9 @@ input[type='search'] {
 }
 
 /* @media (min-width: 1400px) { ... } */
+
+input.ng-invalid.ng-dirty.ng-dirty:invalid,
+textarea.ng-invalid.ng-dirty:invalid,
+select.ng-invalid.ng-dirty:invalid {
+  border-color: red;
+}

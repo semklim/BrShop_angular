@@ -28,6 +28,8 @@ export class AdminMainComponent implements OnInit {
 
   activeBlock = '';
 
+  showErrorMessage = false;
+
   showForm = true;
 
   showSection = false;
@@ -84,6 +86,27 @@ export class AdminMainComponent implements OnInit {
   };
 
   async onSubmit(form: NgForm) {
+    const selectedSizes = [
+      this.size8,
+      this.size9,
+      this.size10,
+      this.size11,
+      this.size12,
+      this.size13,
+      this.size14,
+      this.size15,
+    ];
+
+    if (selectedSizes.every((size) => !size)) {
+      this.showErrorMessage = true;
+      return;
+    }
+
+    if (this.selectedFiles.length === 0) {
+      this.showErrorMessage = true;
+      return;
+    }
+
     if (form.valid) {
       const object: Product = {
         id: this.formData.id,
@@ -119,10 +142,15 @@ export class AdminMainComponent implements OnInit {
         // object.imagesUrls = await this.changeFilesToLinks(this.selectedFiles);
         object.imagesUrls = await this.cloudService.uploadFile(this.selectedFiles, object.title);
         await this.fBaseService.addData(object);
+        form.reset();
+        this.showErrorMessage = false;
+        this.selectedFiles = [];
         console.log('Object added to Firestore', object);
       } catch (error) {
         console.log('Error adding object to Firestore:', error);
       }
+    } else if (!form.valid) {
+      this.showErrorMessage = true;
     }
   }
 

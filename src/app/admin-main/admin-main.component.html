@@ -23,6 +23,7 @@
             class="form-control ms-2"
             id="category"
             name="categoryAdmForm"
+            pattern=".{1,}"
             required />
         </div>
         <div class="mb-3 d-flex align-items-center">
@@ -34,6 +35,7 @@
             class="form-control ms-2"
             name="title"
             id="titleAdmForm"
+            pattern=".{1,}"
             required />
         </div>
         <div class="mb-3 d-flex align-items-center">
@@ -45,6 +47,7 @@
             class="form-control ms-2"
             name="description"
             id="descriptionAdmForm"
+            pattern=".{1,}"
             required />
         </div>
 
@@ -85,7 +88,9 @@
               placeholder="White*"
               class="form-control ms-3"
               id="colorNameAdmForm"
-              name="colorName" />
+              name="colorName"
+              pattern=".{1,}"
+              required />
           </div>
           <div class="mb-3 d-flex align-items-center">
             <label for="hexNameAdmForm">HEX:</label>
@@ -149,7 +154,11 @@
             <span class="ms-3" *ngIf="selectedFiles.length > 0">{{ selectedFiles.length }} file(s) selected</span>
           </div>
         </div>
+        <p class="text-danger" *ngIf="showErrorMessage">
+          You did not fill in all the fields, or did not select sizes, or did not upload a picture
+        </p>
       </div>
+
       <div class="actions">
         <button type="submit" class="btn btn-primary btnAdd">Add</button>
       </div>
@@ -161,13 +170,10 @@
         <h5 class="mb-4">What product do you want to delete?</h5>
         <app-search class="seaerchProd w-100" (searchChange)="submitSearch($event)"></app-search>
       </div>
-      <div class="boxProduct d-flex flex-wrap w-100" *ngIf="searchValue.trim() !== ''">
+      <div class="boxProduct d-flex flex-wrap w-100">
         <div class="d-flex d-flex flex-wrap">
           <ng-container *ngIf="prod$ | async as products">
-            <div
-              *ngFor="let productRef of products"
-              class="productItem ms-3 p-1"
-              [hidden]="!productRef.title.toLowerCase().includes(searchValue.toLowerCase())">
+            <div *ngFor="let productRef of products" class="productItem ms-3 p-1">
               <img width="200" [src]="productRef.imagesUrls[0]" alt="img" />
               <h4>{{ productRef.title }}</h4>
               <ul>
