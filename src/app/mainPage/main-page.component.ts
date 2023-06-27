@@ -29,7 +29,7 @@ export class MainPageComponent implements OnInit {
     const reg = new RegExp(`${productName}`, 'gi');
 
     return this.productsOrigin?.pipe(
-      map((products: Product[]) => products.filter((product) => reg.test(product.title))),
+      map((products: Product[]) => products.filter((product) => product.title.match(reg))),
     );
   }
 
