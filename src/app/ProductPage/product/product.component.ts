@@ -13,6 +13,10 @@ import { Review } from 'src/app/types/review';
 export class ProductComponent implements OnInit, OnDestroy {
   private routeSubscription?: Subscription;
 
+  private readonly wordsToReplace = ['банан', 'кокос', 'плохой', '@'];
+
+  private readonly wordsPattern = new RegExp(this.wordsToReplace.join('|'), 'gi');
+
   prod?: Product | null;
 
   docId?: string;
@@ -22,10 +26,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute, private prodService: FBaseService) {}
 
   private validationComments(comment: string) {
-    return comment
-      .replace(/(кокос|банан)/gi, '*****')
-      .replace(/@/gi, '*')
-      .replace(/плохой/gi, '******');
+    return comment.replace(this.wordsPattern, (match) => '*'.repeat(match.length));
   }
 
   ngOnInit(): void {
