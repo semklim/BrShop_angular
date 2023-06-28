@@ -6,10 +6,10 @@ import { FormsModule } from '@angular/forms';
 import { SearchModule } from 'src/libs/ui/searchBar/search.module';
 import { ImageSliderModule } from 'src/libs/ui/imageSlider/imageSlider.module';
 import { CardComponent } from 'src/libs/ui/productCard/card.component';
-
+import { LoadingModule } from 'src/libs/ui/loading/loading.module';
 @NgModule({
   declarations: [MainPageComponent, CardComponent],
-  imports: [CommonModule, AppRoutingModule, ImageSliderModule, SearchModule, FormsModule],
+  imports: [CommonModule, LoadingModule, AppRoutingModule, ImageSliderModule, SearchModule, FormsModule],
   exports: [MainPageComponent],
 })
 export class MainPageModule {}
