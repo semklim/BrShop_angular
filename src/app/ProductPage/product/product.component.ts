@@ -17,23 +17,44 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   private readonly wordsPattern = new RegExp(this.wordsToReplace.join('|'), 'gi');
 
-  prod?: Product | null;
+  private docId?: string;
 
-  docId?: string;
+  prod?: Product | null;
 
   selectedSize: null | HTMLElement | undefined = null;
 
   constructor(private route: ActivatedRoute, private prodService: FBaseService) {}
-
-  private validationComments(comment: string) {
-    return comment.replace(this.wordsPattern, (match) => '*'.repeat(match.length));
-  }
 
   ngOnInit(): void {
     this.routeSubscription = this.route.params.subscribe((params) => {
       this.docId = params['id'];
       this.prodService.getProduct(this.docId!).then((data) => (this.prod = data));
     });
+  }
+
+  private validationComments(comment: string) {
+    return comment.replace(this.wordsPattern, (match) => '*'.repeat(match.length));
+  }
+
+  private recalculateRating(product: Product): number {
+    const amountReviews = product.reviews.length;
+    if (amountReviews && amountReviews >= 1) {
+      let sumOfRatings = 0;
+      for (let i = 0; i < amountReviews; i += 1) {
+        const el = product.reviews[i];
+        sumOfRatings += el.rating;
+      }
+
+      return sumOfRatings / amountReviews;
+    }
+    return 0;
+  }
+
+  IsNull(prod: Product | null | undefined) {
+    if (this.prod !== null) {
+      return true;
+    }
+    return false;
   }
 
   async refreshReviews(review: Review) {
@@ -48,20 +69,6 @@ export class ProductComponent implements OnInit, OnDestroy {
       //update document on server fireBase
       this.prodService.updateData(this.docId as string, this.prod as Partial<Product>);
     }
-  }
-
-  recalculateRating(product: Product): number {
-    const amountReviews = product.reviews.length;
-    if (amountReviews && amountReviews >= 1) {
-      let sumOfRatings = 0;
-      for (let i = 0; i < amountReviews; i += 1) {
-        const el = product.reviews[i];
-        sumOfRatings += el.rating;
-      }
-
-      return sumOfRatings / amountReviews;
-    }
-    return 0;
   }
 
   ngOnDestroy(): void {
