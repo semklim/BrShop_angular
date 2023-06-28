@@ -2,7 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>WebShop</title>
+    <meta
+      name="keywords"
+      content="Nike shoes, buy Nike shoes, Nike sneakers, Nike footwear, Nike online store, Nike shop, Nike sports shoes, athletic shoes, running shoes, basketball shoes, casual shoes, lifestyle shoes, fashion footwear, men's Nike shoes, women's Nike shoes, kids' Nike shoes, WebShop, Shop-Step, online shoe store, online shopping, branded shoes, designer footwear, discounted shoes, trendy shoes, comfortable shoes, exclusive shoes, high-quality shoes, latest shoe releases, best deals on Nike shoes" />
+    <title>WebShop | Buy Nike Shoes Online - Shop-Step</title>
+    <meta
+      name="description"
+      content="Welcome to WebShop. Discover the perfect pair of Nike shoes for men, women, and kids. Shop now for fast, secure shipping and step up your shoe game right now!" />
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link type="image/png" sizes="16x16" rel="icon" href="./assets/favicon/Web/icons8-waterfox-gradient-16.png" />
@@ -88,8 +94,106 @@
     <meta name="msapplication-TileColor" content="#C0FFEE" />
     <meta name="apple-mobile-web-app-title" content="WebShop" />
     <meta name="application-name" content="WebShop" />
+    <style data-loader="loaderStyle">
+      .mainLoader {
+        border: 0;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+      }
+      .pl {
+        display: block;
+        width: 6.25em;
+        height: 6.25em;
+      }
+      .pl__ball,
+      .pl__ring {
+        animation: 2s ease-out infinite ring;
+      }
+      .pl__ball {
+        animation-name: ball;
+      }
+      @keyframes ring {
+        from {
+          stroke-dasharray: 0 257 0 0 1 0 0 258;
+        }
+        25% {
+          stroke-dasharray: 0 0 0 0 257 0 258 0;
+        }
+        50%,
+        to {
+          stroke-dasharray: 0 0 0 0 0 515 0 0;
+        }
+      }
+      @keyframes ball {
+        50%,
+        from {
+          animation-timing-function: ease-in;
+          stroke-dashoffset: 1;
+        }
+        64% {
+          animation-timing-function: ease-in;
+          stroke-dashoffset: -109;
+        }
+        78% {
+          animation-timing-function: ease-in;
+          stroke-dashoffset: -145;
+        }
+        92% {
+          animation-timing-function: ease-in;
+          stroke-dashoffset: -157;
+        }
+        57%,
+        71%,
+        85%,
+        99%,
+        to {
+          animation-timing-function: ease-out;
+          stroke-dashoffset: -163;
+        }
+      }
+    </style>
   </head>
   <body>
-    <app-root></app-root>
+    <app-root
+      ><div class="mainLoader">
+        <svg class="pl" viewBox="0 0 200 200" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="pl-grad1" x1="1" y1="0.5" x2="0" y2="0.5">
+              <stop offset="0%" stop-color="hsl(313,90%,55%)" />
+              <stop offset="100%" stop-color="hsl(223,90%,55%)" />
+            </linearGradient>
+            <linearGradient id="pl-grad2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="hsl(313,90%,55%)" />
+              <stop offset="100%" stop-color="hsl(223,90%,55%)" />
+            </linearGradient>
+          </defs>
+          <circle
+            class="pl__ring"
+            cx="100"
+            cy="100"
+            r="82"
+            fill="none"
+            stroke="url(#pl-grad1)"
+            stroke-width="36"
+            stroke-dasharray="0 257 1 257"
+            stroke-dashoffset="0.01"
+            stroke-linecap="round"
+            transform="rotate(-90,100,100)" />
+          <line
+            class="pl__ball"
+            stroke="url(#pl-grad2)"
+            x1="100"
+            y1="18"
+            x2="100.01"
+            y2="182"
+            stroke-width="36"
+            stroke-dasharray="1 165"
+            stroke-linecap="round" />
+        </svg></div
+    ></app-root>
   </body>
 </html>
