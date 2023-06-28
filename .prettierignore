@@ -48,3 +48,5 @@ Thumbs.db
 **/.svn
 **/.hg
 .husky
+
+src/index.html
