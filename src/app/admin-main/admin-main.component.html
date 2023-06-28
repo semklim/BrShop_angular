@@ -35,6 +35,7 @@
             class="form-control ms-2"
             name="title"
             id="titleAdmForm"
+            (keydown)="validateLettersAndSpaces($event)"
             pattern=".{1,}"
             required />
         </div>
@@ -48,6 +49,7 @@
             name="description"
             id="descriptionAdmForm"
             pattern=".{1,}"
+            (keydown)="validateLettersSpacesAndNumbers($event)"
             required />
         </div>
 
@@ -75,6 +77,7 @@
               class="form-control ms-3"
               name="price"
               pattern="\d+(\.\d{1,2})?"
+              (keydown)="validateNumbers($event)"
               id="priceAdmForm"
               required />
           </div>
@@ -160,7 +163,12 @@
       </div>
 
       <div class="actions">
-        <button type="submit" class="btn btn-primary btnAdd">Add</button>
+        <button
+          type="submit"
+          class="btn btn-primary btnAdd"
+          [disabled]="!formAdd.valid || !isAnySizeSelected() || !isFilesSelected()">
+          Add
+        </button>
       </div>
     </form>
 
