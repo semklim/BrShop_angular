@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminGuard } from './auth.guard';
 import { MainPageComponent } from './mainPage/main-page.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
     path: 'product/:id',
     loadChildren: () => import('./ProductPage/product.module').then((m) => m.ProductModule),
   },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

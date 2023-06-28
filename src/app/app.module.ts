@@ -15,8 +15,9 @@ import { CartModule } from './cart/cart.module';
 import { MainPageModule } from './mainPage/main-page.module';
 import { FBaseService } from './services/fireStore/fbase.service';
 import { LocalDataService } from './services/localDataBase/localData.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 @NgModule({
-  declarations: [AppComponent, NavigationComponent],
+  declarations: [AppComponent, NavigationComponent, PageNotFoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
