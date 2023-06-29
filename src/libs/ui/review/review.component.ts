@@ -39,9 +39,15 @@ export class ReviewComponent {
   }
 
   submit() {
-    console.log(this.reviewForm.value);
-    this.reviewChange.emit(this.reviewForm.value);
-    this.reviewForm.reset();
-    this.reviewForm.controls['rating'].reset();
+    if (this.reviewForm.valid) {
+      this.reviewChange.emit(this.reviewForm.value);
+      this.reviewForm.reset();
+      this.textAreaStyle.height = '17px';
+      this.reviewForm.controls['rating'].reset();
+    } else {
+      this.reviewForm.controls['username'].markAsDirty();
+      this.reviewForm.controls['comment'].markAsDirty();
+      this.reviewForm.controls['rating'].markAsDirty();
+    }
   }
 }

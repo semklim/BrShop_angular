@@ -42,7 +42,6 @@
                   <textarea
                     class="form-control"
                     id="textAreaExample"
-                    style="background: #fff"
                     [ngStyle]="textAreaStyle"
                     #textArea
                     formControlName="comment"
@@ -53,22 +52,23 @@
                     }"
                     placeholder="Comment"
                     (input)="autoGrow(textArea)"></textarea>
+                  <div style="color: #dc3545" *ngIf="isInvalid(reviewForm.controls['comment'])">
+                    Please enter your comment.
+                  </div>
                 </div>
               </div>
-              <div class="float-end mt-2 pt-1">
-                <button
-                  type="submit"
-                  class="postBtnDefault"
-                  [ngClass]="{
-                    postBtnDefault: reviewForm.untouched,
-                    postBtnValid: reviewForm.valid,
-                    postBtnInvalid: isInvalid(reviewForm)
-                  }"
-                  [disabled]="!reviewForm.valid"
-                  [title]="reviewForm.valid ? 'You can post' : 'You can`t post'">
-                  Post comment
-                </button>
-              </div>
+              <button
+                type="submit"
+                class="postBtnDefault float-end mt-2 pt-1"
+                [ngClass]="{
+                  postBtnDefault: reviewForm.untouched,
+                  postBtnValid: reviewForm.valid,
+                  postBtnInvalid: isInvalid(reviewForm)
+                }"
+                [disabled]="reviewForm.invalid && reviewForm.dirty"
+                [title]="reviewForm.valid ? 'You can post' : 'You can`t post'">
+                Post comment
+              </button>
             </form>
           </div>
           <div class="card-footer" *ngFor="let review of reviewData">
