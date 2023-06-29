@@ -41,8 +41,11 @@ export class ProductComponent implements OnInit, OnDestroy {
     if (amountReviews && amountReviews >= 1) {
       let sumOfRatings = 0;
       for (let i = 0; i < amountReviews; i += 1) {
-        const el = product.reviews[i];
-        sumOfRatings += el.rating;
+        let rating = product.reviews[i].rating;
+        if (isNaN(rating)) {
+          rating = 0;
+        }
+        sumOfRatings += Number(rating);
       }
 
       return sumOfRatings / amountReviews;
