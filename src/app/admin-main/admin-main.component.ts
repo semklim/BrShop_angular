@@ -64,6 +64,45 @@ export class AdminMainComponent implements OnInit {
     }
   }
 
+  // validateInput
+  validateLettersAndSpaces(event: KeyboardEvent) {
+    const allowedKeys = [32]; // Коды клавиш: 32 - пробел
+    const allowedCharacters = /[a-zA-Z\s]/; // Разрешенные символы: буквы и пробел
+
+    if (!allowedKeys.includes(event.keyCode) && !allowedCharacters.test(event.key)) {
+      event.preventDefault();
+    }
+  }
+
+  validateLettersSpacesAndNumbers(event: KeyboardEvent) {
+    const allowedKeys = [32]; // Коды клавиш: 32 - пробел
+    const allowedCharacters = /[a-zA-Z\s\d]/; // Разрешенные символы: буквы, пробелы и цифры
+
+    if (!allowedKeys.includes(event.keyCode) && !allowedCharacters.test(event.key)) {
+      event.preventDefault();
+    }
+  }
+
+  validateNumbers(event: KeyboardEvent) {
+    const allowedKeys = [8, 9, 13, 27, 46]; // Коды клавиш: 8 - Backspace, 9 - Tab, 13 - Enter, 27 - Esc, 46 - Delete
+    const allowedCharacters = /\d/; // Разрешенные символы: цифры
+
+    if (!allowedKeys.includes(event.keyCode) && !allowedCharacters.test(event.key)) {
+      event.preventDefault();
+    }
+  }
+  //
+
+  isAnySizeSelected(): boolean {
+    return (
+      this.size8 || this.size9 || this.size10 || this.size11 || this.size12 || this.size13 || this.size14 || this.size15
+    );
+  }
+
+  isFilesSelected(): boolean {
+    return this.selectedFiles.length > 0;
+  }
+
   formData: Product = {
     id: '',
     docId: '',
@@ -97,7 +136,7 @@ export class AdminMainComponent implements OnInit {
       this.size15,
     ];
 
-    if (selectedSizes.every((size) => !size)) {
+    if (selectedSizes.every((size) => !size) || this.selectedFiles.length === 0) {
       this.showErrorMessage = true;
       return;
     }
