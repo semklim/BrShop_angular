@@ -9,12 +9,14 @@ export class CloudStoreService {
 
   constructor(private storage: Storage) {}
 
-  async uploadFile(files: File[], folderName?: string) {
-    const folder = folderName ? `/${folderName}/` : '/';
+  async uploadFile(files: File[], categoryFolder: string, productNameFolder: string) {
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       if (file) {
-        const storageRef = ref(this.storage, 'shoesProducts' + folder + file.name);
+        const storageRef = ref(
+          this.storage,
+          `shoesProducts/shoesByCategories/${categoryFolder}/${productNameFolder}/${file.name}`,
+        );
         const uploadTask = uploadBytesResumable(storageRef, file);
         const promise = new Promise<string>((response, reject) => {
           this.uploadListener(uploadTask, response, reject);

@@ -196,7 +196,7 @@ export class AdminMainComponent implements OnInit {
       try {
         // Добавление данных и ожидание завершения операции
         // object.imagesUrls = await this.changeFilesToLinks(this.selectedFiles);
-        object.imagesUrls = await this.cloudService.uploadFile(this.selectedFiles, object.title);
+        object.imagesUrls = await this.cloudService.uploadFile(this.selectedFiles, object.category, object.title);
         await this.fBaseService.addData(object);
         form.reset();
         this.showErrorMessage = false;
