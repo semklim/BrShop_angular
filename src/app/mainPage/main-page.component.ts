@@ -23,6 +23,7 @@ export class MainPageComponent implements OnInit {
 
   submit(value: string) {
     this.prod$ = this.filterProductsByTitles(value);
+    //    this.prod$ = this.prodService.searchProducts(value);
   }
 
   filterProductsByTitles(productName: string): Observable<Product[]> | undefined {
