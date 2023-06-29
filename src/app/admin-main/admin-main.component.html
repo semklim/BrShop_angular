@@ -278,7 +278,7 @@
                   <p class="mb-1"><b>Id</b>: {{ productRef.id }}</p>
                 </li>
                 <li class="border-bottom">
-                  <p class="mb-1"><b>Description:</b> {{ productRef.description | slice : 0 : 15 }}...</p>
+                  <p class="mb-1"><b>Description:</b> {{ productRef.description | ellipse : 40 }}</p>
                 </li>
               </ul>
               <button class="btn btn-primary" (click)="deleteProduct(productRef)">Удалить</button>
