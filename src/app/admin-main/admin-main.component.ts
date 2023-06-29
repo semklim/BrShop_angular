@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, NgModel } from '@angular/forms';
 import { FBaseService } from '../services/fireStore/fbase.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -91,7 +91,24 @@ export class AdminMainComponent implements OnInit {
       event.preventDefault();
     }
   }
-  //
+
+  sizeIsUntouched(arr: NgModel[]) {
+    const [size8, size9, size10, size11, size12, size13, size14, size15] = arr;
+    if (
+      !size8.value &&
+      !size9.value &&
+      !size10.value &&
+      !size11.value &&
+      !size12.value &&
+      !size13.value &&
+      !size14.value &&
+      !size15.value
+    ) {
+      return true;
+    }
+
+    return false;
+  }
 
   isAnySizeSelected(): boolean {
     return (
@@ -110,7 +127,7 @@ export class AdminMainComponent implements OnInit {
     title: '',
     subtitle: '',
     currency: 'USD',
-    price: 0,
+    price: 1,
     sizes: [],
     imagesUrls: [] as string[],
     color: {
