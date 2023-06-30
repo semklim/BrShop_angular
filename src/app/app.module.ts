@@ -11,7 +11,6 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire/compat';
-import { CartModule } from './cart/cart.module';
 import { MainPageModule } from './mainPage/main-page.module';
 import { FBaseService } from './services/fireStore/fbase.service';
 import { LocalDataService } from './services/localDataBase/localData.service';
@@ -29,7 +28,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
     MainPageModule,
-    CartModule,
   ],
   providers: [{ provide: FBaseService, useClass: environment.production ? FBaseService : LocalDataService }],
   bootstrap: [AppComponent],

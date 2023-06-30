@@ -7,7 +7,6 @@ export class CartItemsService {
   private products: string[] = [];
 
   getProducts() {
-    console.log(this.products);
     return this.products;
   }
 

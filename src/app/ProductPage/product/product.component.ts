@@ -63,7 +63,7 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   addToCart() {
     console.log(this.prod);
-    this.products.setProducts(this.prod?.id as string);
+    this.products.setProducts(this.docId as string);
   }
 
   async refreshReviews(review: Review) {
