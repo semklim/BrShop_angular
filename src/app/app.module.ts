@@ -7,7 +7,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
-import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore/lite';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { CartModule } from './cart/cart.module';
 import { MainPageModule } from './mainPage/main-page.module';

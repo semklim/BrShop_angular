@@ -12,7 +12,7 @@ import {
   // query,
   // getDocs,
   // where,
-} from '@angular/fire/firestore';
+} from '@angular/fire/firestore/lite';
 import { Observable } from 'rxjs';
 /**
 
