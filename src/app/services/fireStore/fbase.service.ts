@@ -4,16 +4,16 @@ import {
   Firestore,
   collection,
   addDoc,
-  collectionData,
+  // collectionData,
   doc,
   getDoc,
   deleteDoc,
   updateDoc,
-  // query,
-  // getDocs,
+  query,
+  getDocs,
   // where,
-} from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+} from '@angular/fire/firestore/lite';
+import { Observable, from, map } from 'rxjs';
 /**
 
  * This is an Angular service that provides functionality for interacting with Firebase Firestore. It encapsulates methods related to retrieving, adding, and retrieving all products from the Firestore database.
@@ -110,7 +110,17 @@ export class FBaseService {
   @returns {Observable<Product[]>} An Observable that emits an array of product objects.
   */
   private getAll(): Observable<Product[]> {
-    return collectionData(this.dbInstance, { idField: 'docId' }) as Observable<Product[]>;
+    // return collectionData(this.dbInstance, { idField: 'docId' }) as Observable<Product[]>;
+    const queryRef = query(this.dbInstance);
+    return from(getDocs(queryRef)).pipe(
+      map((querySnapshot) => {
+        const allDocs: Product[] = [];
+        querySnapshot.forEach((document) => {
+          allDocs.push({ ...document.data(), docId: document.id } as Product);
+        });
+        return allDocs;
+      }),
+    );
   }
 
   // Function to perform the search
