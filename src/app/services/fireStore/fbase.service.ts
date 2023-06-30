@@ -2,17 +2,15 @@ import { Injectable } from '@angular/core';
 import { Product } from '../../types/products';
 import {
   Firestore,
-  collection,
-  addDoc,
   collectionData,
+  collection,
   doc,
   getDoc,
-  deleteDoc,
+  setDoc,
   updateDoc,
-  // query,
-  // getDocs,
-  // where,
-} from '@angular/fire/firestore/lite';
+  deleteDoc,
+} from '@angular/fire/firestore';
+
 import { Observable } from 'rxjs';
 /**
 
@@ -77,12 +75,12 @@ export class FBaseService {
   */
   async addData(data: Product, path = 'shoesProducts'): Promise<void> {
     // Generate a new ID for the product by Firebase
-    data.id = doc(collection(this.firestore, 'id')).id;
-    const dbInstance = collection(this.firestore, path);
+    data.id = this.genFireId();
+    data.docId = this.genFireId();
+    const dbInstance = doc(this.firestore, path, data.docId);
     try {
-      await addDoc(dbInstance, data);
+      await setDoc(dbInstance, data);
       console.log('Data send');
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       console.log(err.massage);
     }
@@ -112,22 +110,4 @@ export class FBaseService {
   private getAll(): Observable<Product[]> {
     return collectionData(this.dbInstance, { idField: 'docId' }) as Observable<Product[]>;
   }
-
-  // Function to perform the search
-  // searchProducts(searchValue: string): Observable<Product[]> {
-  //   searchValue = searchValue.toUpperCase();
-
-  //   const queryRef = query(this.dbInstance, where('title_arr', 'array-contains', searchValue));
-
-  //   return from(getDocs(queryRef)).pipe(
-  //     map((querySnapshot) => {
-  //       const matchedProducts: Product[] = [];
-  //       querySnapshot.forEach((document) => {
-  //         console.log(document.data());
-  //         matchedProducts.push(document.data() as Product);
-  //       });
-  //       return matchedProducts;
-  //     }),
-  //   );
-  // }
 }

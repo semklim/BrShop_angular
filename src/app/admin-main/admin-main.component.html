@@ -260,8 +260,8 @@
       </div>
       <div class="boxProduct d-flex flex-wrap w-100">
         <div class="d-flex d-flex flex-wrap">
-          <ng-container *ngIf="prod$ | async as products">
-            <div *ngFor="let productRef of products" class="productItem ms-3 p-1">
+          <ng-container>
+            <div *ngFor="let productRef of prod$ | async" class="productItem ms-3 p-1">
               <img width="200" [src]="productRef.imagesUrls[0]" alt="img" />
               <h4>{{ productRef.title }}</h4>
               <ul>
@@ -283,7 +283,7 @@
               </ul>
               <button class="btn btn-primary" (click)="deleteProduct(productRef)">Удалить</button>
             </div>
-            <p class="notFoundProText" *ngIf="products.length === 0">No matching products found.</p>
+            <p class="notFoundProText" *ngIf="(prod$ | async)?.length === 0">No matching products found.</p>
           </ng-container>
         </div>
       </div>
