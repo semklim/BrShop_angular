@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { Product } from '../../types/products';
 import { FBaseService } from 'src/app/services/fireStore/fbase.service';
 import { Review } from 'src/app/types/review';
+import { CartItemsService } from 'src/app/services/cart-items.service';
 
 @Component({
   selector: 'app-product',
@@ -23,7 +24,7 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   selectedSize: null | HTMLElement | undefined = null;
 
-  constructor(private route: ActivatedRoute, private prodService: FBaseService) {}
+  constructor(private route: ActivatedRoute, private prodService: FBaseService, private products: CartItemsService) {}
 
   ngOnInit(): void {
     this.routeSubscription = this.route.params.subscribe((params) => {
@@ -58,6 +59,11 @@ export class ProductComponent implements OnInit, OnDestroy {
       return true;
     }
     return false;
+  }
+
+  addToCart() {
+    console.log(this.prod);
+    this.products.setProducts(this.prod?.id as string);
   }
 
   async refreshReviews(review: Review) {
