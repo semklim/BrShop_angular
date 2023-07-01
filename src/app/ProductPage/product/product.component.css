@@ -76,7 +76,8 @@
   width: 35vw;
   text-align: left;
   margin-top: 3vh;
-  border-top: 1px solid #f1f1f1;
+  font-weight: 600;
+  font-size: 20px;
 }
 
 .sizeContainer {
@@ -107,6 +108,7 @@
   border-bottom: #f1f1f1 1px solid;
   align-items: center;
   justify-content: flex-start;
+  font-weight: 600;
 }
 
 .addToCart {

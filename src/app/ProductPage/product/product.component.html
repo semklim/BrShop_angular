@@ -17,7 +17,9 @@
         [showHalfStars]="true"
         [starType]="'svg'"
         [rating]="prod!.rating"
-        [readOnly]="true"></star-rating>
+        [readOnly]="true"></star-rating
+      ><br />
+      <div class="price">${{ prod!.price }}</div>
       <div class="sizeContainer">
         <div class="size" (click)="selectSize($event.target)">US 8</div>
         <div class="size" (click)="selectSize($event.target)">US 9</div>
@@ -29,7 +31,6 @@
       </div>
       <div class="notification">Free shipping on orders over $100,00</div>
       <div class="description">{{ prod!.description }}</div>
-      <div class="price">${{ prod!.price }}</div>
       <button class="addToCart button" (click)="addToCart()">{{ buttonMsg }}</button
       ><button class="CHECKOUT button" (click)="goToCheckout()">CHECKOUT</button>
     </div>
