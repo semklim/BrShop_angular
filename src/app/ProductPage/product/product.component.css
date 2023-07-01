@@ -49,6 +49,7 @@
   font-weight: 700;
   margin-top: 12vh;
   width: 35vw;
+  margin-bottom: 5vh;
 }
 
 .prodImg {
@@ -75,7 +76,7 @@
   width: 35vw;
   text-align: left;
   margin-top: 3vh;
-  border-bottom: 1px solid #f1f1f1;
+  border-top: 1px solid #f1f1f1;
 }
 
 .sizeContainer {
@@ -85,6 +86,7 @@
   width: 35vw;
   border-bottom: #f1f1f1 1px solid;
   height: 9vh;
+  border-top: #f1f1f1 1px solid;
 }
 
 .size {
@@ -95,7 +97,7 @@
 }
 
 .size.selected {
-  text-decoration: underline;
+  color: green;
 }
 
 .notification {

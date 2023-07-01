@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Product } from '../../types/products';
 import { FBaseService } from 'src/app/services/fireStore/fbase.service';
@@ -24,7 +24,12 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   selectedSize: null | HTMLElement | undefined = null;
 
-  constructor(private route: ActivatedRoute, private prodService: FBaseService, private products: CartItemsService) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private prodService: FBaseService,
+    private products: CartItemsService,
+  ) {}
 
   ngOnInit(): void {
     this.routeSubscription = this.route.params.subscribe((params) => {
@@ -62,7 +67,6 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
   addToCart() {
-    console.log(this.prod);
     this.products.setProducts(this.docId as string);
   }
 
@@ -86,15 +90,20 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   selectSize(e: Event | EventTarget | null): void {
     const element = e as HTMLElement;
-
     if (element instanceof HTMLElement) {
       if (this.selectedSize) {
         this.selectedSize.classList.remove('selected');
         this.selectedSize = null;
+        this.selectedSize = element;
+        this.selectedSize.classList.add('selected');
       } else {
         this.selectedSize = element;
         this.selectedSize.classList.add('selected');
       }
     }
+  }
+
+  goToCheckout() {
+    this.router.navigate(['/cart']);
   }
 }
