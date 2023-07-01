@@ -80,11 +80,13 @@
                 height="60" />
               <div>
                 <h6 class="fw-bold text-primary mb-1">{{ review.username }}</h6>
-                <star-rating
-                  [showHalfStars]="true"
-                  [starType]="'svg'"
-                  [readOnly]="true"
-                  [rating]="review.rating"></star-rating>
+                <div class="rating" style="width: fit-content; -webkit-width: fit-content">
+                  <star-rating
+                    [showHalfStars]="true"
+                    [starType]="'svg'"
+                    [readOnly]="true"
+                    [rating]="review.rating"></star-rating>
+                </div>
               </div>
             </div>
 
