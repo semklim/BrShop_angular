@@ -10,7 +10,7 @@ import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
-import { AngularFireModule } from '@angular/fire/compat';
+// import { AngularFireModule } from '@angular/fire/compat';
 import { MainPageModule } from './mainPage/main-page.module';
 import { FBaseService } from './services/fireStore/fbase.service';
 import { LocalDataService } from './services/localDataBase/localData.service';
@@ -23,7 +23,7 @@ import { FooterComponent } from './footer/footer.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    // AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),

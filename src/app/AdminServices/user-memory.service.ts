@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+// import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
+
+import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -16,15 +18,15 @@ export class UserMemoryService {
     password: '1234512345',
   };
 
-  constructor(private router: Router, private angularFireAuth: AngularFireAuth) {
+  constructor(private router: Router, private angularFireAuth: Auth) {
     const isAuthenticated = localStorage.getItem('isAuthenticated');
     this.isAuthenticated = isAuthenticated === 'true';
+    console.log('запушен констректор');
     if (this.isAuthenticated) {
       const firebaseUsername = this.firebaseUser.name;
       const firebasePassword = this.firebaseUser.password;
 
-      this.angularFireAuth
-        .signInWithEmailAndPassword(firebaseUsername, firebasePassword)
+      signInWithEmailAndPassword(this.angularFireAuth, firebaseUsername, firebasePassword)
         .then(() => {
           console.log('Вы авторизированы в FireBase');
           // console.log(this.getFirebaseUser());
@@ -44,7 +46,8 @@ export class UserMemoryService {
   logout() {
     this.isAuthenticated = false;
     localStorage.removeItem('isAuthenticated');
-    this.angularFireAuth.signOut();
+    // this.angularFireAuth.signOut();
+    signOut(this.angularFireAuth);
     this.router.navigateByUrl('/');
   }
 

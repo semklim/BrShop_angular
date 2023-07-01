@@ -28,6 +28,7 @@ export class FBaseService {
   prodacts$: Observable<Product[]>;
 
   constructor(private firestore: Firestore, private http: HttpClient) {
+    console.log('запушен констректор');
     this.prodacts$ = this.getAll();
   }
 

@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserMemoryService } from '../AdminServices/user-memory.service';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+// import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-navigation',
@@ -20,11 +21,7 @@ export class NavigationComponent {
     password: '',
   };
 
-  constructor(
-    private router: Router,
-    public authService: UserMemoryService,
-    private angularFireAuth: AngularFireAuth,
-  ) {}
+  constructor(private router: Router, public authService: UserMemoryService, private angularFireAuth: Auth) {}
 
   toggleAutoBox() {
     this.showAutoBox = !this.showAutoBox;
@@ -41,8 +38,8 @@ export class NavigationComponent {
     const firebaseUserPassword = this.authService.firebaseUser.password;
     if (this.user.name === 'admin' && this.user.password === 'admin') {
       this.authService.login();
-      this.angularFireAuth
-        .signInWithEmailAndPassword(firebaseUserName, firebaseUserPassword)
+      // this.angularFireAuth
+      signInWithEmailAndPassword(this.angularFireAuth, firebaseUserName, firebaseUserPassword)
         .then(() => {
           console.log('Авторизация в FireBase успешна');
         })
