@@ -11,7 +11,6 @@ import {
   updateDoc,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 /**
 
  * This is an Angular service that provides functionality for interacting with Firebase Firestore. It encapsulates methods related to retrieving, adding, and retrieving all products from the Firestore database.
@@ -27,7 +26,7 @@ export class FBaseService {
 
   prodacts$: Observable<Product[]>;
 
-  constructor(private firestore: Firestore, private http: HttpClient) {
+  constructor(private firestore: Firestore) {
     console.log('запушен констректор');
     this.prodacts$ = this.getAll();
   }
