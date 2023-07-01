@@ -12,6 +12,5 @@ export class CartItemsService {
 
   setProducts(data: string) {
     this.products.push(data);
-    console.log(this.products);
   }
 }

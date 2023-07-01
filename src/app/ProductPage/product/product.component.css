@@ -142,3 +142,14 @@
   width: 35vw;
   font-weight: 500;
 }
+
+.notificationMsg {
+  color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  padding: 10px 20px;
+  border-radius: 4px;
+}

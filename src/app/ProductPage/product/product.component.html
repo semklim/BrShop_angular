@@ -1,3 +1,4 @@
+<div class="notificationMsg" *ngIf="showNotification">Товар добавлен</div>
 <button class="backBtn" [routerLink]="''">
   <svg width="10px" height="10px" class="arrowSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.75 5.09">
     <title>Caret</title>
@@ -31,7 +32,7 @@
       </div>
       <div class="notification">Free shipping on orders over $100,00</div>
       <div class="description">{{ prod!.description }}</div>
-      <button class="addToCart button" (click)="addToCart()">{{ buttonMsg }}</button
+      <button class="addToCart button" (click)="addToCart()" (click)="showNotificationFunc()">{{ buttonMsg }}</button
       ><button class="CHECKOUT button" (click)="goToCheckout()">CHECKOUT</button>
     </div>
   </div>

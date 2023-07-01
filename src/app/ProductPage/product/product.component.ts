@@ -26,6 +26,8 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   buttonMsg = 'ADD TO BAG';
 
+  showNotification = false;
+
   selectedSize: null | HTMLElement | undefined = null;
 
   constructor(
@@ -117,5 +119,14 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   goToCheckout() {
     this.router.navigate(['/cart']);
+  }
+
+  showNotificationFunc() {
+    if (this.sizeSelected) {
+      this.showNotification = true;
+      setTimeout(() => {
+        this.showNotification = false;
+      }, 1000);
+    }
   }
 }
