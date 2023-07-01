@@ -13,6 +13,12 @@ export class CartItemsComponent implements OnInit {
 
   size = 14;
 
+  shippingPrice = 10;
+
+  subtotalPrice = 0;
+
+  totalPrice = 0;
+
   dataLoaded = false;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -30,10 +36,25 @@ export class CartItemsComponent implements OnInit {
         //@ts-ignore
         this.fService.getProduct(this.prods[i]).then((value: string) => {
           this.filteredProds.push(value as string & Product);
+          this.updateSubtotalPrice(this.filteredProds[i].price);
+          this.updateTotalPrice();
         });
       }
       this.dataLoaded = true;
-      console.log(this.filteredProds);
     }
+  }
+
+  updateSubtotalPrice(price: number) {
+    this.subtotalPrice = this.subtotalPrice + price;
+    if (this.subtotalPrice >= 100 || this.shippingPrice != 10) {
+      this.shippingPrice = 0;
+      this.updateTotalPrice();
+    }
+    return this.subtotalPrice;
+  }
+
+  updateTotalPrice() {
+    this.totalPrice = this.subtotalPrice + this.shippingPrice;
+    return this.totalPrice;
   }
 }

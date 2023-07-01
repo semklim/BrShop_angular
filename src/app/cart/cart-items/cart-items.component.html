@@ -10,12 +10,14 @@
   <div class="prices">
     <div class="subtotal">
       SUBTOTAL
-      <div class="subtotalSpan">$100,00</div>
+      <div class="subtotalSpan">${{ subtotalPrice }}</div>
     </div>
     <div class="shipping">
       SHIPPING
-      <div class="shippingSpan position-fixed d-inline-block">$10,00</div>
+      <div class="shippingSpan position-fixed d-inline-block">${{ shippingPrice }}</div>
     </div>
   </div>
-  <div class="total">TOTAL <span class="subtotalSpan">$110,00</span></div>
+  <div class="total">
+    TOTAL <span class="subtotalSpan">${{ totalPrice }}</span>
+  </div>
 </span>
