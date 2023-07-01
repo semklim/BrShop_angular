@@ -59,7 +59,7 @@
 }
 
 .button {
-  position: fixed;
+  position: absolute;
   bottom: 5vh;
   width: 40vw;
   padding-left: 0vw;
@@ -112,12 +112,11 @@
   border-radius: 0px;
   font-size: 12px;
   color: white;
-  margin-bottom: 2.7vh;
   font-weight: bold;
 }
 
 .CHECKOUT {
-  margin-left: 2vw;
+  margin-left: 20vw;
   width: 17vw;
   height: 5.5vh;
   border: #000000 solid 1px;

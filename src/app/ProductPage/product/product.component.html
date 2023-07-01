@@ -22,9 +22,9 @@
         <div class="size" (click)="selectSize($event.target)">XXL</div>
       </div>
       <div class="notification">Free shipping on orders over €100,00</div>
-      <div class="button">
-        <button class="addToCart" (click)="addToCart()">ADD TO BAG</button><button class="CHECKOUT">CHECKOUT</button>
-      </div>
+
+      <button class="addToCart button" (click)="addToCart()">ADD TO BAG</button
+      ><button class="CHECKOUT button">CHECKOUT</button>
     </div>
   </div>
   <app-review [reviewData]="prod!.reviews" (reviewChange)="refreshReviews($event)"></app-review>
