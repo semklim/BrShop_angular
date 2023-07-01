@@ -263,8 +263,8 @@
           <ng-container *ngIf="prod$ | async as products">
             <div *ngFor="let productRef of products" class="productItem ms-3 p-1">
               <img width="200" [src]="productRef.imagesUrls[0]" alt="img" />
-              <h4>{{ productRef.title }}</h4>
-              <ul>
+              <h4 class="">{{ productRef.title }}</h4>
+              <!-- <ul>
                 <li class="border-bottom">
                   <p class="mb-1"><b>Color:</b> {{ productRef.color.name }}, <b>HEX:</b> {{ productRef.color.hex }}</p>
                 </li>
@@ -280,15 +280,14 @@
                 <li class="border-bottom">
                   <p class="mb-1"><b>Description:</b> {{ productRef.description | ellipse : 40 }}</p>
                 </li>
-              </ul>
+              </ul> -->
+              <p class="mb-3"><b>Description:</b> {{ productRef.description | ellipse : 80 }}</p>
               <button class="btn btn-primary" (click)="deleteProduct(productRef)">Удалить</button>
             </div>
             <p class="notFoundProText" *ngIf="products.length === 0">No matching products found.</p>
           </ng-container>
         </div>
       </div>
-
-      <div></div>
     </section>
   </div>
 </div>

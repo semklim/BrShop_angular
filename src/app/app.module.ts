@@ -15,8 +15,9 @@ import { MainPageModule } from './mainPage/main-page.module';
 import { FBaseService } from './services/fireStore/fbase.service';
 import { LocalDataService } from './services/localDataBase/localData.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
-  declarations: [AppComponent, NavigationComponent, PageNotFoundComponent],
+  declarations: [AppComponent, NavigationComponent, PageNotFoundComponent, FooterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
