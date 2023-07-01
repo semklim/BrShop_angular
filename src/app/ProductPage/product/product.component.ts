@@ -22,6 +22,10 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   prod?: Product | null;
 
+  sizeSelected?: boolean = false;
+
+  buttonMsg = 'ADD TO BAG';
+
   selectedSize: null | HTMLElement | undefined = null;
 
   constructor(
@@ -67,7 +71,11 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
   addToCart() {
-    this.products.setProducts(this.docId as string);
+    if (this.sizeSelected === true) {
+      this.products.setProducts(this.docId as string);
+    } else if (this.sizeSelected === false) {
+      this.buttonMsg = 'SELECT A SIZE';
+    }
   }
 
   async refreshReviews(review: Review) {
@@ -96,9 +104,13 @@ export class ProductComponent implements OnInit, OnDestroy {
         this.selectedSize = null;
         this.selectedSize = element;
         this.selectedSize.classList.add('selected');
+        this.sizeSelected = true;
+        this.buttonMsg = 'ADD TO BAG';
       } else {
         this.selectedSize = element;
         this.selectedSize.classList.add('selected');
+        this.sizeSelected = true;
+        this.buttonMsg = 'ADD TO BAG';
       }
     }
   }

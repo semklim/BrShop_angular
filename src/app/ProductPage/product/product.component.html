@@ -30,7 +30,7 @@
       <div class="notification">Free shipping on orders over $100,00</div>
       <div class="description">{{ prod!.description }}</div>
       <div class="price">${{ prod!.price }}</div>
-      <button class="addToCart button" (click)="addToCart()">ADD TO BAG</button
+      <button class="addToCart button" (click)="addToCart()">{{ buttonMsg }}</button
       ><button class="CHECKOUT button" (click)="goToCheckout()">CHECKOUT</button>
     </div>
   </div>
