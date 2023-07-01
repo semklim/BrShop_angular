@@ -3,7 +3,7 @@
     <img *ngIf="prod.title" class="itemImg" [src]="prod.imagesUrls[0]" />
     <span class="itemName" *ngIf="prod.title">{{ prod.title }}</span
     ><br />
-    <span class="itemPrice" *ngIf="prod.title">{{ prod.price + prod.currency }}</span
+    <span class="itemPrice" *ngIf="prod.title">${{ prod.price }}</span
     ><br />
     <span class="itemSize" *ngIf="prod.title">{{ size }}</span>
   </div>

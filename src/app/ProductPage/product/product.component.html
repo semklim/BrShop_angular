@@ -13,7 +13,7 @@
     <div class="info">
       <div class="prodName get">{{ prod!.title }}</div>
       <star-rating [showHalfStars]="true" [starType]="'svg'" [rating]="prod!.rating" [readOnly]="true"></star-rating>
-      <div class="price">€75,00</div>
+      <div class="price">${{ prod!.price }}</div>
       <div class="sizeContainer">
         <div class="size" (click)="selectSize($event.target)">S</div>
         <div class="size" (click)="selectSize($event.target)">M</div>
@@ -21,7 +21,7 @@
         <div class="size" (click)="selectSize($event.target)">XL</div>
         <div class="size" (click)="selectSize($event.target)">XXL</div>
       </div>
-      <div class="notification">Free shipping on orders over €100,00</div>
+      <div class="notification">Free shipping on orders over $100,00</div>
 
       <button class="addToCart button" (click)="addToCart()">ADD TO BAG</button
       ><button class="CHECKOUT button">CHECKOUT</button>
