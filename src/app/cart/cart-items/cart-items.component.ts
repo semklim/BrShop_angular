@@ -11,19 +11,28 @@ import { Product } from 'src/app/types/products';
 export class CartItemsComponent implements OnInit {
   private prods: string[] | Product[] = [];
 
-  private filteredProds: string[] | Product[] = [];
+  size = 14;
+
+  dataLoaded = false;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  filteredProds: any = [];
+
+  value: string | Product = '';
 
   constructor(private products: CartItemsService, private fService: FBaseService) {}
 
   ngOnInit() {
     if (this.products.getProducts().length > 0) {
       this.prods = this.products.getProducts();
-      console.log(this.fService.getProduct(this.prods[0]));
       for (let i = 0; i < this.products.getProducts().length; i++) {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         //@ts-ignore
-        this.filteredProds.push(this.fService.getProduct(this.prods[i]).then());
+        this.fService.getProduct(this.prods[i]).then((value: string) => {
+          this.filteredProds.push(value as string & Product);
+        });
       }
+      this.dataLoaded = true;
       console.log(this.filteredProds);
     }
   }
