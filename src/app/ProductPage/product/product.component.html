@@ -12,17 +12,24 @@
     </div>
     <div class="info">
       <div class="prodName get">{{ prod!.title }}</div>
-      <star-rating [showHalfStars]="true" [starType]="'svg'" [rating]="prod!.rating" [readOnly]="true"></star-rating>
+      <star-rating
+        class="rating"
+        [showHalfStars]="true"
+        [starType]="'svg'"
+        [rating]="prod!.rating"
+        [readOnly]="true"></star-rating>
       <div class="price">${{ prod!.price }}</div>
       <div class="sizeContainer">
-        <div class="size" (click)="selectSize($event.target)">S</div>
-        <div class="size" (click)="selectSize($event.target)">M</div>
-        <div class="size" (click)="selectSize($event.target)">L</div>
-        <div class="size" (click)="selectSize($event.target)">XL</div>
-        <div class="size" (click)="selectSize($event.target)">XXL</div>
+        <div class="size" (click)="selectSize($event.target)">US 8</div>
+        <div class="size" (click)="selectSize($event.target)">US 9</div>
+        <div class="size" (click)="selectSize($event.target)">US 10</div>
+        <div class="size" (click)="selectSize($event.target)">US 11</div>
+        <div class="size" (click)="selectSize($event.target)">US 12</div>
+        <div class="size" (click)="selectSize($event.target)">US 13</div>
+        <div class="size" (click)="selectSize($event.target)">US 14</div>
       </div>
       <div class="notification">Free shipping on orders over $100,00</div>
-
+      <div class="description">{{ prod!.description }}</div>
       <button class="addToCart button" (click)="addToCart()">ADD TO BAG</button
       ><button class="CHECKOUT button">CHECKOUT</button>
     </div>

@@ -40,6 +40,7 @@ export class CartItemsComponent implements OnInit {
           this.updateTotalPrice();
         });
       }
+      console.log(this.filteredProds);
       this.dataLoaded = true;
     }
   }
