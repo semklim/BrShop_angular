@@ -33,7 +33,7 @@
 .subtotalSpan {
   font-size: 13px;
   right: 230px;
-  display: inline-block;
+  float: right;
 }
 
 .item {

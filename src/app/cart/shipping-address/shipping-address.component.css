@@ -10,14 +10,14 @@
 }
 
 .address {
-  height: 110vh;
+  height: 140vh;
   width: 44vw;
   border-right: 1px rgb(240, 239, 239) solid;
   margin-left: 14vw;
 }
 
 .contact {
-  font-size: 12px;
+  font-size: 18px;
   margin-bottom: 3vh;
 }
 
@@ -85,7 +85,7 @@
 }
 
 .ship {
-  font-size: 12px;
+  font-size: 18px;
   margin-bottom: 0.5vh;
 }
 
@@ -95,13 +95,13 @@
   border: none;
   border-bottom: 1px solid black;
   outline: none;
-  margin-bottom: 2.7vh;
+  margin-bottom: 5vh;
 }
 
 .country {
   width: 38vw;
   height: 5.5vh;
-  margin-bottom: 2vh;
+  margin-bottom: 5vh;
 }
 
 .continue {
