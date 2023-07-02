@@ -20,6 +20,8 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   private docId?: string;
 
+  update = '';
+
   prod?: Product | null;
 
   sizeSelected?: boolean = false;
@@ -31,6 +33,8 @@ export class ProductComponent implements OnInit, OnDestroy {
   selectedSize: null | HTMLElement | undefined = null;
 
   size = '';
+
+  n = 0;
 
   constructor(
     private router: Router,
@@ -76,10 +80,23 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
   addToCart() {
+    this.sizes.setSizes(this.size);
     if (this.sizeSelected === true) {
-      this.products.setProducts(this.docId as string);
-      console.log(this.docId);
-      this.sizes.setSizes(this.size);
+      if (localStorage.getItem('cartItems')!.length > 2) {
+        const savedCartItems = localStorage.getItem('cartItems');
+        const savedCartSizes = localStorage.getItem('cartSizes');
+        this.update = JSON.parse(savedCartItems as string);
+        const size = JSON.parse(savedCartSizes as string);
+        this.products.clearProducts();
+        this.n = 1;
+        for (let i = 0; i < this.update.length; i = i + 1) {
+          this.products.setProducts(this.update[i] as unknown as object);
+        }
+        this.sizes.setSizes(size[size.length] as string);
+        this.products.setProducts(this.prod as object);
+      } else {
+        this.products.setProducts(this.prod as object);
+      }
     } else if (this.sizeSelected === false) {
       this.buttonMsg = 'SELECT A SIZE';
     }

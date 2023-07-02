@@ -6,7 +6,7 @@ import { Product } from '../types/products';
   providedIn: 'root',
 })
 export class CartItemsService {
-  private products: string[] = [];
+  private products: object[] = [];
 
   private sizes: string[] = [];
 
@@ -16,12 +16,13 @@ export class CartItemsService {
     return this.products;
   }
 
-  setProducts(data: string) {
+  setProducts(data: object) {
     this.products.push(data);
     const len = this.products.length;
     if (len > 0) {
       this.amountProducts$.next(len);
     }
+    localStorage.setItem('cartItems', JSON.stringify(this.products));
   }
 
   getAmountProductsInCart() {
@@ -38,14 +39,20 @@ export class CartItemsService {
   }
 
   setSizes(data: string) {
-    this.sizes.push(data);
-  }
-
-  removeProduct(docId: string) {
-    this.products = this.products.filter((prod) => prod !== docId);
+    if (data !== undefined) {
+      this.sizes.push(data);
+      localStorage.setItem('cartSizes', JSON.stringify(this.sizes));
+      console.log(localStorage.getItem('cartSizes'));
+    }
   }
 
   clearProducts() {
     this.products = [];
+    localStorage.setItem('cartItems', JSON.stringify(this.products));
+  }
+
+  clearSizes() {
+    this.sizes = [];
+    localStorage.setItem('cartSizes', JSON.stringify(this.sizes));
   }
 }
