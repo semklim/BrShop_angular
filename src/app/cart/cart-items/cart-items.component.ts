@@ -37,6 +37,9 @@ export class CartItemsComponent implements OnInit {
       this.subtotalPrice = parseFloat(savedSubtotalPrice as string);
       this.totalPrice = parseFloat(savedTotalPrice as string);
       this.dataLoaded = true;
+      if (this.subtotalPrice >= 100) {
+        this.shippingPrice = 0;
+      }
     } else if (this.products.getProducts().length > 0) {
       if (localStorage.getItem('cartItems')! && localStorage.getItem('cartItems')!.length > 2) {
         this.products.clearProducts();
