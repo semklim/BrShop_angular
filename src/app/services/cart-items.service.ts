@@ -37,8 +37,6 @@ export class CartItemsService {
 
   removeProduct(docId: string) {
     this.products = this.products.filter((prod) => prod !== docId);
-    console.log('Remove Items ', this.products.length, this.products);
-    this.amountProducts$.next(this.products.length);
   }
 
   clearProducts() {

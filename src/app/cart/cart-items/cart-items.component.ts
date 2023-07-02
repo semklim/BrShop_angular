@@ -96,6 +96,7 @@ export class CartItemsComponent implements OnInit {
   deleteProduct(index: number) {
     const product = this.filteredProds[index];
     this.filteredProds.splice(index, 1);
+    this.products.amountProducts$.next(this.filteredProds.length);
     console.log(this.filteredProds);
     this.subtotalPrice -= product.price;
     this.updateTotalPrice();
