@@ -27,7 +27,17 @@ export class CartItemsComponent implements OnInit {
 
   ngOnInit() {
     this.size = this.sizes.getSizes();
-    if (this.products.getProducts().length > 0) {
+    if (localStorage.getItem('cartItems')! && localStorage.getItem('cartItems')!.length > 1000) {
+      console.log('we hereeee');
+      console.log(localStorage.getItem('cartItems')!.length);
+      const savedCartItems = localStorage.getItem('cartItems');
+      const savedSubtotalPrice = localStorage.getItem('subtotalPrice');
+      const savedTotalPrice = localStorage.getItem('totalPrice');
+      this.filteredProds = JSON.parse(savedCartItems as string);
+      this.subtotalPrice = parseFloat(savedSubtotalPrice as string);
+      this.totalPrice = parseFloat(savedTotalPrice as string);
+      this.dataLoaded = true;
+    } else if (this.products.getProducts().length > 0) {
       this.prods = this.products.getProducts();
       this.filteredProds = [];
       const productPromises = [];
@@ -47,6 +57,9 @@ export class CartItemsComponent implements OnInit {
         }
         this.dataLoaded = true;
       });
+      localStorage.setItem('cartItems', JSON.stringify(this.filteredProds));
+      localStorage.setItem('subtotalPrice', this.subtotalPrice.toString());
+      localStorage.setItem('totalPrice', this.totalPrice.toString());
     } else {
       const savedCartItems = localStorage.getItem('cartItems');
       const savedSubtotalPrice = localStorage.getItem('subtotalPrice');
@@ -76,13 +89,11 @@ export class CartItemsComponent implements OnInit {
 
   deleteProduct(index: number) {
     const product = this.filteredProds[index];
-    console.log(product);
     this.filteredProds.splice(index, 1);
+    console.log(this.filteredProds);
     this.subtotalPrice -= product.price;
     this.updateTotalPrice();
-    // Удалить продукт из массива products в сервисе CartItemsService
     this.products.removeProduct(product as unknown as string);
-    // Сохранить изменения в локальное хранилище
     localStorage.setItem('cartItems', JSON.stringify(this.filteredProds));
     localStorage.setItem('subtotalPrice', this.subtotalPrice.toString());
     localStorage.setItem('totalPrice', this.totalPrice.toString());
