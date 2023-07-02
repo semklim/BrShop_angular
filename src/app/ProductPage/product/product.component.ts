@@ -78,6 +78,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   addToCart() {
     if (this.sizeSelected === true) {
       this.products.setProducts(this.docId as string);
+      console.log(this.docId);
       this.sizes.setSizes(this.size);
     } else if (this.sizeSelected === false) {
       this.buttonMsg = 'SELECT A SIZE';

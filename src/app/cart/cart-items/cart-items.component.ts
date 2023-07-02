@@ -28,11 +28,9 @@ export class CartItemsComponent implements OnInit {
   ngOnInit() {
     this.size = this.sizes.getSizes();
     if (this.products.getProducts().length > 0) {
-      console.log('we here');
       this.prods = this.products.getProducts();
-      this.filteredProds = []; // Clear the array before populating it
+      this.filteredProds = [];
       const productPromises = [];
-
       for (let i = 0; i < this.products.getProducts().length; i++) {
         const promise = this.fService.getProduct(this.prods[i]).then((value: Product | null) => {
           if (value) {
@@ -43,14 +41,22 @@ export class CartItemsComponent implements OnInit {
         });
         productPromises.push(promise);
       }
-
       Promise.all(productPromises).then(() => {
         for (let i = 0; i < this.filteredProds.length; i++) {
           this.filteredProds[i].size = this.size![i];
-          console.log('we hereee');
         }
         this.dataLoaded = true;
       });
+    } else {
+      const savedCartItems = localStorage.getItem('cartItems');
+      const savedSubtotalPrice = localStorage.getItem('subtotalPrice');
+      const savedTotalPrice = localStorage.getItem('totalPrice');
+      if (savedCartItems && savedSubtotalPrice && savedTotalPrice) {
+        this.filteredProds = JSON.parse(savedCartItems);
+        this.subtotalPrice = parseFloat(savedSubtotalPrice);
+        this.totalPrice = parseFloat(savedTotalPrice);
+        this.dataLoaded = true;
+      }
     }
   }
 
@@ -69,10 +75,16 @@ export class CartItemsComponent implements OnInit {
   }
 
   deleteProduct(index: number) {
-    console.log(this.filteredProds);
     const product = this.filteredProds[index];
+    console.log(product);
     this.filteredProds.splice(index, 1);
-    this.subtotalPrice -= product.price; // Update the subtotal price
-    this.updateTotalPrice(); // Update the total price
+    this.subtotalPrice -= product.price;
+    this.updateTotalPrice();
+    // Удалить продукт из массива products в сервисе CartItemsService
+    this.products.removeProduct(product as unknown as string);
+    // Сохранить изменения в локальное хранилище
+    localStorage.setItem('cartItems', JSON.stringify(this.filteredProds));
+    localStorage.setItem('subtotalPrice', this.subtotalPrice.toString());
+    localStorage.setItem('totalPrice', this.totalPrice.toString());
   }
 }

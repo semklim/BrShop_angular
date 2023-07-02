@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Product } from '../types/products';
 
 @Injectable({
   providedIn: 'root',
@@ -23,5 +24,15 @@ export class CartItemsService {
   setSizes(data: string) {
     this.sizes.push(data);
     console.log(this.sizes);
+  }
+
+  removeProduct(product: string) {
+    console.log(product);
+    for (let i = 0; i < this.products.length; i++) {
+      if (this.products[i] === product) {
+        this.products.splice(i, 1);
+      }
+    }
+    console.log(this.products);
   }
 }
