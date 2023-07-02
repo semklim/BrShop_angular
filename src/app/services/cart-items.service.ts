@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Product } from '../types/products';
 
 @Injectable({
   providedIn: 'root',
@@ -24,6 +25,11 @@ export class CartItemsService {
   }
 
   getAmountProductsInCart() {
+    const savedCartItems = localStorage.getItem('cartItems');
+    if (savedCartItems) {
+      const arrProd = JSON.parse(savedCartItems) as Product[];
+      this.amountProducts$.next(arrProd.length);
+    }
     return this.amountProducts$.asObservable();
   }
 
@@ -37,8 +43,6 @@ export class CartItemsService {
 
   removeProduct(docId: string) {
     this.products = this.products.filter((prod) => prod !== docId);
-    console.log('Remove Items ', this.products.length, this.products);
-    this.amountProducts$.next(this.products.length);
   }
 
   clearProducts() {
