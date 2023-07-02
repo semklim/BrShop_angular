@@ -1,4 +1,6 @@
 .spanWrap {
+  position: absolute;
+  top: 10vh;
   margin-left: 2vw;
 }
 
@@ -30,7 +32,6 @@
 
 .subtotalSpan {
   font-size: 13px;
-  position: fixed;
   right: 230px;
   display: inline-block;
 }

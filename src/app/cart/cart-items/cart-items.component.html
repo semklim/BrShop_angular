@@ -1,4 +1,4 @@
-<span class="d-inline-block position-fixed spanWrap" *ngIf="dataLoaded">
+<span class="d-inline-block spanWrap" *ngIf="dataLoaded">
   <div class="item" *ngFor="let prod of filteredProds; let i = index">
     <img *ngIf="prod.title" class="itemImg" [src]="prod.imagesUrls[0]" />
     <span class="itemName" *ngIf="prod.title">{{ prod.title }}</span

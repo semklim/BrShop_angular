@@ -5,4 +5,12 @@ import { Component } from '@angular/core';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
 })
-export class CartComponent {}
+export class CartComponent {
+  ifContains = false;
+
+  ngOnInit() {
+    if (localStorage.getItem('cartItems') && localStorage.getItem('cartItems')!.length > 2) {
+      this.ifContains = true;
+    }
+  }
+}
