@@ -38,28 +38,34 @@ export class CartItemsComponent implements OnInit {
       this.totalPrice = parseFloat(savedTotalPrice as string);
       this.dataLoaded = true;
     } else if (this.products.getProducts().length > 0) {
-      this.prods = this.products.getProducts();
-      this.filteredProds = [];
-      const productPromises = [];
-      for (let i = 0; i < this.products.getProducts().length; i++) {
-        const promise = this.fService.getProduct(this.prods[i]).then((value: Product | null) => {
-          if (value) {
-            this.filteredProds.push(value);
-            this.updateSubtotalPrice(value.price);
-            this.updateTotalPrice();
-          }
-        });
-        productPromises.push(promise);
-      }
-      Promise.all(productPromises).then(() => {
-        for (let i = 0; i < this.filteredProds.length; i++) {
-          this.filteredProds[i].size = this.size![i];
+      if (localStorage.getItem('cartItems')! && localStorage.getItem('cartItems')!.length > 2) {
+        this.products.clearProducts();
+        console.log('we right here');
+      } else {
+        console.log('no we hereeee');
+        this.prods = this.products.getProducts();
+        this.filteredProds = [];
+        const productPromises = [];
+        for (let i = 0; i < this.products.getProducts().length; i++) {
+          const promise = this.fService.getProduct(this.prods[i]).then((value: Product | null) => {
+            if (value) {
+              this.filteredProds.push(value);
+              this.updateSubtotalPrice(value.price);
+              this.updateTotalPrice();
+            }
+          });
+          productPromises.push(promise);
         }
-        this.dataLoaded = true;
-      });
-      localStorage.setItem('cartItems', JSON.stringify(this.filteredProds));
-      localStorage.setItem('subtotalPrice', this.subtotalPrice.toString());
-      localStorage.setItem('totalPrice', this.totalPrice.toString());
+        Promise.all(productPromises).then(() => {
+          for (let i = 0; i < this.filteredProds.length; i++) {
+            this.filteredProds[i].size = this.size![i];
+          }
+          this.dataLoaded = true;
+          localStorage.setItem('cartItems', JSON.stringify(this.filteredProds));
+          localStorage.setItem('subtotalPrice', this.subtotalPrice.toString());
+          localStorage.setItem('totalPrice', this.totalPrice.toString());
+        });
+      }
     } else {
       const savedCartItems = localStorage.getItem('cartItems');
       const savedSubtotalPrice = localStorage.getItem('subtotalPrice');

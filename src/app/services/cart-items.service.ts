@@ -32,4 +32,8 @@ export class CartItemsService {
       }
     }
   }
+
+  clearProducts() {
+    this.products = [];
+  }
 }
