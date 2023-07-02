@@ -1,15 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../../types/products';
-import {
-  Firestore,
-  collection,
-  addDoc,
-  collectionData,
-  doc,
-  getDoc,
-  deleteDoc,
-  updateDoc,
-} from '@angular/fire/firestore';
+import { Firestore, collection, setDoc, collectionData, doc, getDoc, deleteDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 /**
 
@@ -22,12 +13,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class FBaseService {
-  private dbInstance = collection(this.firestore, 'shoesProducts');
-
   prodacts$: Observable<Product[]>;
 
   constructor(private firestore: Firestore) {
-    console.log('запушен констректор');
     this.prodacts$ = this.getAll();
   }
 
@@ -71,14 +59,16 @@ export class FBaseService {
 
   Adds a new product data to Firestore.
   @param {Product} data - The product data to be added to Firestore.
+  @param {string} path - Is optional. Default path = 'shoesProducts'.
   @returns {Promise<void>} A Promise that resolves when the data is successfully added to Firestore.
   */
   async addData(data: Product, path = 'shoesProducts'): Promise<void> {
     // Generate a new ID for the product by Firebase
-    data.id = doc(collection(this.firestore, 'id')).id;
-    const dbInstance = collection(this.firestore, path);
+    data.id = this.genFireId();
+    data.docId = this.genFireId();
+    const docRef = doc(this.firestore, path, data.docId);
     try {
-      await addDoc(dbInstance, data);
+      await setDoc(docRef, data);
       console.log('Data send');
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
@@ -87,19 +77,13 @@ export class FBaseService {
   }
 
   async deleteData(product: Product): Promise<void> {
-    const docRef = doc(this.firestore, 'shoesProducts', product.docId!);
-    console.log(
-      `you are delete product ${product.title} 
-    ${product.id}
-    ${product.docId}`,
-    );
-
+    const docRef = doc(this.firestore, 'shoesProducts', product.docId);
     return deleteDoc(docRef);
   }
 
   async updateData(docId: string, dataForUpdate: Partial<Product>): Promise<void> {
     const docRef = doc(this.firestore, 'shoesProducts', docId);
-    return updateDoc(docRef, dataForUpdate);
+    return setDoc(docRef, dataForUpdate);
   }
 
   /**
@@ -108,6 +92,7 @@ export class FBaseService {
   @returns {Observable<Product[]>} An Observable that emits an array of product objects.
   */
   private getAll(): Observable<Product[]> {
-    return collectionData(this.dbInstance, { idField: 'docId' }) as Observable<Product[]>;
+    const dbInstance = collection(this.firestore, 'shoesProducts');
+    return collectionData(dbInstance, { idField: 'docId' }) as Observable<Product[]>;
   }
 }

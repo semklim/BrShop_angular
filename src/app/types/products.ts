@@ -4,7 +4,7 @@ export interface Product {
   currency: string;
   description: string;
   price: number;
-  docId?: string;
+  docId: string;
   id: string;
   rating: number;
   reviews: Array<Review>;
