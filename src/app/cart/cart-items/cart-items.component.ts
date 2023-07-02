@@ -99,7 +99,7 @@ export class CartItemsComponent implements OnInit {
     console.log(this.filteredProds);
     this.subtotalPrice -= product.price;
     this.updateTotalPrice();
-    this.products.removeProduct(product as unknown as string);
+    this.products.removeProduct(product.docId);
     localStorage.setItem('cartItems', JSON.stringify(this.filteredProds));
     localStorage.setItem('subtotalPrice', this.subtotalPrice.toString());
     localStorage.setItem('totalPrice', this.totalPrice.toString());

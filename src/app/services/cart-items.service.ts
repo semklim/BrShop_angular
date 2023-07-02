@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../types/products';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,12 +9,22 @@ export class CartItemsService {
 
   private sizes: string[] = [];
 
+  public amountProducts$ = new BehaviorSubject<number>(0);
+
   getProducts() {
     return this.products;
   }
 
   setProducts(data: string) {
     this.products.push(data);
+    const len = this.products.length;
+    if (len > 0) {
+      this.amountProducts$.next(len);
+    }
+  }
+
+  getAmountProductsInCart() {
+    return this.amountProducts$.asObservable();
   }
 
   getSizes() {
@@ -25,12 +35,10 @@ export class CartItemsService {
     this.sizes.push(data);
   }
 
-  removeProduct(product: string) {
-    for (let i = 0; i < this.products.length; i++) {
-      if (this.products[i] === product) {
-        this.products.splice(i, 1);
-      }
-    }
+  removeProduct(docId: string) {
+    this.products = this.products.filter((prod) => prod !== docId);
+    console.log('Remove Items ', this.products.length, this.products);
+    this.amountProducts$.next(this.products.length);
   }
 
   clearProducts() {

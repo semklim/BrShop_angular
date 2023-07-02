@@ -231,7 +231,9 @@
             </g>
           </g>
         </svg>
-        <span class="badge rounded-pill badge-notification bg-danger">1</span>
+        <span class="badge rounded-pill badge-notification bg-danger" *ngIf="amountProductsInCart | async as cartItems">
+          {{ cartItems }}
+        </span>
       </a>
     </div>
   </div>
