@@ -65,3 +65,9 @@
   margin-left: 1vw;
   font-size: 14px;
 }
+
+.deleteProd {
+  margin-left: 1vw;
+  color: red;
+  cursor: pointer;
+}

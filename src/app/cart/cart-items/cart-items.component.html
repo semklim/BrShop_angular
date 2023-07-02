@@ -1,11 +1,13 @@
 <span class="d-inline-block position-fixed spanWrap" *ngIf="dataLoaded">
-  <div class="item" *ngFor="let prod of filteredProds">
+  <div class="item" *ngFor="let prod of filteredProds; let i = index">
     <img *ngIf="prod.title" class="itemImg" [src]="prod.imagesUrls[0]" />
     <span class="itemName" *ngIf="prod.title">{{ prod.title }}</span
     ><br />
     <span class="itemPrice" *ngIf="prod.title">${{ prod.price }}</span
     ><br />
-    <span class="itemSize" *ngIf="prod.title">{{ size }}</span>
+    <span class="itemSize" *ngIf="prod.title">{{ prod.size }}</span
+    ><br />
+    <span class="deleteProd" (click)="deleteProduct(i)">Remove</span>
   </div>
   <div class="prices">
     <div class="subtotal">

@@ -30,11 +30,14 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   selectedSize: null | HTMLElement | undefined = null;
 
+  size = '';
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private prodService: FBaseService,
     private products: CartItemsService,
+    private sizes: CartItemsService,
   ) {}
 
   ngOnInit(): void {
@@ -75,6 +78,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   addToCart() {
     if (this.sizeSelected === true) {
       this.products.setProducts(this.docId as string);
+      this.sizes.setSizes(this.size);
     } else if (this.sizeSelected === false) {
       this.buttonMsg = 'SELECT A SIZE';
     }
@@ -98,7 +102,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     this.routeSubscription?.unsubscribe();
   }
 
-  selectSize(e: Event | EventTarget | null): void {
+  selectSize(e: Event | EventTarget | null | number): void {
     const element = e as HTMLElement;
     if (element instanceof HTMLElement) {
       if (this.selectedSize) {
@@ -107,12 +111,14 @@ export class ProductComponent implements OnInit, OnDestroy {
         this.selectedSize = element;
         this.selectedSize.classList.add('selected');
         this.sizeSelected = true;
+        this.size = element.textContent as unknown as string;
         this.buttonMsg = 'ADD TO BAG';
       } else {
         this.selectedSize = element;
         this.selectedSize.classList.add('selected');
         this.sizeSelected = true;
         this.buttonMsg = 'ADD TO BAG';
+        this.size = element.textContent as unknown as string;
       }
     }
   }

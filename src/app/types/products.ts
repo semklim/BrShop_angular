@@ -11,6 +11,7 @@ export interface Product {
   title: string;
   subtitle: string;
   sizes: Array<string | number | null>;
+  size?: string | null;
   imagesUrls: Array<string>;
   color: { type: string; name: string; hex: string | number };
   colors: Array<object>;
