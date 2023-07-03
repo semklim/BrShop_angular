@@ -42,7 +42,7 @@
 
 .item {
   box-sizing: border-box;
-  margin-bottom: 3vh;
+  margin-bottom: 2vh;
   width: 100%;
   height: 17vh;
 }
@@ -75,4 +75,25 @@
   margin-left: 1vw;
   color: red;
   cursor: pointer;
+}
+
+.amtBtn {
+  margin-left: 1vw;
+  width: 1.8vw;
+  height: 1.8vw;
+  border: 1px solid black;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 450;
+}
+
+.amtBtn:hover {
+  background-color: rgb(241, 237, 237);
+}
+
+.btns {
+  display: flex;
+  flex-wrap: nowrap;
 }

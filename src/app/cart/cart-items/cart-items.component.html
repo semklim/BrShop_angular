@@ -7,6 +7,11 @@
     ><br />
     <span class="itemSize" *ngIf="prod.title">{{ prod.size }}</span
     ><br />
+    <div class="btns">
+      <button (click)="decreaseAmount(prod)" class="amtBtn">-</button>
+      <button class="amtBtn">{{ prod.amount }}</button>
+      <button (click)="increaseAmount(prod)" class="amtBtn">+</button>
+    </div>
     <span class="deleteProd" (click)="deleteProduct(i)">Remove</span>
   </div>
   <div class="prices">

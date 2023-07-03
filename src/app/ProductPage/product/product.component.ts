@@ -95,6 +95,7 @@ export class ProductComponent implements OnInit, OnDestroy {
         this.sizes.setSizes(size[size.length] as string);
         this.products.setProducts(this.prod as object);
       } else {
+        this.prod!.amount = 1;
         this.products.setProducts(this.prod as object);
       }
     } else if (this.sizeSelected === false) {

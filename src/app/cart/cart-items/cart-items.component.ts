@@ -58,7 +58,7 @@ export class CartItemsComponent implements OnInit {
   updateSubtotalPrice(mass: Product[]) {
     this.subtotalPrice = 0;
     for (let i = 0; i < mass.length; i++) {
-      this.subtotalPrice += mass[i].price;
+      this.subtotalPrice = this.subtotalPrice + mass[i].price * mass[i].amount!;
     }
     if (this.subtotalPrice >= 100) {
       this.shippingPrice = 0;
@@ -67,7 +67,6 @@ export class CartItemsComponent implements OnInit {
   }
 
   deleteProduct(index: number) {
-    const product = this.filteredProds[index];
     this.filteredProds.splice(index, 1);
     this.size!.splice(index, 1);
     this.products.amountProducts$.next(this.filteredProds.length);
@@ -76,5 +75,17 @@ export class CartItemsComponent implements OnInit {
     localStorage.setItem('cartItems', JSON.stringify(this.filteredProds));
     localStorage.setItem('subtotalPrice', this.subtotalPrice.toString());
     localStorage.setItem('totalPrice', this.totalPrice.toString());
+  }
+
+  decreaseAmount(prod: any) {
+    if (prod.amount > 1) {
+      prod.amount--;
+    }
+    this.updateSubtotalPrice(this.filteredProds);
+  }
+
+  increaseAmount(prod: any) {
+    prod.amount++;
+    this.updateSubtotalPrice(this.filteredProds);
   }
 }
