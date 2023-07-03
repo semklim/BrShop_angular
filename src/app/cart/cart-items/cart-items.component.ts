@@ -34,7 +34,6 @@ export class CartItemsComponent implements OnInit {
     this.size = JSON.parse(savedSizes as string);
     const savedCartItems = localStorage.getItem('cartItems');
     this.filteredProds = JSON.parse(savedCartItems as string);
-    console.log(this.filteredProds);
     this.dataLoaded = true;
     if (localStorage.getItem('cartItems')) {
       Promise.all(productPromises).then(() => {
