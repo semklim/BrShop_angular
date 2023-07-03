@@ -1,3 +1,4 @@
+<div class="notificationMsg" *ngIf="showNotification">Thanks for you'r order! :)</div>
 <span class="address d-inline-block"
   ><b class="contact d-block">CONTACT INFORMATION</b>
   <br />
@@ -40,7 +41,7 @@
     SAVE THIS INFORMATION FOR THE NEXT TIME
   </label>
   <br />
-  <button class="continue text-center">CONTINUE TO SHIPPING</button>
+  <button (click)="showNotificationFunc()" class="continue text-center">BUY</button>
   <br />
   <button class="back text-center" (click)="goToCheckout()">RETURN TO MAIN PAGE</button>
 </span>
