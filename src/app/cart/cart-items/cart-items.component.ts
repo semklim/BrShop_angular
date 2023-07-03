@@ -67,10 +67,19 @@ export class CartItemsComponent implements OnInit {
     this.totalPrice = this.subtotalPrice + this.shippingPrice;
   }
 
-  deleteProduct(index: number) {
+  deleteProduct(index: number, prod: Product) {
     this.filteredProds.splice(index, 1);
     this.size!.splice(index, 1);
-    this.products.amountProducts$.next(this.filteredProds.length);
+    const count = this.products.amountProducts$.getValue();
+    if (this.filteredProds.length === count || this.filteredProds.length === 0) {
+      this.products.amountProducts$.next(this.filteredProds.length);
+    } else {
+      if (prod.amount && prod.amount > 1) {
+        this.products.amountProducts$.next(count - prod.amount);
+      } else {
+        this.products.amountProducts$.next(count - 1);
+      }
+    }
     this.updateSubtotalPrice(this.filteredProds);
     localStorage.setItem('cartSizes', JSON.stringify(this.size));
     localStorage.setItem('cartItems', JSON.stringify(this.filteredProds));
@@ -93,6 +102,11 @@ export class CartItemsComponent implements OnInit {
   decreaseAmount(prod: any) {
     if (prod.amount > 1) {
       prod.amount--;
+
+      const count = this.products.amountProducts$.getValue();
+      if (this.filteredProds.length < count) {
+        this.products.amountProducts$.next(count - 1);
+      }
     }
     this.updateSubtotalPrice(this.filteredProds);
     localStorage.setItem('cartItems', JSON.stringify(this.filteredProds));
@@ -100,6 +114,8 @@ export class CartItemsComponent implements OnInit {
 
   increaseAmount(prod: any) {
     prod.amount++;
+    const count = this.products.amountProducts$.getValue();
+    this.products.amountProducts$.next(count + 1);
     this.updateSubtotalPrice(this.filteredProds);
     localStorage.setItem('cartItems', JSON.stringify(this.filteredProds));
   }

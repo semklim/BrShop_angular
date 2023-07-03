@@ -80,6 +80,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   addToCart() {
     this.sizes.setSizes(this.size);
     if (this.sizeSelected === true) {
+      const count = this.products.amountProducts$.getValue();
       if (localStorage.getItem('cartItems')) {
         if (localStorage.getItem('cartItems')!.length > 2) {
           const savedCartItems = localStorage.getItem('cartItems');
@@ -87,6 +88,7 @@ export class ProductComponent implements OnInit, OnDestroy {
           this.update = JSON.parse(savedCartItems as string);
           const size = JSON.parse(savedCartSizes as string);
           this.products.clearProducts();
+          this.products.amountProducts$.next(count + 1);
           for (let i = 0; i < this.update.length; i = i + 1) {
             this.update[i].amount = 1;
             this.products.setProducts(this.update[i] as unknown as object);
@@ -94,15 +96,18 @@ export class ProductComponent implements OnInit, OnDestroy {
           this.sizes.setSizes(size[size.length] as string);
           this.prod!.amount = 1;
           this.products.setProducts(this.prod as object);
+          this.products.amountProducts$.next(count + 1);
         } else {
           // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           this.prod!.amount = 1;
           this.products.setProducts(this.prod as object);
+          this.products.amountProducts$.next(count + 1);
         }
       } else {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         this.prod!.amount = 1;
         this.products.setProducts(this.prod as object);
+        this.products.amountProducts$.next(count + 1);
       }
     } else if (this.sizeSelected === false) {
       this.buttonMsg = 'SELECT A SIZE';

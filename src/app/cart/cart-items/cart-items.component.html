@@ -12,7 +12,7 @@
       <button class="amtBtn">{{ prod.amount }}</button>
       <button (click)="increaseAmount(prod)" class="amtBtn">+</button>
     </div>
-    <span class="deleteProd" (click)="deleteProduct(i)">Remove</span>
+    <span class="deleteProd" (click)="deleteProduct(i, prod)">Remove</span>
   </div>
   <div class="prices">
     <div class="subtotal">

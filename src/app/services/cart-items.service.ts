@@ -18,10 +18,6 @@ export class CartItemsService {
 
   setProducts(data: object) {
     this.products.push(data);
-    const len = this.products.length;
-    if (len > 0) {
-      this.amountProducts$.next(len);
-    }
     localStorage.setItem('cartItems', JSON.stringify(this.products));
   }
 
@@ -29,7 +25,16 @@ export class CartItemsService {
     const savedCartItems = localStorage.getItem('cartItems');
     if (savedCartItems) {
       const arrProd = JSON.parse(savedCartItems) as Product[];
-      this.amountProducts$.next(arrProd.length);
+      let count = 0;
+      for (let i = 0; i < arrProd.length; i += 1) {
+        const el = arrProd[i];
+        if (el.amount) count += el.amount;
+      }
+      if (count === 0 || count === arrProd.length) {
+        this.amountProducts$.next(arrProd.length);
+      } else {
+        this.amountProducts$.next(count);
+      }
     }
     return this.amountProducts$.asObservable();
   }
