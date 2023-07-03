@@ -94,6 +94,7 @@ export class ProductComponent implements OnInit, OnDestroy {
         this.prod!.amount = 1;
         this.products.setProducts(this.prod as object);
       } else {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         this.prod!.amount = 1;
         this.products.setProducts(this.prod as object);
       }
