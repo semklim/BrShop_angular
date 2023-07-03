@@ -80,7 +80,8 @@ export class ProductComponent implements OnInit, OnDestroy {
   addToCart() {
     this.sizes.setSizes(this.size);
     if (this.sizeSelected === true) {
-      if (localStorage.getItem('cartItems')!.length > 2) {
+      const cartItems = localStorage.getItem('cartItems') || [''];
+      if (cartItems.length > 2) {
         const savedCartItems = localStorage.getItem('cartItems');
         const savedCartSizes = localStorage.getItem('cartSizes');
         this.update = JSON.parse(savedCartItems as string);

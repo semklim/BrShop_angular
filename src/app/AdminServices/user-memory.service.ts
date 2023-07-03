@@ -21,7 +21,6 @@ export class UserMemoryService {
   constructor(private router: Router, private angularFireAuth: Auth) {
     const isAuthenticated = localStorage.getItem('isAuthenticated');
     this.isAuthenticated = isAuthenticated === 'true';
-    console.log('запушен констректор');
     if (this.isAuthenticated) {
       const firebaseUsername = this.firebaseUser.name;
       const firebasePassword = this.firebaseUser.password;
