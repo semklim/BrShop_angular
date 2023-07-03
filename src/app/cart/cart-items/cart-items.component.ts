@@ -95,10 +95,12 @@ export class CartItemsComponent implements OnInit {
       prod.amount--;
     }
     this.updateSubtotalPrice(this.filteredProds);
+    localStorage.setItem('cartItems', JSON.stringify(this.filteredProds));
   }
 
   increaseAmount(prod: any) {
     prod.amount++;
     this.updateSubtotalPrice(this.filteredProds);
+    localStorage.setItem('cartItems', JSON.stringify(this.filteredProds));
   }
 }
