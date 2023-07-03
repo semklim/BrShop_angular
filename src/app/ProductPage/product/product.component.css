@@ -85,6 +85,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  gap: 1vw;
   width: 35vw;
   border-bottom: #f1f1f1 1px solid;
   height: 9vh;
@@ -92,14 +93,20 @@
 }
 
 .size {
-  margin-right: 2vw;
+  padding: 20px 0;
+  flex: 1 1 45px;
+  vertical-align: middle;
   cursor: pointer;
   font-size: 14px;
   font-weight: 700;
+  text-align: center;
 }
 
 .size.selected {
   color: green;
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
 }
 
 .notification {
