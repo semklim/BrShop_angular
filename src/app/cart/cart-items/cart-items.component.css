@@ -31,9 +31,13 @@
 }
 
 .subtotalSpan {
-  font-size: 13px;
+  font-size: 16px;
   right: 230px;
   float: right;
+}
+
+.senc {
+  font-size: 16px;
 }
 
 .item {
