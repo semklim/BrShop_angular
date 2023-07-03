@@ -13,15 +13,16 @@ export class ShippingAddressComponent {
   showNotification = false;
 
   goToCheckout() {
-    this.router.navigate(['./']);
+    this.router.navigate(['']);
   }
 
   showNotificationFunc() {
     this.showNotification = true;
     this.products.clearProducts();
     setTimeout(() => {
+      this.products.amountProducts$.next(0);
       this.showNotification = false;
-      this.router.navigate(['./']);
+      this.router.navigate(['']);
     }, 2000);
   }
 }
