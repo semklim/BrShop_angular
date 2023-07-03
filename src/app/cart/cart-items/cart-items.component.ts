@@ -32,7 +32,6 @@ export class CartItemsComponent implements OnInit {
     const savedSizes = localStorage.getItem('cartSizes');
     this.sizes.clearSizes();
     this.size = JSON.parse(savedSizes as string);
-    console.log(this.size);
     const savedCartItems = localStorage.getItem('cartItems');
     this.filteredProds = JSON.parse(savedCartItems as string);
     this.dataLoaded = true;
@@ -43,7 +42,6 @@ export class CartItemsComponent implements OnInit {
             this.filteredProds[i].size = this.size![i];
           }
         }
-        console.log(this.filteredProds);
         localStorage.setItem('cartItems', JSON.stringify(this.filteredProds));
       });
     }
@@ -73,10 +71,8 @@ export class CartItemsComponent implements OnInit {
     this.filteredProds.splice(index, 1);
     this.size!.splice(index, 1);
     this.products.amountProducts$.next(this.filteredProds.length);
-    console.log(this.filteredProds);
     this.updateSubtotalPrice(this.filteredProds);
     localStorage.setItem('cartSizes', JSON.stringify(this.size));
-    console.log(localStorage.getItem('cartSizes'));
     localStorage.setItem('cartItems', JSON.stringify(this.filteredProds));
     localStorage.setItem('subtotalPrice', this.subtotalPrice.toString());
     localStorage.setItem('totalPrice', this.totalPrice.toString());

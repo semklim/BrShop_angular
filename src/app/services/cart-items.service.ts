@@ -42,7 +42,6 @@ export class CartItemsService {
     if (data !== undefined) {
       this.sizes.push(data);
       localStorage.setItem('cartSizes', JSON.stringify(this.sizes));
-      console.log(localStorage.getItem('cartSizes'));
     }
   }
 
