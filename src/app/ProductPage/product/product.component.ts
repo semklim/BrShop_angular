@@ -80,19 +80,25 @@ export class ProductComponent implements OnInit, OnDestroy {
   addToCart() {
     this.sizes.setSizes(this.size);
     if (this.sizeSelected === true) {
-      if (localStorage.getItem('cartItems')!.length > 2) {
-        const savedCartItems = localStorage.getItem('cartItems');
-        const savedCartSizes = localStorage.getItem('cartSizes');
-        this.update = JSON.parse(savedCartItems as string);
-        const size = JSON.parse(savedCartSizes as string);
-        this.products.clearProducts();
-        for (let i = 0; i < this.update.length; i = i + 1) {
-          this.update[i].amount = 1;
-          this.products.setProducts(this.update[i] as unknown as object);
+      if (localStorage.getItem('cartItems')) {
+        if (localStorage.getItem('cartItems')!.length > 2) {
+          const savedCartItems = localStorage.getItem('cartItems');
+          const savedCartSizes = localStorage.getItem('cartSizes');
+          this.update = JSON.parse(savedCartItems as string);
+          const size = JSON.parse(savedCartSizes as string);
+          this.products.clearProducts();
+          for (let i = 0; i < this.update.length; i = i + 1) {
+            this.update[i].amount = 1;
+            this.products.setProducts(this.update[i] as unknown as object);
+          }
+          this.sizes.setSizes(size[size.length] as string);
+          this.prod!.amount = 1;
+          this.products.setProducts(this.prod as object);
+        } else {
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          this.prod!.amount = 1;
+          this.products.setProducts(this.prod as object);
         }
-        this.sizes.setSizes(size[size.length] as string);
-        this.prod!.amount = 1;
-        this.products.setProducts(this.prod as object);
       } else {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         this.prod!.amount = 1;
