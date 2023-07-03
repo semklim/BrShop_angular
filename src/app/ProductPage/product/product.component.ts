@@ -20,7 +20,7 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   private docId?: string;
 
-  update = '';
+  update: any = '';
 
   prod?: Product | null;
 
@@ -33,8 +33,6 @@ export class ProductComponent implements OnInit, OnDestroy {
   selectedSize: null | HTMLElement | undefined = null;
 
   size = '';
-
-  n = 0;
 
   constructor(
     private router: Router,
@@ -88,11 +86,12 @@ export class ProductComponent implements OnInit, OnDestroy {
         this.update = JSON.parse(savedCartItems as string);
         const size = JSON.parse(savedCartSizes as string);
         this.products.clearProducts();
-        this.n = 1;
         for (let i = 0; i < this.update.length; i = i + 1) {
+          this.update[i].amount = 1;
           this.products.setProducts(this.update[i] as unknown as object);
         }
         this.sizes.setSizes(size[size.length] as string);
+        this.prod!.amount = 1;
         this.products.setProducts(this.prod as object);
       } else {
         this.prod!.amount = 1;

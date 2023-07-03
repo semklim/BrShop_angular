@@ -34,6 +34,7 @@ export class CartItemsComponent implements OnInit {
     this.size = JSON.parse(savedSizes as string);
     const savedCartItems = localStorage.getItem('cartItems');
     this.filteredProds = JSON.parse(savedCartItems as string);
+    console.log(this.filteredProds);
     this.dataLoaded = true;
     if (localStorage.getItem('cartItems')) {
       Promise.all(productPromises).then(() => {
@@ -42,6 +43,7 @@ export class CartItemsComponent implements OnInit {
             this.filteredProds[i].size = this.size![i];
           }
         }
+        this.filterByAmount(this.filteredProds);
         localStorage.setItem('cartItems', JSON.stringify(this.filteredProds));
       });
     }
@@ -75,6 +77,18 @@ export class CartItemsComponent implements OnInit {
     localStorage.setItem('cartItems', JSON.stringify(this.filteredProds));
     localStorage.setItem('subtotalPrice', this.subtotalPrice.toString());
     localStorage.setItem('totalPrice', this.totalPrice.toString());
+  }
+
+  filterByAmount(arr: any[]) {
+    for (let i = 0; i < arr.length; i++) {
+      for (let j = i + 1; j < arr.length; j++) {
+        if (arr[i].id === arr[j].id && arr[i].size === arr[j].size) {
+          arr[i].amount += arr[j].amount;
+          arr.splice(j, 1);
+          j--;
+        }
+      }
+    }
   }
 
   decreaseAmount(prod: any) {
