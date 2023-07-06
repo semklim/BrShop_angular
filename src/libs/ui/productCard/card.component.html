@@ -4,6 +4,7 @@
       [isShowDot]="false"
       [slides]="product!.imagesUrls"
       [style]="'flex: 1 1 ' + cardMinHeight + 'px'"
+      [isNotMobileDevice]="isNotMobileDevice"
       (clickOnImage)="onClick()"></app-image-slider>
   </div>
   <div class="mt-2 d-flex flex-column flex-grow-1 justify-content-between" (click)="onClick()">

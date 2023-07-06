@@ -1,11 +1,11 @@
-<div class="slider">
-  <div class="sliderControles" *ngIf="slides.length > 1">
-    <div (click)="goToPrevious()" class="icon right">
+<div class="slider" appSwipe (next)="goToNext()" (previous)="goToPrevious()">
+  <div class="sliderControles" *ngIf="slides.length > 1 && isNotMobileDevice">
+    <div (click)="goToNext()" class="icon right">
       <div class="arrow">
         <div class="right-arrow"></div>
       </div>
     </div>
-    <div class="icon left" (click)="goToNext()">
+    <div class="icon left" (click)="goToPrevious()">
       <div class="arrow">
         <div class="left-arrow"></div>
       </div>

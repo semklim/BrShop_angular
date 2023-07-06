@@ -7,7 +7,7 @@ import { Product } from 'src/app/types/products';
   styleUrls: ['./card.component.css'],
 })
 export class CardComponent {
-  @Input() isDisableDelete = false;
+  @Input() isNotMobileDevice = true;
 
   @Input() product?: Product;
 

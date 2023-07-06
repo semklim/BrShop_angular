@@ -1,18 +1,28 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-image-slider',
   templateUrl: './imageSlider.component.html',
   styleUrls: ['./imageSlider.component.css'],
 })
-export class ImageSliderComponent {
+export class ImageSliderComponent implements AfterViewInit {
   @Input() slides: string[] = [];
+
+  @Input() isNotMobileDevice = true;
 
   @Input() isShowDot = true;
 
   @Output() clickOnImage: EventEmitter<void> = new EventEmitter();
 
+  private imagesIsLoaded: number[] = [0];
+
   currentIndex = 0;
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.preloadImages(1);
+    });
+  }
 
   showDots(): boolean {
     return this.isShowDot && this.slides.length > 1;
@@ -26,20 +36,20 @@ export class ImageSliderComponent {
   }
 
   goToPrevious(): void {
-    const isFirstSlide = this.currentIndex === 0;
-    const newIndex = isFirstSlide ? this.slides.length - 1 : this.currentIndex - 1;
-
-    this.currentIndex = newIndex;
+    if (this.currentIndex !== 0) {
+      this.currentIndex -= 1;
+    }
   }
 
   goToNext(): void {
-    const isLastSlide = this.currentIndex === this.slides.length - 1;
-    const newIndex = isLastSlide ? 0 : this.currentIndex + 1;
-
-    this.currentIndex = newIndex;
+    if (this.currentIndex < this.slides.length - 1) {
+      this.currentIndex += 1;
+      this.preloadImages(this.currentIndex + 1);
+    }
   }
 
   goToSlide(slideIndex: number): void {
+    this.preloadImages(slideIndex);
     this.currentIndex = slideIndex;
   }
 
@@ -49,5 +59,20 @@ export class ImageSliderComponent {
 
   onClickToImage() {
     this.clickOnImage.emit();
+  }
+
+  preloadImages(index: number) {
+    if (index !== this.slides.length) {
+      if (!this.imagesIsLoaded.includes(index)) {
+        const image = new Image();
+        image.src = this.slides[index];
+        this.imagesIsLoaded.push(index);
+      }
+    }
+  }
+
+  checkIfMobileDevice(): boolean {
+    const result = navigator.maxTouchPoints > 0 && /Android|iPhone|iPad/i.test(navigator.userAgent);
+    return result;
   }
 }
