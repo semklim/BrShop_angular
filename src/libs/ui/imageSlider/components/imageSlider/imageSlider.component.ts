@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, Output } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-image-slider',
@@ -6,9 +6,9 @@ import { AfterViewInit, Component, EventEmitter, Input, Output } from '@angular/
   styleUrls: ['./imageSlider.component.css'],
 })
 export class ImageSliderComponent implements AfterViewInit {
-  @Input() slides: string[] = [];
+  @ViewChild('lazyLoadTag') private lazyLoadTag!: ElementRef<HTMLDivElement>;
 
-  @Input() isNotMobileDevice = true;
+  @Input() slides: string[] = [];
 
   @Input() isShowDot = true;
 
@@ -18,10 +18,12 @@ export class ImageSliderComponent implements AfterViewInit {
 
   currentIndex = 0;
 
+  constructor(@Inject('IsNotMobileDeviceService') public isNotMobileDevice: boolean) {}
+
   ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.preloadImages(1);
-    });
+    this.preloadImages(1);
+    this.lazyLoadTag.nativeElement.style.backgroundImage = `url('${this.slides[1]}')`;
+    this.lazyLoadTag?.nativeElement.remove();
   }
 
   showDots(): boolean {
@@ -61,7 +63,7 @@ export class ImageSliderComponent implements AfterViewInit {
     this.clickOnImage.emit();
   }
 
-  preloadImages(index: number) {
+  private preloadImages(index: number) {
     if (index !== this.slides.length) {
       if (!this.imagesIsLoaded.includes(index)) {
         const image = new Image();
@@ -69,10 +71,5 @@ export class ImageSliderComponent implements AfterViewInit {
         this.imagesIsLoaded.push(index);
       }
     }
-  }
-
-  checkIfMobileDevice(): boolean {
-    const result = navigator.maxTouchPoints > 0 && /Android|iPhone|iPad/i.test(navigator.userAgent);
-    return result;
   }
 }

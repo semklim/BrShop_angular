@@ -7,8 +7,6 @@ import { Product } from 'src/app/types/products';
   styleUrls: ['./card.component.css'],
 })
 export class CardComponent {
-  @Input() isNotMobileDevice = true;
-
   @Input() product?: Product;
 
   @Input() cardMinHeight = 350;

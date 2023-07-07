@@ -8,7 +8,6 @@
         style="flex: 0 1 350px"
         *ngFor="let productRef of prod$ | async"
         [product]="productRef"
-        [isNotMobileDevice]="isNotMobileDevice"
         (clickToProduct)="redirectToProductPage(productRef)"></app-card>
     </div>
   </div>

@@ -7,5 +7,11 @@ import { SwipeDirective } from './swipe.directive';
   imports: [CommonModule],
   exports: [ImageSliderComponent],
   declarations: [ImageSliderComponent, SwipeDirective],
+  providers: [
+    {
+      provide: 'IsNotMobileDeviceService',
+      useValue: navigator.maxTouchPoints <= 0 && !/Android|iPhone|iPad/i.test(navigator.userAgent),
+    },
+  ],
 })
 export class ImageSliderModule {}

@@ -13,8 +13,6 @@ import { Router } from '@angular/router';
 export class MainPageComponent implements OnInit {
   private productsOrigin?: Observable<Product[]>;
 
-  isNotMobileDevice = this.checkIsNotMobileDevice();
-
   prod$?: Observable<Product[]>;
 
   constructor(private prodService: FBaseService, private router: Router) {}
@@ -37,12 +35,5 @@ export class MainPageComponent implements OnInit {
 
   redirectToProductPage(product: Product) {
     this.router.navigate(['/product', product.docId]);
-  }
-
-  checkIsNotMobileDevice(): boolean {
-    const result = navigator.maxTouchPoints > 0 && /Android|iPhone|iPad/i.test(navigator.userAgent);
-    console.log(result);
-
-    return !result;
   }
 }
