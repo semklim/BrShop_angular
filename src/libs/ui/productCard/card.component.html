@@ -1,9 +1,9 @@
 <div class="d-flex flex-column h-100" role="button">
-  <div [style]="'display: flex; min-height: ' + cardMinHeight + 'px'">
+  <div class="d-flex card_Wrapper" [style]="'--sliderImageHeight: ' + cardMaxHeight + 'px;'">
     <app-image-slider
       [isShowDot]="false"
       [slides]="product!.imagesUrls"
-      [style]="'flex: 1 1 ' + cardMinHeight + 'px'"
+      [style]="'flex: 1 1 ' + cardMaxHeight + 'px'"
       (clickOnImage)="onClick()"></app-image-slider>
   </div>
   <div class="mt-2 d-flex flex-column flex-grow-1 justify-content-between" (click)="onClick()">

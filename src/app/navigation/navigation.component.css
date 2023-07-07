@@ -9,6 +9,13 @@
 nav {
   --bs-border-color: rgb(245, 245, 245);
 }
+
+.navMaxHeigth {
+  padding: 0 !important;
+  border: 0 !important;
+  border-bottom-width: 1px !important;
+}
+
 @media (min-width: 992px) {
   .navbar-nav > li {
     padding: 0 20px;
@@ -16,13 +23,14 @@ nav {
 }
 
 @media (max-width: 310px) {
-  .navMaxHeigth {
-    height: 125px;
+  .logout-button {
+    font-size: 30px !important;
+    padding: 0 !important;
   }
 }
-@media (min-width: 311px) {
-  .navMaxHeigth {
-    height: 75.6px;
+@media (max-width: 290px) {
+  .logout-button {
+    font-size: 25px !important;
   }
 }
 

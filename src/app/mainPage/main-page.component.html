@@ -1,8 +1,8 @@
 <section>
-  <div class="formSearch form-sticky w-100 mt-3">
+  <div class="formSearch form-sticky w-100">
     <app-search class="d-flex w-100 justify-content-center" (searchChange)="submit($event)"></app-search>
   </div>
-  <div class="py-4 px-3 px-lg-4">
+  <div class="py-4 px-3 px-lg-4 card_container">
     <div class="row justify-content-center gap-4 dopMargin" *ngIf="prod$ | async; else loading">
       <app-card
         style="flex: 0 1 350px"

@@ -17,3 +17,23 @@
 .textOfCard__subtitle {
   font-size: 14px;
 }
+
+@media (max-width: 400px) {
+  :host {
+    padding: 0;
+  }
+
+  .card_Wrapper {
+    --sliderImageHeight: 350px !important;
+  }
+}
+
+@media (orientation: landscape) {
+  .card_Wrapper {
+    --sliderImageHeight: 200px !important;
+  }
+}
+
+.card_Wrapper {
+  min-height: var(--sliderImageHeight);
+}

@@ -102,3 +102,19 @@
   cursor: pointer;
   font-size: 20px;
 }
+
+.mobile_icon_left {
+  left: 0 !important;
+  height: 30px;
+  width: 30px;
+}
+
+.mobile_icon_right {
+  right: 0 !important;
+  height: 30px;
+  width: 30px;
+}
+
+.mobile_arrow {
+  border-color: #ccb31a;
+}

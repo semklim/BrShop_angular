@@ -6,7 +6,7 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, View
   styleUrls: ['./imageSlider.component.css'],
 })
 export class ImageSliderComponent implements AfterViewInit {
-  @ViewChild('lazyLoadTag') private lazyLoadTag!: ElementRef<HTMLDivElement>;
+  @ViewChild('lazyLoadTag') private lazyLoadTag?: ElementRef<HTMLDivElement>;
 
   @Input() slides: string[] = [];
 
@@ -22,8 +22,7 @@ export class ImageSliderComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.preloadImages(1);
-    this.lazyLoadTag.nativeElement.style.backgroundImage = `url('${this.slides[1]}')`;
-    this.lazyLoadTag?.nativeElement.remove();
+    this.lazyLoadTag!.nativeElement.style.backgroundImage = `url('${this.slides[1]}')`;
   }
 
   showDots(): boolean {
@@ -47,6 +46,9 @@ export class ImageSliderComponent implements AfterViewInit {
     if (this.currentIndex < this.slides.length - 1) {
       this.currentIndex += 1;
       this.preloadImages(this.currentIndex + 1);
+    }
+    if (this.lazyLoadTag) {
+      this.lazyLoadTag.nativeElement.remove();
     }
   }
 
