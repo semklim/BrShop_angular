@@ -1,7 +1,8 @@
 :host {
   position: sticky;
   top: 0;
-  z-index: 9999;
+  z-index: 3;
+  border-bottom: 1px solid #cfd4d9;
 }
 
 /* font-family: 'Dancing Script', cursive; */

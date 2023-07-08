@@ -14,6 +14,7 @@
 }
 
 .form-sticky {
+  margin-top: 20px;
   position: sticky;
   top: 66px;
   z-index: 2;
