@@ -90,8 +90,12 @@ export class ProductComponent implements OnInit, OnDestroy {
           this.products.clearProducts();
           this.products.amountProducts$.next(count + 1);
           for (let i = 0; i < this.update.length; i = i + 1) {
-            this.update[i].amount = 1;
-            this.products.setProducts(this.update[i] as unknown as object);
+            if (this.update[i].amount && this.update[i].amount > 1) {
+              this.products.setProducts(this.update[i] as unknown as object);
+            } else {
+              this.update[i].amount = 1;
+              this.products.setProducts(this.update[i] as unknown as object);
+            }
           }
           this.sizes.setSizes(size[size.length] as string);
           this.prod!.amount = 1;
