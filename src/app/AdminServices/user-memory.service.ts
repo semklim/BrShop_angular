@@ -47,7 +47,7 @@ export class UserMemoryService {
     localStorage.removeItem('isAuthenticated');
     // this.angularFireAuth.signOut();
     signOut(this.angularFireAuth);
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('');
   }
 
   checkAuthentication(): boolean {

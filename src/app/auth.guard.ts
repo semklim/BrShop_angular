@@ -20,7 +20,7 @@ export class AdminGuard implements CanActivate {
     if (isAuthenticated) {
       return true;
     } else {
-      return this.router.parseUrl('/');
+      return this.router.parseUrl('');
     }
   }
 }
