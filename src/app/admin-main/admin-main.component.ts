@@ -125,11 +125,12 @@ export class AdminMainComponent implements OnInit {
     docId: '',
     category: '',
     title: '',
+    title_arr: [],
     subtitle: '',
     currency: 'USD',
     price: 1,
     sizes: [],
-    imagesUrls: [] as string[],
+    imagesUrls: [],
     color: {
       type: '',
       name: '',
@@ -169,6 +170,7 @@ export class AdminMainComponent implements OnInit {
         docId: this.formData.docId,
         category: this.formData.category,
         title: this.formData.title,
+        title_arr: [],
         subtitle: this.formData.subtitle,
         currency: this.formData.currency,
         price: Number(this.formData.price),
@@ -195,7 +197,7 @@ export class AdminMainComponent implements OnInit {
       };
       try {
         // Добавление данных и ожидание завершения операции
-        // object.imagesUrls = await this.changeFilesToLinks(this.selectedFiles);
+        object.title_arr = this.fBaseService.titlePrepareForSearch(object.title);
         object.imagesUrls = await this.cloudService.uploadFile(this.selectedFiles, object.category, object.title);
         await this.fBaseService.addData(object);
         form.reset();

@@ -9,6 +9,7 @@ export interface Product {
   rating: number;
   reviews: Array<Review>;
   title: string;
+  title_arr: Array<string>;
   subtitle: string;
   sizes: Array<string | number | null>;
   amount?: number;

@@ -1,6 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../../types/products';
-import { Firestore, collection, setDoc, collectionData, doc, getDoc, deleteDoc } from '@angular/fire/firestore';
+import {
+  Firestore,
+  collection,
+  setDoc,
+  collectionData,
+  doc,
+  getDoc,
+  deleteDoc,
+  query,
+  limit,
+  where,
+} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 /**
 
@@ -94,5 +105,45 @@ export class FBaseService {
   private getAll(): Observable<Product[]> {
     const dbInstance = collection(this.firestore, 'shoesProducts');
     return collectionData(dbInstance, { idField: 'docId' }) as Observable<Product[]>;
+  }
+
+  getLimitedDocs(amountOfProducts: number): Observable<Product[]> {
+    const dbInstance = collection(this.firestore, 'shoesProducts');
+    const q = query(dbInstance, limit(amountOfProducts));
+    return collectionData(q, { idField: 'docId' }) as Observable<Product[]>;
+  }
+
+  titlePrepareForSearch(title: string): Array<string> {
+    title = title.toUpperCase();
+    const arrOfWords = title.split(' ');
+    const titleArr: string[] = [];
+    arrOfWords.push(title);
+
+    const length = arrOfWords.length;
+    for (let i = 0; i < length; i += 1) {
+      const el = arrOfWords[i];
+      titleArr.push(...this.spreadTitleByCharts(el));
+    }
+    return titleArr;
+  }
+
+  private spreadTitleByCharts(str: string) {
+    const result: string[] = [];
+    const bound = str.length;
+    for (let i = 0; i < bound; i++) {
+      if (result.length === 0) {
+        result.push(str[i]);
+      } else {
+        result.push(result[i - 1] + str[i]);
+      }
+    }
+    return result;
+  }
+
+  filterProductsFromServe(str: string) {
+    str = str.toUpperCase();
+    const dbInstance = collection(this.firestore, 'shoesProducts');
+    const q = query(dbInstance, where('title_arr', 'array-contains', str));
+    return collectionData(q, { idField: 'docId' }) as Observable<Product[]>;
   }
 }

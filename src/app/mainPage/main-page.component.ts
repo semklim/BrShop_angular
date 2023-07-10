@@ -22,7 +22,11 @@ export class MainPageComponent implements OnInit {
   }
 
   submit(value: string) {
-    this.prod$ = this.filterProductsByTitles(value);
+    if (value.length <= 0) {
+      this.prod$ = this.productsOrigin;
+    } else {
+      this.prod$ = this.prodService.filterProductsFromServe(value);
+    }
   }
 
   filterProductsByTitles(productName: string): Observable<Product[]> | undefined {
