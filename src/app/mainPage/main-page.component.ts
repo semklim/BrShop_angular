@@ -19,6 +19,7 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.productsOrigin = this.prod$ = this.prodService.getAllProducts();
+    // this.prodService.getCount();
   }
 
   submit(value: string) {

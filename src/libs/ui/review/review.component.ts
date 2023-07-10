@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Review } from 'src/app/types/review';
 
@@ -6,6 +6,7 @@ import { Review } from 'src/app/types/review';
   selector: 'app-review',
   templateUrl: './review.component.html',
   styleUrls: ['./review.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReviewComponent {
   @Input() reviewData?: Review[];

@@ -1,9 +1,20 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild, Inject } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+  Inject,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 
 @Component({
   selector: 'app-image-slider',
   templateUrl: './imageSlider.component.html',
   styleUrls: ['./imageSlider.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ImageSliderComponent implements AfterViewInit {
   @ViewChild('lazyLoadTag') private lazyLoadTag?: ElementRef<HTMLDivElement>;

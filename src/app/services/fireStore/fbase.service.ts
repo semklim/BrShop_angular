@@ -11,6 +11,7 @@ import {
   query,
   limit,
   where,
+  getCountFromServer,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 /**
@@ -26,8 +27,11 @@ import { Observable } from 'rxjs';
 export class FBaseService {
   prodacts$: Observable<Product[]>;
 
+  amountOfProducts?: number;
+
   constructor(private firestore: Firestore) {
     this.prodacts$ = this.getAll();
+    this.getCount().then((data) => (this.amountOfProducts = data));
   }
 
   genFireId(): string {
@@ -145,5 +149,11 @@ export class FBaseService {
     const dbInstance = collection(this.firestore, 'shoesProducts');
     const q = query(dbInstance, where('title_arr', 'array-contains', str));
     return collectionData(q, { idField: 'docId' }) as Observable<Product[]>;
+  }
+
+  private async getCount(): Promise<number> {
+    const coll = collection(this.firestore, 'shoesProducts');
+    const snapshot = await getCountFromServer(coll);
+    return snapshot.data().count;
   }
 }
