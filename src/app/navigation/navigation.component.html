@@ -13,6 +13,16 @@
     </a>
 
     <div class="menuBtn d-flex gap-1">
+      <select
+        class="form-select w-auto"
+        aria-label="Currency"
+        #currencyChange="ngModel"
+        [(ngModel)]="currentCurrency"
+        (change)="changeCurrency()">
+        <option selected value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="UAH">UAH</option>
+      </select>
       <!--  -->
       <button class="logout-button" *ngIf="authService.checkAuthentication()" (click)="authService.logout()">
         Logout

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from '../types/products';
 import { FBaseService } from '../services/fireStore/fbase.service';
 import { Observable } from 'rxjs';
@@ -8,10 +8,11 @@ import { Router } from '@angular/router';
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainPageComponent implements OnInit {
   private productsOrigin?: Observable<Product[]>;
+
+  currentCurrency?: Observable<string>;
 
   prod$?: Observable<Product[]>;
 
@@ -19,7 +20,7 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.productsOrigin = this.prod$ = this.prodService.getAllProducts();
-    // this.prodService.getCount();
+    this.currentCurrency = this.prodService.currentCurrency;
   }
 
   submit(value: string) {

@@ -20,7 +20,7 @@
         [rating]="prod!.rating"
         [readOnly]="true"></star-rating
       ><br />
-      <div class="price">{{ prod.price | currencyRlt : prod.currency }}</div>
+      <div class="price">{{ prod.price | currencyRlt : (currentCurrency | async) }}</div>
       <div class="sizeContainer">
         <div class="size" (click)="selectSize($event.target)">US 8</div>
         <div class="size" (click)="selectSize($event.target)">US 9</div>

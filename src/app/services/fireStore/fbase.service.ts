@@ -12,6 +12,7 @@ import {
   where,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { CurrencyStateService } from '../currency-State/currency-state.service';
 /**
 
  * This is an Angular service that provides functionality for interacting with Firebase Firestore. It encapsulates methods related to retrieving, adding, and retrieving all products from the Firestore database.
@@ -25,10 +26,11 @@ import { Observable } from 'rxjs';
 export class FBaseService {
   prodacts$: Observable<Product[]>;
 
-  amountOfProducts?: number;
+  currentCurrency?: Observable<string>;
 
-  constructor(private firestore: Firestore) {
+  constructor(private firestore: Firestore, private currencyState: CurrencyStateService) {
     this.prodacts$ = this.getAll();
+    this.currentCurrency = this.currencyState.selectedCurrency$;
   }
 
   genFireId(): string {

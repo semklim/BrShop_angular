@@ -1,18 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserMemoryService } from '../AdminServices/user-memory.service';
 import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { CartItemsService } from '../services/cart-items.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { CurrencyStateService } from '../services/currency-State/currency-state.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css'],
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent implements OnInit, OnDestroy {
+  private subCurrency?: Subscription;
+
   amountProductsInCart?: Observable<number>;
+
+  currentCurrency = 'USD';
 
   showAutoBox = false;
 
@@ -28,11 +33,13 @@ export class NavigationComponent implements OnInit {
     private router: Router,
     public authService: UserMemoryService,
     private angularFireAuth: Auth,
+    private currencyService: CurrencyStateService,
     public cartService: CartItemsService,
   ) {}
 
   ngOnInit(): void {
     this.amountProductsInCart = this.cartService.getAmountProductsInCart();
+    this.subCurrency = this.currencyService.selectedCurrency$.subscribe((code) => (this.currentCurrency = code));
   }
 
   toggleAutoBox() {
@@ -65,5 +72,14 @@ export class NavigationComponent implements OnInit {
     } else {
       console.log('false');
     }
+  }
+
+  changeCurrency() {
+    this.currencyService.setNewCurrency(this.currentCurrency);
+    localStorage.setItem('webShopPrevUsedCurrency', this.currentCurrency);
+  }
+
+  ngOnDestroy(): void {
+    this.subCurrency?.unsubscribe();
   }
 }

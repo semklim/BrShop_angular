@@ -10,6 +10,8 @@ import { Product } from 'src/app/types/products';
 export class CardComponent {
   @Input() product?: Product;
 
+  @Input() currency: string | null = null;
+
   @Input() cardMaxHeight = 350;
 
   @Output() clickToProduct = new EventEmitter();

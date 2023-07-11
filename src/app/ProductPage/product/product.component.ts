@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Product } from '../../types/products';
 import { FBaseService } from 'src/app/services/fireStore/fbase.service';
 import { Review } from 'src/app/types/review';
@@ -19,6 +19,8 @@ export class ProductComponent implements OnInit, OnDestroy {
   private readonly wordsPattern = new RegExp(this.wordsToReplace.join('|'), 'gi');
 
   private docId?: string;
+
+  currentCurrency?: Observable<string>;
 
   update: any = '';
 
@@ -43,6 +45,8 @@ export class ProductComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.currentCurrency = this.prodService.currentCurrency;
+
     this.routeSubscription = this.route.params.subscribe((params) => {
       this.docId = params['id'];
       this.prodService.getProduct(this.docId!).then((data) => (this.prod = data));

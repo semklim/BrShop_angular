@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { CartItemsService } from 'src/app/services/cart-items.service';
 import { FBaseService } from 'src/app/services/fireStore/fbase.service';
 import { Product } from 'src/app/types/products';
@@ -10,6 +11,8 @@ import { Product } from 'src/app/types/products';
 })
 export class CartItemsComponent implements OnInit {
   private prods: string[] | Product[] = [];
+
+  currentCurrency?: Observable<string>;
 
   size: string[] | undefined;
 
@@ -25,7 +28,9 @@ export class CartItemsComponent implements OnInit {
 
   n = 0;
 
-  constructor(private products: CartItemsService, private fService: FBaseService, private sizes: CartItemsService) {}
+  constructor(private products: CartItemsService, private fService: FBaseService, private sizes: CartItemsService) {
+    this.currentCurrency = this.fService.currentCurrency;
+  }
 
   ngOnInit() {
     const productPromises: any[] = [];
