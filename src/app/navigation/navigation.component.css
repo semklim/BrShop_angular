@@ -5,8 +5,6 @@
   border-bottom: 1px solid #cfd4d9;
 }
 
-/* font-family: 'Dancing Script', cursive; */
-
 nav {
   --bs-border-color: rgb(245, 245, 245);
 }
@@ -93,7 +91,6 @@ nav {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* width: 300px; */
   border: 1px solid;
   background-color: white;
   z-index: 2;
@@ -126,12 +123,9 @@ input {
   font-family: 'Dancing Script', cursive;
   font-size: 32px;
   font-weight: 900;
-  /* border: 1px solid; */
   border-radius: 5px;
   padding: 5px 10px;
 }
-
-/* //// */
 
 button {
   padding: 0;
@@ -146,7 +140,6 @@ button {
   position: fixed;
   top: 50%;
   left: 50%;
-  /* width: 30vw; */
   padding: 30px;
   transform: translate(-50%, -50%);
   background: rgba(0, 0, 0, 0.8);

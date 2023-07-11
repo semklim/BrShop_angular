@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserMemoryService } from '../AdminServices/user-memory.service';
 import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
@@ -13,6 +13,17 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./navigation.component.css'],
 })
 export class NavigationComponent implements OnInit, OnDestroy {
+  @HostListener('document:click', ['$event.target'])
+  collapseNavbar(el: HTMLElement): void {
+    if (el.className.includes('currencySelector')) return;
+
+    const navbar = document.getElementById('navbarNavDropdown');
+    if (navbar?.classList.contains('show')) {
+      navbar.classList.remove('show');
+      navbar.parentElement?.classList.toggle('collapsed');
+    }
+  }
+
   private subCurrency?: Subscription;
 
   amountProductsInCart?: Observable<number>;
@@ -77,6 +88,12 @@ export class NavigationComponent implements OnInit, OnDestroy {
   changeCurrency() {
     this.currencyService.setNewCurrency(this.currentCurrency);
     localStorage.setItem('webShopPrevUsedCurrency', this.currentCurrency);
+
+    const navbar = document.getElementById('navbarNavDropdown');
+    if (navbar?.classList.contains('show')) {
+      navbar.classList.remove('show');
+      navbar.parentElement?.classList.toggle('collapsed');
+    }
   }
 
   ngOnDestroy(): void {
