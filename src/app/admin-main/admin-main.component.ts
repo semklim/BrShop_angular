@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
 import { FBaseService } from '../services/fireStore/fbase.service';
 import { Observable } from 'rxjs';
@@ -12,6 +12,8 @@ import { CloudStoreService } from '../services/fireCloudStore/cloudStore.service
   styleUrls: ['./admin-main.component.css'],
 })
 export class AdminMainComponent implements OnInit {
+  @ViewChild('addFiles') addFiles?: ElementRef<HTMLInputElement>;
+
   constructor(private fBaseService: FBaseService, private cloudService: CloudStoreService) {
     this.activeBlock = 'add';
   }
@@ -200,6 +202,7 @@ export class AdminMainComponent implements OnInit {
         object.title_arr = this.fBaseService.titlePrepareForSearch(object.title);
         object.imagesUrls = await this.cloudService.uploadFile(this.selectedFiles, object.category, object.title);
         await this.fBaseService.addData(object);
+        this.addFiles!.nativeElement.value = '';
         form.reset();
         this.showErrorMessage = false;
         this.selectedFiles = [];
