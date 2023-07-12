@@ -109,6 +109,17 @@ export class NavigationComponent implements OnInit, OnDestroy {
     }
   }
 
+  toggleDarkMode() {
+    const themedElements = document.querySelectorAll('.themed');
+    for (let i = 0; i < themedElements.length; i++) {
+      if (themedElements[i].hasAttribute('dark')) {
+        themedElements[i].removeAttribute('dark');
+      } else {
+        themedElements[i].setAttribute('dark', '');
+      }
+    }
+  }
+
   ngOnDestroy(): void {
     this.subCurrency?.unsubscribe();
   }
