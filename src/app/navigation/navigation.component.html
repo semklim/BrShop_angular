@@ -11,6 +11,18 @@
         title="WebShop"
         width="56" />
     </a>
+    <div class="currencyChooser p-0">
+      <select
+        class="form-select w-auto currencySelector"
+        aria-label="Currency"
+        #currencyChange="ngModel"
+        [(ngModel)]="currentCurrency"
+        (change)="changeCurrency()">
+        <option selected value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="UAH">UAH</option>
+      </select>
+    </div>
     <button
       class="navbar-toggler m-3"
       type="button"
@@ -22,26 +34,14 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav menuBtn flex-row w-100 justify-content-between p-0">
-        <li class="nav-item currencyChooser p-0">
+      <ul class="navbar-nav menuBtn flex-row w-100 justify-content-lg-end justify-content-center p-0">
+        <!--  -->
+        <li class="nav-item d-flex align-items-center gap-3 controlBtns p-0">
           <input type="checkbox" id="toggle_checkbox" />
           <label for="toggle_checkbox">
             <div id="star"></div>
             <div id="moon"></div>
           </label>
-          <select
-            class="form-select w-auto currencySelector"
-            aria-label="Currency"
-            #currencyChange="ngModel"
-            [(ngModel)]="currentCurrency"
-            (change)="changeCurrency()">
-            <option selected value="USD">USD</option>
-            <option value="EUR">EUR</option>
-            <option value="UAH">UAH</option>
-          </select>
-        </li>
-        <!--  -->
-        <li class="nav-item controlBtns p-0">
           <button class="logout-button" *ngIf="authService.checkAuthentication()" (click)="authService.logout()">
             Logout
           </button>
