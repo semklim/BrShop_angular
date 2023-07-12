@@ -1,3 +1,5 @@
+@import '../../styles.css';
+
 :host {
   position: sticky;
   top: 0;
@@ -6,7 +8,9 @@
 }
 
 nav {
-  --bs-border-color: rgb(245, 245, 245);
+  background-color: var(--header-bgc);
+  /* --bs-border-color: var(--border-color); */
+  border-bottom: 1px solid var(--border-color);
 }
 
 .navMaxHeigth {

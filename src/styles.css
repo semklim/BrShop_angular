@@ -1,13 +1,15 @@
 :root {
   --body-bgc: white;
   --font-color: black;
-  --border-color: black;
+  --border-color: rgb(245, 245, 245);
+  --header-bgc: white;
 }
 
 [dark] {
   --body-bgc: rgb(36, 36, 36);
   --font-color: white;
-  --border-color: rgb(161, 161, 161);
+  --border-color: rgb(30, 30, 30);
+  --header-bgc: rgb(24, 24, 24);
 }
 
 html,
