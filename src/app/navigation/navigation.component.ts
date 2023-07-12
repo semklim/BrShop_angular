@@ -15,9 +15,11 @@ import { NgForm } from '@angular/forms';
 export class NavigationComponent implements OnInit, OnDestroy {
   @HostListener('document:click', ['$event.target'])
   collapseNavbar(el: HTMLElement): void {
-    if (el.className.includes('currencySelector')) return;
-
     const navbar = document.getElementById('navbarNavDropdown');
+    const arr = Object.values(el.classList);
+    if (arr.some((className) => className === 'currencySelector') || this.showAutoBox) {
+      return;
+    }
     if (navbar?.classList.contains('show')) {
       navbar.classList.remove('show');
       navbar.parentElement?.classList.toggle('collapsed');
@@ -59,6 +61,11 @@ export class NavigationComponent implements OnInit, OnDestroy {
 
   hideAutoBox() {
     this.showAutoBox = false;
+    const navbar = document.getElementById('navbarNavDropdown');
+    if (navbar?.classList.contains('show')) {
+      navbar.classList.remove('show');
+      navbar.parentElement?.classList.toggle('collapsed');
+    }
   }
 
   submit(f: NgForm) {
@@ -79,6 +86,12 @@ export class NavigationComponent implements OnInit, OnDestroy {
         this.router.navigateByUrl('/admin');
         this.hideAutoBox();
         f.reset();
+
+        const navbar = document.getElementById('navbarNavDropdown');
+        if (navbar?.classList.contains('show')) {
+          navbar.classList.remove('show');
+          navbar.parentElement?.classList.toggle('collapsed');
+        }
       }
     } else {
       console.log('false');
