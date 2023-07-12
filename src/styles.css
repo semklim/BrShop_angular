@@ -1,3 +1,15 @@
+:root {
+  --body-bgc: white;
+  --font-color: black;
+  --border-color: black;
+}
+
+[dark] {
+  --body-bgc: rgb(36, 36, 36);
+  --font-color: white;
+  --border-color: rgb(161, 161, 161);
+}
+
 html,
 body {
   width: 100%;
