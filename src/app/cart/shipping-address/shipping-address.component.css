@@ -1,3 +1,5 @@
+@import '../../../styles.css';
+
 @media (max-width: 310px) {
   :host {
     min-height: calc(100vh - 125px - 50px);
@@ -10,6 +12,7 @@
 }
 
 .address {
+  background-color: var(--body-bgc);
   height: 140vh;
   width: 44vw;
   border-right: 1px rgb(240, 239, 239) solid;
@@ -17,6 +20,7 @@
 }
 
 .contact {
+  color: var(--font-color);
   font-size: 18px;
   margin-bottom: 3vh;
 }
@@ -64,6 +68,7 @@
 
 .checkbox-input:checked ~ .checkbox-custom:before {
   background-color: #333;
+  z-index: 0;
 }
 
 .checkbox-custom:after {
@@ -128,12 +133,12 @@
 }
 
 .notificationMsg {
-  color: white;
+  color: var(--body-bgc);
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: black;
+  background-color: var(--font-color);
   padding: 10px 20px;
   border-radius: 4px;
 }
