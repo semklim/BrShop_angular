@@ -1,18 +1,18 @@
 <div class="notificationMsg" *ngIf="showNotification">Item Added</div>
-<button class="backBtn" [routerLink]="''">
+<button class="backBtn themed" [routerLink]="''">
   <svg width="10px" height="10px" class="arrowSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.75 5.09">
     <title>Caret</title>
     <polygon points="3.88 0 7.75 4.43 7 5.09 3.88 1.52 .75 5.09 0 4.43 3.88 0"></polygon>
   </svg>
   BACK TO SHOES
 </button>
-<section class="productPage" *ngIf="prod; else loading">
+<section class="productPage themed" *ngIf="prod; else loading">
   <div class="conatiner">
     <div class="product">
       <div class="get"><img class="prodImg" [src]="prod!.imagesUrls[0]" alt="" /><img /></div>
     </div>
     <div class="info">
-      <div class="prodName get">{{ prod!.title }}</div>
+      <div class="themed prodName get">{{ prod!.title }}</div>
       <star-rating
         class="rating"
         [showHalfStars]="true"
@@ -20,7 +20,7 @@
         [rating]="prod!.rating"
         [readOnly]="true"></star-rating
       ><br />
-      <div class="price">{{ prod.price | currencyRlt : (currentCurrency | async) }}</div>
+      <div class="price themed">{{ prod.price | currencyRlt : (currentCurrency | async) }}</div>
       <div class="sizeContainer">
         <div class="size" (click)="selectSize($event.target)">US 8</div>
         <div class="size" (click)="selectSize($event.target)">US 9</div>

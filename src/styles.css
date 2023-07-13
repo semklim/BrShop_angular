@@ -5,6 +5,7 @@
   --header-bgc: white;
   --placeholder-color: #808080;
   --cart-borders: rgb(240, 239, 239);
+  --review-bgc: white;
 }
 
 [dark] {
@@ -14,6 +15,7 @@
   --header-bgc: rgb(24, 24, 24);
   --placeholder-color: rgb(201, 201, 201);
   --cart-borders: #333;
+  --review-bgc: rgb(90, 90, 90);
 }
 
 html,

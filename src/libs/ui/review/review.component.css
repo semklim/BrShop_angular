@@ -1,19 +1,30 @@
+@import '../../../styles.css';
+
+.fullReview {
+  background-color: var(--body-bgc);
+}
+
 .card {
   border-radius: 0;
-  border: 1px solid black;
-  background-color: white;
+  border: 1px solid var(--border-color);
+  background-color: var(--review-bgc);
 }
 
 .form-control {
   border-radius: 0;
-  color: black;
+  color: var(--border-color);
   border-left: 0 !important;
   border-top: 0 !important;
   border-right: 0 !important;
   border-bottom-width: 1px !important;
   border-bottom-style: solid !important;
-  border-color: #757575;
+  border-color: var(--border-color);
   margin-bottom: 20px;
+  background-color: var(--review-bgc);
+}
+
+.form-control::placeholder {
+  color: var(--placeholder-color);
 }
 
 .form-control:focus {
