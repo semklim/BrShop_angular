@@ -28,6 +28,7 @@
 .shippingSpan {
   right: 230px;
   top: 1;
+  float: right;
 }
 
 .subtotalSpan {
