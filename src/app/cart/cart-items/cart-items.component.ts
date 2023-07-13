@@ -95,6 +95,7 @@ export class CartItemsComponent implements OnInit {
     }
     this.updateSubtotalPrice(this.filteredProds);
     this.updateShippingPrice();
+    this.totalPrice = this.subtotalPrice + this.shippingPrice;
     localStorage.setItem('cartSizes', JSON.stringify(this.size));
     localStorage.setItem('cartItems', JSON.stringify(this.filteredProds));
     localStorage.setItem('subtotalPrice', this.subtotalPrice.toString());
@@ -124,6 +125,7 @@ export class CartItemsComponent implements OnInit {
     }
     this.updateSubtotalPrice(this.filteredProds);
     this.updateShippingPrice();
+    this.totalPrice = this.subtotalPrice + this.shippingPrice;
     localStorage.setItem('cartItems', JSON.stringify(this.filteredProds));
   }
 
@@ -133,6 +135,7 @@ export class CartItemsComponent implements OnInit {
     this.products.amountProducts$.next(count + 1);
     this.updateSubtotalPrice(this.filteredProds);
     this.updateShippingPrice();
+    this.totalPrice = this.subtotalPrice + this.shippingPrice;
     localStorage.setItem('cartItems', JSON.stringify(this.filteredProds));
   }
 }
