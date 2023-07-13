@@ -3,7 +3,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({ name: 'currencyRlt' })
 export class CurrencyRltPipe implements PipeTransform {
   transform(value: number | undefined, cur: string | null = 'USD', local = 'de-DE'): string | void {
-    if (value) {
+    if (typeof value === 'number') {
       switch (cur) {
         case 'UAH': {
           const newPrice = value * 36.8;
