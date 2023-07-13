@@ -1,10 +1,11 @@
-<section>
+<section class="mainPage themed">
   <div class="formSearch form-sticky w-100">
     <app-search class="d-flex w-100 justify-content-center" (searchChange)="submit($event)"></app-search>
   </div>
   <div class="py-4 px-3 px-lg-4 card_container">
     <div class="row justify-content-center gap-4 dopMargin" *ngIf="prod$ | async as prod; else loading">
       <app-card
+        class="appCard"
         style="flex: 0 1 350px"
         *ngFor="let productRef of prod"
         [product]="productRef"

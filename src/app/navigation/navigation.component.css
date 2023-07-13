@@ -4,7 +4,6 @@
   position: sticky;
   top: 0;
   z-index: 3;
-  border-bottom: 1px solid #cfd4d9;
 }
 
 nav {
@@ -104,6 +103,10 @@ nav {
   flex-direction: column;
 }
 
+.container-fluid {
+  border-bottom: 1px solid var(--header-border);
+}
+
 .button-box {
   display: flex;
   justify-content: center;
@@ -120,6 +123,12 @@ input {
   margin-top: 5px;
   margin-bottom: 5px;
   width: 100%;
+}
+
+.currencySelector {
+  background-color: var(--review-bgc);
+  border-color: var(--currency-border);
+  color: var(--font-color);
 }
 
 .logout-button {
