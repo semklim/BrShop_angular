@@ -9,8 +9,7 @@
 
 nav {
   background-color: var(--header-bgc);
-  /* --bs-border-color: var(--border-color); */
-  border-bottom: 15px solid var(--border-color);
+  --bs-border-color: var(--border-color);
 }
 
 .navMaxHeigth {
