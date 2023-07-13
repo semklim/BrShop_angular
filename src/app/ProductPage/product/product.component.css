@@ -1,6 +1,12 @@
+@import '../../../styles.css';
+
 :host {
   width: 100%;
   min-height: 100vh;
+}
+
+.productPage {
+  background-color: var(--body-bgc);
 }
 
 .backBtn {
@@ -9,8 +15,8 @@
   height: 6.5vh;
   border: none;
   text-align: left;
-  background-color: white;
-  border-bottom: 1px solid rgb(245, 245, 245);
+  background-color: var(--body-bgc);
+  border-bottom: 1px solid var(--cart-borders);
   color: rgb(117 117 117 / var(--tw-text-opacity));
   --tw-text-opacity: 1;
   font-size: 13px;
@@ -20,11 +26,11 @@
 }
 
 .backBtn:hover .arrowSvg {
-  fill: black;
+  fill: var(--font-color);
 }
 
 .backBtn:hover {
-  color: black;
+  color: var(--font-color);
 }
 
 .arrowSvg {
@@ -51,6 +57,7 @@
   margin-top: 12vh;
   width: 35vw;
   margin-bottom: 5vh;
+  color: var(--font-color);
 }
 
 .prodImg {
@@ -79,6 +86,7 @@
   margin-top: 3vh;
   font-weight: 600;
   font-size: 20px;
+  color: var(--font-color);
 }
 
 .sizeContainer {
@@ -90,6 +98,7 @@
   border-bottom: #f1f1f1 1px solid;
   height: 9vh;
   border-top: #f1f1f1 1px solid;
+  color: var(--font-color);
 }
 
 .size {
@@ -117,6 +126,7 @@
   align-items: center;
   justify-content: flex-start;
   font-weight: 600;
+  color: var(--font-color);
 }
 
 .addToCart {
@@ -149,6 +159,7 @@
 .description {
   width: 35vw;
   font-weight: 500;
+  color: var(--font-color);
 }
 
 .notificationMsg {

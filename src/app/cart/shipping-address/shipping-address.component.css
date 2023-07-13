@@ -15,7 +15,7 @@
   background-color: var(--body-bgc);
   height: 140vh;
   width: 44vw;
-  border-right: 1px rgb(240, 239, 239) solid;
+  border-right: 1px var(--cart-borders) solid;
   margin-left: 14vw;
 }
 
@@ -26,12 +26,17 @@
 }
 
 .email {
+  background-color: var(--body-bgc);
   font-size: 12px;
   width: 38vw;
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--border-color);
   outline: none;
   margin-bottom: 2vh;
+}
+
+.email::placeholder {
+  color: var(--placeholder-color);
 }
 
 .checkbox-container {
@@ -50,7 +55,7 @@
   position: relative;
   width: 18px;
   height: 18px;
-  border: 1px solid #000000;
+  border: 1px solid var(--border-color);
   border-radius: 0px;
   margin-right: 10px;
 }
@@ -60,14 +65,14 @@
   position: absolute;
   width: 17px;
   height: 17px;
-  background-color: #fff;
+  background-color: var(--body-bgc);
   border-radius: 0px;
   transition: background-color 0.3s ease;
   z-index: -1;
 }
 
 .checkbox-input:checked ~ .checkbox-custom:before {
-  background-color: #333;
+  background-color: var(--border-color);
   z-index: 0;
 }
 
@@ -79,6 +84,7 @@
   width: 8px;
   height: 8px;
   border: solid #fff;
+  border-color: var(--body-bgc);
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
   opacity: 0;
@@ -92,21 +98,30 @@
 .ship {
   font-size: 18px;
   margin-bottom: 0.5vh;
+  color: var(--font-color);
 }
 
 .input {
   font-size: 14px;
   width: 38vw;
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--border-color);
   outline: none;
   margin-bottom: 5vh;
+  background-color: var(--body-bgc);
+}
+
+.input::placeholder {
+  color: var(--placeholder-color);
 }
 
 .country {
   width: 38vw;
   height: 5.5vh;
   margin-bottom: 5vh;
+  background-color: var(--body-bgc);
+  border-color: var(--border-color);
+  color: var(--font-color);
 }
 
 .continue {
@@ -141,4 +156,8 @@
   background-color: var(--font-color);
   padding: 10px 20px;
   border-radius: 4px;
+}
+
+.emailNotif {
+  color: var(--placeholder-color);
 }

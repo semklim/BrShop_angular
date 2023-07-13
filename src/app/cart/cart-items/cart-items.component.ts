@@ -66,10 +66,18 @@ export class CartItemsComponent implements OnInit {
     for (let i = 0; i < mass.length; i++) {
       this.subtotalPrice = this.subtotalPrice + mass[i].price * mass[i].amount!;
     }
-    if (this.subtotalPrice >= 100) {
+    if (this.subtotalPrice >= 200) {
       this.shippingPrice = 0;
     }
     this.totalPrice = this.subtotalPrice + this.shippingPrice;
+  }
+
+  updateShippingPrice() {
+    if (this.totalPrice >= 200) {
+      this.shippingPrice = 0;
+    } else {
+      this.shippingPrice = 10;
+    }
   }
 
   deleteProduct(index: number, prod: Product) {
@@ -86,6 +94,8 @@ export class CartItemsComponent implements OnInit {
       }
     }
     this.updateSubtotalPrice(this.filteredProds);
+    this.updateShippingPrice();
+    this.totalPrice = this.subtotalPrice + this.shippingPrice;
     localStorage.setItem('cartSizes', JSON.stringify(this.size));
     localStorage.setItem('cartItems', JSON.stringify(this.filteredProds));
     localStorage.setItem('subtotalPrice', this.subtotalPrice.toString());
@@ -114,6 +124,8 @@ export class CartItemsComponent implements OnInit {
       }
     }
     this.updateSubtotalPrice(this.filteredProds);
+    this.updateShippingPrice();
+    this.totalPrice = this.subtotalPrice + this.shippingPrice;
     localStorage.setItem('cartItems', JSON.stringify(this.filteredProds));
   }
 
@@ -122,6 +134,8 @@ export class CartItemsComponent implements OnInit {
     const count = this.products.amountProducts$.getValue();
     this.products.amountProducts$.next(count + 1);
     this.updateSubtotalPrice(this.filteredProds);
+    this.updateShippingPrice();
+    this.totalPrice = this.subtotalPrice + this.shippingPrice;
     localStorage.setItem('cartItems', JSON.stringify(this.filteredProds));
   }
 }
