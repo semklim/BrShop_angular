@@ -1,9 +1,9 @@
 @import '../../../styles.css';
 
-:host {
+/* :host {
   width: 100%;
   min-height: 100vh;
-}
+} */
 
 .productPage {
   background-color: var(--body-bgc);
@@ -63,15 +63,13 @@
 .prodImg {
   background-color: #f1f1f1;
   height: 100vh;
-  width: 40.1vw;
+  width: 37.1vw;
   image-rendering: crisp-edges;
 }
 
 .button {
-  position: absolute;
-  bottom: 5vh;
-  width: 40vw;
   padding-left: 0vw;
+  margin-top: 3vh;
 }
 
 .conatiner {
@@ -141,7 +139,7 @@
 }
 
 .CHECKOUT {
-  margin-left: 20vw;
+  margin-left: 2vw;
   width: 17vw;
   height: 5.5vh;
   border: #000000 solid 1px;
@@ -171,4 +169,129 @@
   background-color: black;
   padding: 10px 20px;
   border-radius: 4px;
+}
+
+@media (max-width: 1250px) {
+  .productPage {
+    height: 110vh;
+  }
+}
+
+@media (max-width: 912px) {
+  .productPage {
+    height: 120vh;
+  }
+}
+
+@media (max-width: 823px) {
+  .productPage {
+    height: 140vh;
+  }
+}
+
+@media (max-width: 597px) {
+  .conatiner {
+    flex-direction: column;
+  }
+
+  .product {
+    width: 100%;
+    text-align: center;
+    display: block;
+  }
+
+  .productPage {
+    height: 200vh;
+  }
+
+  .prodImg {
+    width: 80vw;
+    height: 90vh;
+  }
+
+  .get {
+    margin-bottom: 2vh;
+    height: 90vh;
+  }
+
+  .info {
+    padding-left: 0;
+    width: 100%;
+    display: block;
+    margin-bottom: 20vh;
+  }
+
+  .prodName {
+    margin-left: 3vw;
+    font-size: 4vh;
+    font-weight: 700;
+    margin-top: 0vh;
+    margin-bottom: 1vh;
+    width: 100%;
+  }
+
+  .rating {
+    margin-left: 3vw;
+  }
+
+  .price {
+    margin-left: 3vw;
+    width: 100%;
+  }
+
+  .size {
+    margin-left: 3vw;
+    width: 100%;
+  }
+
+  .notification {
+    margin-left: 3vw;
+    width: 100%;
+  }
+
+  .description {
+    margin-left: 3vw;
+    width: 100%;
+  }
+
+  .button {
+    position: static;
+    width: 40%;
+    margin-top: 2vh;
+  }
+
+  .addToCart {
+    width: 40%;
+    margin-left: 3vw;
+  }
+
+  .CHECKOUT {
+    float: right;
+    margin-right: 3vw;
+    margin-left: 0vw;
+  }
+}
+
+@media (max-width: 440px) {
+  .prodImg {
+    width: 85vw;
+    height: 85vh;
+  }
+
+  .get {
+    margin-bottom: 2vh;
+    height: 85vh;
+  }
+}
+
+@media (max-width: 400px) {
+  .prodImg {
+    width: 100vw;
+    height: 75vh;
+  }
+
+  .get {
+    margin-bottom: 2vh;
+    height: 75vh;
+  }
 }
