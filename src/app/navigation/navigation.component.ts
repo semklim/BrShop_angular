@@ -51,6 +51,14 @@ export class NavigationComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    const theme = localStorage.getItem('webShopThemeVariant');
+    const switcher = <HTMLInputElement | null>document.getElementById('toggle_checkbox');
+    if (theme !== null && theme === 'dark') {
+      document.body.setAttribute(theme, '');
+      if (switcher !== null) {
+        switcher.checked = true;
+      }
+    }
     this.amountProductsInCart = this.cartService.getAmountProductsInCart();
     this.subCurrency = this.currencyService.selectedCurrency$.subscribe((code) => (this.currentCurrency = code));
   }
@@ -113,8 +121,10 @@ export class NavigationComponent implements OnInit, OnDestroy {
     const themedElements = document.body;
     if (themedElements.hasAttribute('dark')) {
       themedElements.removeAttribute('dark');
+      localStorage.setItem('webShopThemeVariant', '');
     } else {
       themedElements.setAttribute('dark', '');
+      localStorage.setItem('webShopThemeVariant', 'dark');
     }
   }
 
