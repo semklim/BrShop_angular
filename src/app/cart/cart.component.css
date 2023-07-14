@@ -15,3 +15,11 @@
 .cart {
   background-color: var(--body-bgc);
 }
+
+@media (max-width: 360px) {
+  .notification {
+    font-size: 74px;
+    margin-left: 2vw;
+    padding-right: 2vw;
+  }
+}

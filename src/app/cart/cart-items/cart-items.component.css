@@ -50,12 +50,12 @@
 .item {
   box-sizing: border-box;
   margin-bottom: 2vh;
-  width: 150%;
+  width: 100%;
   height: 17vh;
 }
 
 .itemImg {
-  width: 17%;
+  width: 27%;
   height: 100%;
   vertical-align: top;
   float: left;
@@ -107,4 +107,119 @@
 .btns {
   display: flex;
   flex-wrap: nowrap;
+}
+
+@media (max-width: 1200px) {
+  .itemImg {
+    width: 30%;
+    height: 110%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .itemImg {
+    width: 34%;
+    height: 110%;
+  }
+}
+
+@media (max-width: 800px) {
+  .amtBtn {
+    width: 2.2vw;
+    height: 2.2vw;
+  }
+}
+
+@media (max-width: 620px) {
+  .amtBtn {
+    width: 3vw;
+    height: 3vw;
+  }
+  .senc {
+    font-size: 13px;
+  }
+  .subtotalSpan {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 620px) {
+  .prices {
+    width: 33vw;
+  }
+}
+
+@media (max-width: 530px) {
+  .prices {
+    width: 37vw;
+  }
+  .amtBtn {
+    width: 4.2vw;
+    height: 4.2vw;
+  }
+}
+
+@media (max-width: 530px) {
+  .item {
+    height: 20vh;
+  }
+  .itemImg {
+    width: 34%;
+    height: 90%;
+  }
+}
+
+@media (max-width: 530px) {
+  .item {
+    height: 54vh;
+  }
+  .itemImg {
+    width: 95%;
+    height: 70%;
+  }
+  .itemName {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 350px) {
+  .item {
+    height: 49vh;
+  }
+  .itemImg {
+    width: 95%;
+    height: 70%;
+  }
+  .itemName {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 300px) {
+  .senc {
+    font-size: 11px;
+  }
+  .subtotalSpan {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 250px) {
+  .item {
+    height: 46vh;
+  }
+  .itemImg {
+    width: 95%;
+    height: 60%;
+  }
+  .amtBtn {
+    width: 6.2vw;
+    height: 6.2vw;
+  }
+  .senc {
+    font-size: 9px;
+  }
+  .subtotalSpan {
+    font-size: 9px;
+  }
 }
