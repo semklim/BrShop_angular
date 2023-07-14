@@ -73,7 +73,7 @@
 }
 
 .conatiner {
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   flex-direction: row;
 }
@@ -171,7 +171,7 @@
   border-radius: 4px;
 }
 
-@media (max-width: 1250px) {
+/* @media (max-width: 1250px) {
   .productPage {
     height: 110vh;
   }
@@ -187,7 +187,7 @@
   .productPage {
     height: 140vh;
   }
-}
+} */
 
 @media (max-width: 597px) {
   .conatiner {
@@ -199,10 +199,10 @@
     text-align: center;
     display: block;
   }
-
+  /* 
   .productPage {
     height: 200vh;
-  }
+  } */
 
   .prodImg {
     width: 80vw;
@@ -218,7 +218,7 @@
     padding-left: 0;
     width: 100%;
     display: block;
-    margin-bottom: 20vh;
+    /* margin-bottom: 20vh; */
   }
 
   .prodName {
