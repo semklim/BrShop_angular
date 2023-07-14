@@ -110,13 +110,11 @@ export class NavigationComponent implements OnInit, OnDestroy {
   }
 
   toggleDarkMode() {
-    const themedElements = document.querySelectorAll('.themed');
-    for (let i = 0; i < themedElements.length; i++) {
-      if (themedElements[i].hasAttribute('dark')) {
-        themedElements[i].removeAttribute('dark');
-      } else {
-        themedElements[i].setAttribute('dark', '');
-      }
+    const themedElements = document.body;
+    if (themedElements.hasAttribute('dark')) {
+      themedElements.removeAttribute('dark');
+    } else {
+      themedElements.setAttribute('dark', '');
     }
   }
 
