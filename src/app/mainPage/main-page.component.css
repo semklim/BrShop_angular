@@ -9,12 +9,6 @@
   }
 }
 
-@media (orientation: landscape) and (max-width: 900px) {
-  .form-sticky {
-    position: fixed !important;
-  }
-}
-
 .mainPage {
   background-color: var(--body-bgc);
 }
