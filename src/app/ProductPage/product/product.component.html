@@ -39,8 +39,10 @@
   <app-review [reviewData]="prod!.reviews" (reviewChange)="refreshReviews($event)"></app-review>
 </section>
 <ng-template #productIsNull>
-  <h1>Sorry we don`t have this product.</h1>
-  <p>Please back to <a [routerLink]="''">main page</a></p>
+  <div class="productIsNotFound">
+    <h1>Sorry we don`t have this product.</h1>
+    <p>Please back to <a [routerLink]="''">main page</a></p>
+  </div>
 </ng-template>
 
 <ng-template #loading>

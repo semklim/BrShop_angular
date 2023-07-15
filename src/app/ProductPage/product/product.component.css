@@ -1,9 +1,10 @@
 @import '../../../styles.css';
 
-/* :host {
+.productIsNotFound,
+.loadingPage {
   width: 100%;
-  min-height: 100vh;
-} */
+  height: calc(100vh - 182.45px);
+}
 
 .productPage {
   background-color: var(--body-bgc);
