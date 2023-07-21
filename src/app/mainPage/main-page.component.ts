@@ -20,6 +20,7 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.productsOrigin = this.prod$ = this.prodService.getAllProducts();
+    // this.prodService.getProductsByCategory('Jordan').subscribe((data) => console.log(data));
     this.currentCurrency = this.prodService.currentCurrency;
   }
 

@@ -26,6 +26,8 @@ import { CurrencyStateService } from '../currency-State/currency-state.service';
 export class FBaseService {
   prodacts$: Observable<Product[]>;
 
+  dbInstance = collection(this.firestore, 'shoesProducts');
+
   currentCurrency?: Observable<string>;
 
   constructor(private firestore: Firestore, private currencyState: CurrencyStateService) {
@@ -106,8 +108,7 @@ export class FBaseService {
   @returns {Observable<Product[]>} An Observable that emits an array of product objects.
   */
   private getAll(): Observable<Product[]> {
-    const dbInstance = collection(this.firestore, 'shoesProducts');
-    return collectionData(dbInstance, { idField: 'docId' }) as Observable<Product[]>;
+    return collectionData(this.dbInstance, { idField: 'docId' }) as Observable<Product[]>;
   }
 
   titlePrepareForSearch(title: string): Array<string> {
@@ -139,8 +140,13 @@ export class FBaseService {
 
   filterProductsFromServe(str: string): Observable<Product[]> {
     str = str.toUpperCase();
-    const dbInstance = collection(this.firestore, 'shoesProducts');
-    const q = query(dbInstance, where('title_arr', 'array-contains', str));
+    const q = query(this.dbInstance, where('title_arr', 'array-contains', str));
+    return collectionData(q, { idField: 'docId' }) as Observable<Product[]>;
+  }
+
+  getProductsByCategory(category: string): Observable<Product[]> {
+    const str = category[0].toUpperCase() + category.slice(1).toLowerCase();
+    const q = query(this.dbInstance, where('category', '==', str));
     return collectionData(q, { idField: 'docId' }) as Observable<Product[]>;
   }
 }
