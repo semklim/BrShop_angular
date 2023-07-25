@@ -282,6 +282,12 @@
   .buttonsAdmin {
     width: 20%;
   }
+
+  .productItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 @media (min-width: 820px) {
@@ -411,6 +417,7 @@ input[type='search'] {
 
 .productItem {
   min-width: 200px;
+  position: relative;
 }
 
 /* @media (min-width: 1400px) { ... } */

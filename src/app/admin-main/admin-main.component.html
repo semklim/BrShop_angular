@@ -257,28 +257,11 @@
         <app-search class="seaerchProd w-100 mb-4" (searchChange)="submitSearch($event)"></app-search>
       </div>
       <div class="boxProduct d-flex flex-wrap w-100">
-        <div class="d-flex d-flex flex-wrap">
+        <div class="d-flex justify-content-center flex-wrap">
           <ng-container *ngIf="prod$ | async as products">
-            <div *ngFor="let productRef of products" class="productItem ms-3 mb-3 p-1">
-              <img width="200" [src]="productRef.imagesUrls[0]" alt="img" />
+            <div *ngFor="let productRef of products" class="productItem ms-3 mb-4 p-1">
+              <img class="mb-3" width="200" [src]="productRef.imagesUrls[0]" alt="img" />
               <h4 class="">{{ productRef.title }}</h4>
-              <!-- <ul>
-                <li class="border-bottom">
-                  <p class="mb-1"><b>Color:</b> {{ productRef.color.name }}, <b>HEX:</b> {{ productRef.color.hex }}</p>
-                </li>
-                <li class="border-bottom">
-                  <p class="mb-1"><b>Currency:</b> {{ productRef.currency }},<b>Price:</b> {{ productRef.price }}</p>
-                </li>
-                <li class="border-bottom">
-                  <p class="mb-1"><b>Sizes:</b> {{ productRef.sizes }}</p>
-                </li>
-                <li class="border-bottom">
-                  <p class="mb-1"><b>Id</b>: {{ productRef.id }}</p>
-                </li>
-                <li class="border-bottom">
-                  <p class="mb-1"><b>Description:</b> {{ productRef.description | ellipse : 40 }}</p>
-                </li>
-              </ul> -->
               <p class="mb-3"><b>Description:</b> {{ productRef.description | ellipse : 80 }}</p>
               <button class="btn btn-primary" (click)="deleteProduct(productRef)">Удалить</button>
             </div>
