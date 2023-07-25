@@ -217,24 +217,43 @@
           ">
           Shoes must be at least one size.
         </div>
-        <div class="imgNewBox mb-4 d-flex align-items-center">
-          <p>Add pictures:</p>
-          <div class="mb-3 ms-3">
-            <label for="fileInput" class="btn-input">Select files</label>
-            <input
-              class="file-input"
-              id="fileInput"
-              #addFiles
-              type="file"
-              multiple
-              (change)="onFileInputChange($event)"
-              required />
-            <span class="ms-3" *ngIf="selectedFiles.length > 0">{{ selectedFiles.length }} file(s) selected</span>
+
+        <div class="ImgAndType__box mb-4 d-flex justify-content-between">
+          <!-- Левая колонка - выбор картинок -->
+          <div class="imgNewBox d-flex align-items-center">
+            <p class="mb-0 me-3">Add pictures:</p>
+            <div class="">
+              <label for="fileInput" class="btn-input">Select files</label>
+              <input
+                class="file-input"
+                id="fileInput"
+                #addFiles
+                type="file"
+                multiple
+                (change)="onFileInputChange($event)"
+                required />
+              <span class="ms-3" *ngIf="selectedFiles.length > 0">{{ selectedFiles.length }} file(s) selected</span>
+            </div>
+            <div style="color: #dc3545" *ngIf="selectedFiles.length === 0 && formAdd.dirty">
+              Must be at least one image.
+            </div>
           </div>
-          <div style="color: #dc3545" *ngIf="selectedFiles.length === 0 && formAdd.dirty">
-            Must be at least one image.
+
+          <!-- Правая колонка - выбор модели -->
+          <div class="typeModel d-flex align-items-center">
+            <label for="typeModeleAdmForm">Model:</label>
+            <select
+              [(ngModel)]="formData.typeModel"
+              id="typeModeleAdmForm"
+              class="form-control ms-3"
+              name="typeModel"
+              required>
+              <option value="Sports" selected>Sports</option>
+              <option value="EveryDay">EveryDay</option>
+            </select>
           </div>
         </div>
+
         <p class="text-danger" *ngIf="showErrorMessage">
           You did not fill in all the fields, or did not select sizes, or did not upload a picture
         </p>
@@ -255,15 +274,23 @@
       <div class="searcBox w-100 d-flex flex-column align-items-center text-center">
         <h5 class="mb-4">What product do you want to delete?</h5>
         <app-search class="seaerchProd w-100 mb-4" (searchChange)="submitSearch($event)"></app-search>
+
+        <div class="categoryFilter mb-4">
+          <button class="button__category" (click)="setSelectedCategory('All')">All</button>
+          <button class="button__category" (click)="setSelectedCategory('Sports')">Sports</button>
+          <button class="button__category" (click)="setSelectedCategory('EveryDay')">EveryDay</button>
+        </div>
       </div>
       <div class="boxProduct d-flex flex-wrap w-100">
         <div class="d-flex justify-content-center flex-wrap">
           <ng-container *ngIf="prod$ | async as products">
-            <div *ngFor="let productRef of products" class="productItem ms-3 mb-4 p-1">
-              <img class="mb-3" width="200" [src]="productRef.imagesUrls[0]" alt="img" />
-              <h4 class="">{{ productRef.title }}</h4>
-              <p class="mb-3"><b>Description:</b> {{ productRef.description | ellipse : 80 }}</p>
-              <button class="btn btn-primary" (click)="deleteProduct(productRef)">Удалить</button>
+            <div class="productItem ms-3 mb-4 p-1" *ngFor="let productRef of products">
+              <div *ngIf="selectedCategory === 'All' || productRef.typeModel === selectedCategory" class="productItem">
+                <img class="mb-3" width="200" [src]="productRef.imagesUrls[0]" alt="img" />
+                <h4 class="">{{ productRef.title }}</h4>
+                <p class="mb-3"><b>Description:</b> {{ productRef.description | ellipse : 80 }}</p>
+                <button class="btn btn-primary" (click)="deleteProduct(productRef)">Удалить</button>
+              </div>
             </div>
             <p class="notFoundProText" *ngIf="products.length === 0">No matching products found.</p>
           </ng-container>

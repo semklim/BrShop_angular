@@ -17,4 +17,5 @@ export interface Product {
   imagesUrls: Array<string>;
   color: { type: string; name: string; hex: string | number };
   colors: Array<object>;
+  typeModel: string;
 }

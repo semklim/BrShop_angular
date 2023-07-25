@@ -56,6 +56,12 @@ export class AdminMainComponent implements OnInit {
 
   size15 = false;
 
+  selectedCategory = 'All';
+
+  setSelectedCategory(category: string) {
+    this.selectedCategory = category;
+  }
+
   onFileInputChange(event: Event) {
     const inputElement = event.target as HTMLInputElement;
     const fileList = inputElement.files;
@@ -142,6 +148,7 @@ export class AdminMainComponent implements OnInit {
     rating: 0,
     reviews: [],
     description: '',
+    typeModel: 'Sports',
   };
 
   async onSubmit(form: NgForm) {
@@ -196,6 +203,7 @@ export class AdminMainComponent implements OnInit {
         rating: this.formData.rating,
         reviews: this.formData.reviews,
         description: this.formData.description,
+        typeModel: this.formData.typeModel,
       };
       try {
         // Добавление данных и ожидание завершения операции
