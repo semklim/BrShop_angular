@@ -58,9 +58,13 @@ export class AdminMainComponent implements OnInit {
 
   selectedCategory = 'All';
 
-  setSelectedCategory(category: string) {
-    this.selectedCategory = category;
-  }
+  // setSelectedCategory(category: string) {
+  //   this.selectedCategory = category;
+  // }
+
+  // isProductMatchingCategory(product: Product): boolean {
+  //   return this.selectedCategory === 'All' || product.typeModel === this.selectedCategory;
+  // }
 
   onFileInputChange(event: Event) {
     const inputElement = event.target as HTMLInputElement;
@@ -229,16 +233,37 @@ export class AdminMainComponent implements OnInit {
 
   prod$?: Observable<Product[]>;
 
+  filteredProducts$?: Observable<Product[]>;
+
   searchValue = '';
 
   ngOnInit(): void {
     this.productsOrigin = this.prod$ = this.fBaseService.getAllProducts();
+    this.filteredProducts$ = this.prod$;
   }
 
   submitSearch(value: string) {
     this.searchValue = value;
     this.selectedCategory = 'All';
     this.prod$ = this.filterProductsByTitles(value);
+    this.filterProducts();
+  }
+
+  setSelectedCategory(category: string) {
+    this.selectedCategory = category;
+    this.filterProducts();
+  }
+
+  private filterProducts() {
+    this.filteredProducts$ = this.productsOrigin?.pipe(
+      map((products: Product[]) => {
+        const filteredByCategory =
+          this.selectedCategory === 'All'
+            ? products
+            : products.filter((product) => product.typeModel === this.selectedCategory);
+        return filteredByCategory;
+      }),
+    );
   }
 
   filterProductsByTitles(productName: string): Observable<Product[]> | undefined {

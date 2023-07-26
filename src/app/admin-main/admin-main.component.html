@@ -283,18 +283,15 @@
       </div>
       <div class="boxProduct d-flex flex-wrap w-100">
         <div class="d-flex justify-content-center flex-wrap gap-4">
-          <ng-container *ngIf="prod$ | async as products">
-            <div class="productItem" *ngFor="let productRef of products">
-              <div
-                *ngIf="selectedCategory === 'All' || productRef.typeModel === selectedCategory"
-                class="productItem ms-3 mb-4 p-1">
+          <ng-container *ngIf="filteredProducts$ | async as filteredProducts">
+            <div class="productItem" *ngFor="let productRef of filteredProducts">
+              <div class="productItem ms-3 mb-4 p-1">
                 <img class="mb-3" width="200" [src]="productRef.imagesUrls[0]" alt="img" />
                 <h4 class="">{{ productRef.title }}</h4>
                 <p class="mb-3"><b>Description:</b> {{ productRef.description | ellipse : 80 }}</p>
                 <button class="btn btn-primary" (click)="deleteProduct(productRef)">Удалить</button>
               </div>
             </div>
-            <!-- <p class="notFoundProText" *ngIf="products.length === 0">No matching products found.</p> -->
           </ng-container>
         </div>
       </div>
