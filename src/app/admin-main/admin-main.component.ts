@@ -237,6 +237,7 @@ export class AdminMainComponent implements OnInit {
 
   submitSearch(value: string) {
     this.searchValue = value;
+    this.selectedCategory = 'All';
     this.prod$ = this.filterProductsByTitles(value);
   }
 

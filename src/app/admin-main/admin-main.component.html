@@ -282,10 +282,12 @@
         </div>
       </div>
       <div class="boxProduct d-flex flex-wrap w-100">
-        <div class="d-flex justify-content-center flex-wrap">
+        <div class="d-flex justify-content-center flex-wrap gap-4">
           <ng-container *ngIf="prod$ | async as products">
-            <div class="productItem ms-3 mb-4 p-1" *ngFor="let productRef of products">
-              <div *ngIf="selectedCategory === 'All' || productRef.typeModel === selectedCategory" class="productItem">
+            <div class="productItem" *ngFor="let productRef of products">
+              <div
+                *ngIf="selectedCategory === 'All' || productRef.typeModel === selectedCategory"
+                class="productItem ms-3 mb-4 p-1">
                 <img class="mb-3" width="200" [src]="productRef.imagesUrls[0]" alt="img" />
                 <h4 class="">{{ productRef.title }}</h4>
                 <p class="mb-3"><b>Description:</b> {{ productRef.description | ellipse : 80 }}</p>
