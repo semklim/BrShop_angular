@@ -354,6 +354,22 @@ h5 {
   line-height: 1;
 }
 
+.button__category {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+  color: rgb(0, 0, 0);
+  border: 1px solid;
+  padding: 5px;
+  min-width: 15%;
+  border-radius: 5px;
+  box-shadow: 2px 3px 6px -1px rgba(0, 0, 0, 0.75);
+  color: var(--font-color);
+}
+
 .btnAdd {
   min-width: 150px;
 }
@@ -382,6 +398,13 @@ input[type='search'] {
   width: 50%;
 }
 
+.categoryFilter {
+  display: flex;
+  gap: 6%;
+  width: 100%;
+  justify-content: center;
+}
+
 @media (min-width: 576px) {
   .productItem {
     width: 100%;
@@ -394,6 +417,11 @@ input[type='search'] {
 @media (min-width: 768px) {
   .productItem {
     max-width: 75%;
+  }
+
+  .categoryFilter {
+    display: flex;
+    /* gap: 25%; */
   }
 }
 

@@ -26,12 +26,12 @@
 
 @media (max-width: 310px) {
   :host {
-    min-height: calc(100vh - 125px - 50px);
+    min-height: calc(100vh - 66.8px - 50px);
   }
 }
 @media (min-width: 311px) {
   :host {
-    min-height: calc(100vh - 75.6px - 50px);
+    min-height: calc(100vh - 66.8px - 50px);
   }
 }
 

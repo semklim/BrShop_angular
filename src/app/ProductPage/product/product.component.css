@@ -4,6 +4,11 @@
 .loadingPage {
   width: 100%;
   height: calc(100vh - 182.45px);
+  /* height: calc(100vh - 66.8px - 50px); */
+}
+
+:host {
+  min-height: calc(100vh - 66.8px - 50px);
 }
 
 .productPage {
