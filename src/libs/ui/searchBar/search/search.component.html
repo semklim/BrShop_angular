@@ -5,6 +5,8 @@
     name="search"
     placeholder="Search Product"
     aria-label="Search"
+    #inputSearch
     [(ngModel)]="searchValue"
-    (input)="onSearch()" />
+    (input)="onSearch()"
+    (keyup.enter)="inputSearch.blur()" />
 </form>
