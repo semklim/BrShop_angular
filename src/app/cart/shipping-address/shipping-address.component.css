@@ -161,3 +161,28 @@
 .emailNotif {
   color: var(--placeholder-color);
 }
+
+@media (max-width: 524px) {
+  .address {
+    display: block;
+    width: 100%;
+    margin-left: 0vw;
+    text-align: center;
+  }
+  .checkbox-container {
+    text-align: start;
+    margin-left: 20%;
+  }
+  .input {
+    font-size: 14px;
+    width: 60%;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    outline: none;
+    margin-bottom: 5vh;
+    background-color: var(--body-bgc);
+  }
+  .email {
+    width: 60%;
+  }
+}

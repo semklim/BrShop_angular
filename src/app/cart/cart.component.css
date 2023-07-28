@@ -14,6 +14,14 @@
 
 .cart {
   background-color: var(--body-bgc);
+  display: flex;
+  flex-direction: row;
+}
+
+@media (max-width: 524px) {
+  .cart {
+    flex-direction: column-reverse;
+  }
 }
 
 @media (max-width: 360px) {

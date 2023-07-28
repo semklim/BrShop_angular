@@ -9,12 +9,12 @@
 
 .prices {
   margin-top: 3vh;
-  border-top: 1px solid var(--cart-borders);
   width: 23vw;
 }
 
 .subtotal {
   font-size: 13px;
+  border-top: 1px solid var(--cart-borders);
 }
 
 .shipping {
@@ -56,8 +56,8 @@
 }
 
 .itemImg {
-  width: 13%;
-  height: auto;
+  width: auto !important;
+  height: 17vh;
   vertical-align: top;
   float: left;
 }
@@ -111,11 +111,11 @@
   flex-wrap: nowrap;
 }
 
-@media (max-width: 1200px) {
-  /* .itemImg {
+/* @media (max-width: 1200px) {
+  .itemImg {
     width: 18%;
     height: auto;
-  } */
+  }
   .item {
     height: auto;
   }
@@ -126,7 +126,7 @@
     width: 34%;
     height: 110%;
   }
-}
+} */
 
 @media (max-width: 800px) {
   .amtBtn {
@@ -154,7 +154,7 @@
   }
 }
 
-@media (max-width: 530px) {
+/* @media (max-width: 530px) {
   .prices {
     width: 37vw;
   }
@@ -184,6 +184,59 @@
   }
   .itemName {
     font-size: 13px;
+  }
+} */
+
+@media (max-width: 524px) {
+  .spanWrap {
+    width: 100%;
+    display: block;
+    position: static;
+  }
+  .item {
+    display: inline-block;
+    width: 50%;
+    padding: 10px;
+    white-space: nowrap;
+    min-width: 200px;
+  }
+  .itemName {
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .itemPrice {
+    font-size: 11px;
+  }
+  .itemSize {
+    font-size: 11px;
+  }
+  .deleteProd {
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .prices {
+    padding-left: 50px;
+    padding-right: 50px;
+    width: 100%;
+    font-weight: 600;
+  }
+  .senc {
+    font-size: 14px;
+  }
+  .subtotalSpan {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 416px) {
+  .item {
+    display: inline-block;
+    width: 50%;
+    padding: 1px;
+    white-space: nowrap;
+    min-width: 200px;
+    margin-left: 31%;
+    margin-bottom: 6px;
   }
 }
 
