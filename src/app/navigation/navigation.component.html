@@ -24,6 +24,20 @@
         <option value="UAH">UAH</option>
       </select>
     </div>
+    <div class="containerFilter">
+      <select
+        class="form-select w-auto currencySelector ms-4"
+        name="filerSearch"
+        id="filterOptions"
+        aria-label="filerSearch"
+        [(ngModel)]="selectedCategory"
+        (change)="setSelectedCategory($event)">
+        <option value="All">All</option>
+        <option value="Sports">Sports</option>
+        <option value="EveryDay">EveryDay</option>
+      </select>
+    </div>
+
     <button
       class="navbar-toggler m-3"
       type="button"
@@ -37,6 +51,7 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav menuBtn flex-row w-100 justify-content-lg-end justify-content-center p-0">
         <!--  -->
+        <li></li>
         <li class="nav-item d-flex align-items-center gap-3 controlBtns p-0">
           <input type="checkbox" id="toggle_checkbox" (change)="toggleDarkMode()" />
           <label for="toggle_checkbox" class="label">

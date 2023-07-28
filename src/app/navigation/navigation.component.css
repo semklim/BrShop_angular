@@ -29,6 +29,12 @@ nav {
     padding: 0 !important;
   }
 }
+
+@media (max-width: 376px) {
+  .containerFilter {
+    display: none;
+  }
+}
 @media (max-width: 290px) {
   .logout-button {
     font-size: 25px !important;
@@ -339,6 +345,11 @@ button {
 @media (min-width: 576px) {
   .auto-box {
     width: 70vw;
+  }
+
+  .navbar-nav {
+    display: flex;
+    flex-direction: column;
   }
 }
 
