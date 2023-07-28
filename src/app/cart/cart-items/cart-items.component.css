@@ -4,6 +4,7 @@
   position: absolute;
   top: 10vh;
   margin-left: 2vw;
+  width: 50%;
 }
 
 .prices {
@@ -55,13 +56,14 @@
 }
 
 .itemImg {
-  width: 27%;
-  height: 100%;
+  width: 13%;
+  height: auto;
   vertical-align: top;
   float: left;
 }
 
 .itemName {
+  width: 400%;
   margin-left: 1vw;
   font-weight: 600;
   color: var(--font-color);
@@ -110,9 +112,12 @@
 }
 
 @media (max-width: 1200px) {
-  .itemImg {
-    width: 30%;
-    height: 110%;
+  /* .itemImg {
+    width: 18%;
+    height: auto;
+  } */
+  .item {
+    height: auto;
   }
 }
 
