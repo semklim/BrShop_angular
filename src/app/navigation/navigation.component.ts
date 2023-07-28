@@ -1,4 +1,4 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserMemoryService } from '../AdminServices/user-memory.service';
 import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
@@ -6,6 +6,7 @@ import { CartItemsService } from '../services/cart-items.service';
 import { Observable, Subscription } from 'rxjs';
 import { CurrencyStateService } from '../services/currency-State/currency-state.service';
 import { NgForm } from '@angular/forms';
+import { CategoryStateService } from '../services/category-state.service';
 
 @Component({
   selector: 'app-navigation',
@@ -26,6 +27,8 @@ export class NavigationComponent implements OnInit, OnDestroy {
     }
   }
 
+  @Output() categorySelected = new EventEmitter<string>();
+
   private subCurrency?: Subscription;
 
   amountProductsInCart?: Observable<number>;
@@ -42,12 +45,15 @@ export class NavigationComponent implements OnInit, OnDestroy {
     password: '',
   };
 
+  selectedCategory = 'All';
+
   constructor(
     private router: Router,
     public authService: UserMemoryService,
     private angularFireAuth: Auth,
     private currencyService: CurrencyStateService,
     public cartService: CartItemsService,
+    public categoryStateService: CategoryStateService,
   ) {}
 
   ngOnInit(): void {
@@ -61,6 +67,16 @@ export class NavigationComponent implements OnInit, OnDestroy {
     }
     this.amountProductsInCart = this.cartService.getAmountProductsInCart();
     this.subCurrency = this.currencyService.selectedCurrency$.subscribe((code) => (this.currentCurrency = code));
+    this.categoryStateService.selectedCategory$.subscribe((category) => (this.selectedCategory = category));
+  }
+
+  setSelectedCategory(event: Event) {
+    const target = event.target as HTMLSelectElement;
+    if (target) {
+      const category = target.value;
+      this.router.navigate(['./']);
+      this.categoryStateService.setSelectedCategory(category);
+    }
   }
 
   toggleAutoBox() {

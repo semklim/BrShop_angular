@@ -255,6 +255,7 @@ export class AdminMainComponent implements OnInit {
   }
 
   private filterProducts() {
+    // Фильтруем массив продуктов на основе выбранной категории
     this.filteredProducts$ = this.productsOrigin?.pipe(
       map((products: Product[]) => {
         const filteredByCategory =
