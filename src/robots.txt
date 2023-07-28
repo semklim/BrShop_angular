@@ -74,5 +74,6 @@ User-agent: YioopBot
 User-agent: yoozBot
 User-agent: YoudaoBot
 Disallow: 
+Host: https://shop-step.web.app/
 User-agent: *
 Disallow: /

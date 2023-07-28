@@ -6,9 +6,6 @@ import { UserMemoryService } from './AdminServices/user-memory.service';
 @Injectable({
   providedIn: 'root',
 })
-@Injectable({
-  providedIn: 'root',
-})
 export class AdminGuard implements CanActivate {
   constructor(private authService: UserMemoryService, private router: Router) {}
 
