@@ -1,15 +1,17 @@
 @import '../../../styles.css';
 
 .spanWrap {
-  position: absolute;
+  position: start;
   top: 10vh;
   margin-left: 2vw;
-  width: 50%;
+  width: 100%;
 }
 
 .prices {
   margin-top: 3vh;
   width: 23vw;
+  position: relative;
+  margin-bottom: 50px;
 }
 
 .subtotal {
@@ -192,7 +194,6 @@
     display: inline-block;
     width: 100%;
     padding: 10px;
-
     min-width: 200px;
   }
   .itemName {
@@ -214,6 +215,7 @@
     padding-right: 50px;
     width: 100%;
     font-weight: 600;
+    margin-bottom: 0px;
   }
   .senc {
     font-size: 14px;

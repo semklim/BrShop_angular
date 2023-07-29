@@ -82,8 +82,8 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
   addToCart() {
-    this.sizes.setSizes(this.size);
     if (this.sizeSelected === true) {
+      this.sizes.setSizes(this.size);
       const count = this.products.amountProducts$.getValue();
       if (localStorage.getItem('cartItems')) {
         if (localStorage.getItem('cartItems')!.length > 2) {
