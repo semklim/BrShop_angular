@@ -9,6 +9,7 @@ import {
   Inject,
   ChangeDetectionStrategy,
 } from '@angular/core';
+import { IntersectionService } from '../../service/intersection.service';
 
 @Component({
   selector: 'app-image-slider',
@@ -21,6 +22,8 @@ export class ImageSliderComponent implements AfterViewInit {
 
   @Input() slides: string[] = [];
 
+  // @Input() imageObserver?: IntersectionObserver;
+
   @Input() isShowDot = true;
 
   @Output() clickOnImage: EventEmitter<void> = new EventEmitter();
@@ -29,11 +32,15 @@ export class ImageSliderComponent implements AfterViewInit {
 
   currentIndex = 0;
 
-  constructor(@Inject('IsNotMobileDeviceService') public isNotMobileDevice: boolean) {}
+  constructor(
+    @Inject('IsNotMobileDeviceService') public isNotMobileDevice: boolean,
+    private imageLoaderService: IntersectionService,
+  ) {}
 
   ngAfterViewInit(): void {
-    this.preloadImages(1);
-    this.lazyLoadTag!.nativeElement.style.backgroundImage = `url('${this.slides[1]}')`;
+    this.lazyLoadTag!.nativeElement.setAttribute('data-src', `url('${this.slides[this.currentIndex]}')`);
+    this.lazyLoadTag!.nativeElement.setAttribute('data-src-preload', `${this.slides[(this.currentIndex += 1)]}`);
+    this.imageLoaderService.imageObserver.observe(this.lazyLoadTag?.nativeElement as unknown as Element);
   }
 
   showDots(): boolean {
@@ -50,16 +57,15 @@ export class ImageSliderComponent implements AfterViewInit {
   goToPrevious(): void {
     if (this.currentIndex !== 0) {
       this.currentIndex -= 1;
+      this.lazyLoadTag!.nativeElement.style.backgroundImage = `url('${this.slides[this.currentIndex]}')`;
     }
   }
 
   goToNext(): void {
     if (this.currentIndex < this.slides.length - 1) {
+      this.lazyLoadTag!.nativeElement.style.backgroundImage = `url('${this.slides[this.currentIndex]}')`;
       this.currentIndex += 1;
       this.preloadImages(this.currentIndex + 1);
-    }
-    if (this.lazyLoadTag) {
-      this.lazyLoadTag.nativeElement.remove();
     }
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Product } from '../types/products';
 import { FBaseService } from '../services/fireStore/fbase.service';
 import { Observable } from 'rxjs';
@@ -10,6 +10,7 @@ import { CategoryStateService } from '../services/category-state.service';
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainPageComponent implements OnInit {
   private productsOrigin?: Observable<Product[]>;
@@ -30,12 +31,11 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.productsOrigin = this.prod$ = this.prodService.getAllProducts();
-    // this.prodService.getProductsByCategory('Jordan').subscribe((data) => console.log(data));
     this.currentCurrency = this.prodService.currentCurrency;
     this.filteredProducts$ = this.prod$;
     this.categoryStateService.selectedCategory$.subscribe((category) => {
       this.selectedCategory = category;
-      this.filterProducts();
+      // this.filterProducts();
     });
   }
 
@@ -59,12 +59,6 @@ export class MainPageComponent implements OnInit {
   searchValue = '';
 
   submit(value: string) {
-    // if (value.length <= 0) {
-    //   this.prod$ = this.productsOrigin;
-    // } else {
-    //   this.prod$ = this.prodService.filterProductsFromServe(value);
-    // }
-    // this.searchValue = value;
     this.selectedCategory = 'All';
     this.categoryStateService.resetSelectedCategory();
     this.filteredProducts$ = this.filterProductsByTitles(value);
