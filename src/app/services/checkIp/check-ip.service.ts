@@ -23,12 +23,10 @@ export class CheckIpService {
   }
 
   async checkIp() {
-    // const ipInfo = await fetch('https://api-bdc.net/data/client-ip').then(
-    //   (response) => response.json() as unknown as ApiBdcResponse,
-    // );
-    const url2 = `https://ipinfo.io/json?token=240fec7368fc4c`; // this is better.
+    // const ipInfo = await fetch('https://api-bdc.net/data/client-ip').then((response) => response.json());
+    const url = `https://ipinfo.io/json?token=240fec7368fc4c`; // this is better.
     try {
-      const moreIpData = await fetch(url2).then((response) => response.json() as unknown as IpInfoResponse);
+      const moreIpData = await fetch(url).then((response) => response.json() as unknown as IpInfoResponse);
       return moreIpData;
     } catch (e: any) {
       console.log(e.message);
