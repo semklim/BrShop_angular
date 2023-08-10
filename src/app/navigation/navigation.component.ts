@@ -7,6 +7,7 @@ import { Observable, Subscription } from 'rxjs';
 import { CurrencyStateService } from '../services/currency-State/currency-state.service';
 import { NgForm } from '@angular/forms';
 import { CategoryStateService } from '../services/category-state.service';
+import { CheckIpService } from '../services/checkIp/check-ip.service';
 
 @Component({
   selector: 'app-navigation',
@@ -54,6 +55,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
     private currencyService: CurrencyStateService,
     public cartService: CartItemsService,
     public categoryStateService: CategoryStateService,
+    public ipInfoService: CheckIpService,
   ) {}
 
   ngOnInit(): void {

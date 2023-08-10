@@ -75,6 +75,16 @@ nav {
   }
 }
 
+.location {
+  white-space: nowrap;
+}
+
+@supports (text-wrap: balance) {
+  .location {
+    text-wrap: balance;
+  }
+}
+
 .cartBtn {
   position: relative;
 }

@@ -49,6 +49,9 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <div class="location px-3" *ngIf="ipInfoService.ipData as ipData">
+        Your location is {{ipData.city}} | {{ipData.country}}
+      </div>
       <ul class="navbar-nav menuBtn flex-row w-100 justify-content-lg-end justify-content-center p-0">
         <!--  -->
         <li></li>

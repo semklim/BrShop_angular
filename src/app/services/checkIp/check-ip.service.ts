@@ -16,10 +16,13 @@ export type IpInfoResponse = {
   providedIn: 'root',
 })
 export class CheckIpService {
-  ipData: Promise<IpInfoResponse>;
+  ipData: IpInfoResponse | null = null;
 
   constructor() {
-    this.ipData = this.checkIp();
+    this.checkIp().then((data) => {
+      this.ipData = data;
+      console.log(data);
+    });
   }
 
   async checkIp() {
