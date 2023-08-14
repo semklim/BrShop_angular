@@ -19,21 +19,28 @@ export class CheckIpService {
   ipData: IpInfoResponse | null = null;
 
   constructor() {
-    this.checkIp().then((data) => {
-      this.ipData = data;
-      console.log(data);
-    });
+    document.addEventListener(
+      'DOMContentLoaded',
+      () => {
+        this.checkIp().then((data) => {
+          this.ipData = data;
+          console.log(data);
+        });
+      },
+      {
+        once: true,
+      },
+    );
   }
 
   async checkIp() {
     // const ipInfo = await fetch('https://api-bdc.net/data/client-ip').then((response) => response.json());
     const url = `https://ipinfo.io/json?token=240fec7368fc4c`; // this is better.
     try {
-      const moreIpData = await fetch(url).then((response) => response.json() as unknown as IpInfoResponse);
-      return moreIpData;
-    } catch (e: any) {
-      console.log(e.message);
-      return { error: `Can't fetch data` } as unknown as IpInfoResponse;
+      return await fetch(url).then((response) => response.json() as unknown as IpInfoResponse);
+    } catch (e: unknown) {
+      console.log((e as Error).message);
+      return e as IpInfoResponse;
     }
   }
 }

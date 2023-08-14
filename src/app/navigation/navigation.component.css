@@ -41,8 +41,11 @@ nav {
   }
 }
 
-#adminEyes {
+adminEyes {
   transform: matrix(1, 0, 0, 1, 0, 0.01);
+}
+
+.admin-button:hover .adminEyes {
   animation: clipping 5s ease-in infinite;
 }
 
