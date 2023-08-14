@@ -34,6 +34,8 @@ export class NavigationComponent implements OnInit, OnDestroy {
 
   amountProductsInCart?: Observable<number>;
 
+  singUpIsInvalid = false;
+
   currentCurrency = 'USD';
 
   showAutoBox = false;
@@ -100,6 +102,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
     const firebaseUserName = this.authService.firebaseUser.name;
     const firebaseUserPassword = this.authService.firebaseUser.password;
     if (this.user.name === 'admin' && this.user.password === 'admin') {
+      this.singUpIsInvalid = false;
       this.authService.login();
       signInWithEmailAndPassword(this.angularFireAuth, firebaseUserName, firebaseUserPassword)
         .then(() => {
@@ -120,7 +123,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
         }
       }
     } else {
-      console.log('false');
+      this.singUpIsInvalid = true;
     }
   }
 
