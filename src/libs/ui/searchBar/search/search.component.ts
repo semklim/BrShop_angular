@@ -9,12 +9,14 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angul
 export class SearchComponent {
   @Output() searchChange = new EventEmitter();
 
-  searchValue!: string;
+  delay = 300;
+
+  searchValue: string | null = null;
 
   timeoutId?: ReturnType<typeof setTimeout>;
 
   onSearch(): void {
     clearTimeout(this.timeoutId);
-    this.timeoutId = setTimeout(() => this.searchChange.emit(this.searchValue), 300);
+    this.timeoutId = setTimeout(() => this.searchChange.emit(this.searchValue), this.delay);
   }
 }
