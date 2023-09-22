@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/dot-notation */
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Review } from 'src/app/types/review';
@@ -24,7 +25,7 @@ export class ReviewComponent {
   constructor(private buildForm: FormBuilder) {
     this.reviewForm = buildForm.group({
       username: ['', [Validators.minLength(2), Validators.required]],
-      rating: ['0', [Validators.minLength(2), Validators.required]],
+      rating: [0, [Validators.min(1), Validators.required]],
       comment: ['', [Validators.minLength(6), Validators.required]],
     });
   }
